@@ -1,494 +1,79 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Margarine" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Germania+One|Inconsolata|Indie+Flower|Lilita+One" rel="stylesheet">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Anton|Lobster|Mukta|Muli|Noto+Sans+JP|Pacifico|Titillium+Web" rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/bibleable.css" crossorigin="anonymous">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Bibleable</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, minimal-ui">
 
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+  <link rel="dns-prefetch" href="https://code.jquery.com/">
+
+  <link href="./assets/css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="./assets/animate.min.css">
+  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./assets/flat-ui.css">
+  <link rel="stylesheet" href="./assets/basic.css">
+  <style media="screen">
+
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Bibleable</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarsExample02">
-          <ul class="navbar-nav mr-auto">
-          </ul>
-          <form class="form-inline my-2 my-md-0">
-            <input class="form-control" type="text" placeholder="Search Bible Verse">
-          </form>
-        </div>
-      </nav>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-1"></div>
+<div class="">
+  <!-- <a class="link first_gap" href="pricing.html">Pricing</a>
+  <a class="link gap" href="demo.html">Request Demo</a>
+  <a class="link gap" href="features.html">Features</a>
+  <a class="link gap" href="freetrial.html">Free Trial</a> -->
+  <!-- <a class="last_gap btn btn-block btn-lg btn-primary" href="/users/sign_in">Sign in</a> -->
+</div>
 
-        <div class="col-sm-10">
-            <div class="row">
-              <div class="col">
-                  <canvas id="canvas" width="640" height="640"></canvas>
-                  <img id="my-image" src="images/IMG_1233.JPG" alt=""> 
-                  <!-- <div id="app">
-                      <img :src="datadata"></img>
-                  </div> -->
-              </div>
+<header class="site__header island">
 
-              <div class="col">
-                <!-- REMOVE -->
-                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                      <li class="nav-item">
-                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
-                          <i class="fa fa-font"></i>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
-                          <i class="fa fa-tint"></i>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">
-                          <i class="fa fa-align-left"></i>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-slider-tab" data-toggle="pill" href="#pills-slider" role="tab" aria-controls="pills-slider" aria-selected="false">
-                          <i class="fa fa-sliders"></i>
-                        </a>
-                      </li>
-      
-                      <li class="nav-item">
-                        <a class="nav-link" id="pills-window-tab" data-toggle="pill" href="#pills-window" role="tab" aria-controls="pills-window" aria-selected="false">
-                          <i class="fa fa-window-restore"></i>
-                        </a>
-                      </li>
+  <div class="wrap">
+   <span id="animationSandbox" style="display: block;"><h1 class="site__title mega">Bibleable</h1></span>
+    <span class="beta subhead">Coming soon.</span>
+    <span class="beta subhead">Bibleable is a project to generate beautiful and shareable bible verse images.</span>
 
-                      <li class="nav-item">
-                          <a class="nav-link" id="pills-window-tab" data-toggle="pill" href="#pills" role="tab" aria-controls="pills-window" aria-selected="false">
-                            <button class="btn btn-success btn-sm">Save</button>
-                          </a>
-                        </li>
-      
-                    </ul>
+  </div>
+</header><!-- /.site__header -->
 
-                    <div id="app">
-                      <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            <hr>
-                            <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
-                            <input v-model.number="fontsize" type="range" min="18" max="43" value="18" class="slider" id="myRange"> <br>
+<main class="site__content island" role="content">
+  <div class="wrap">
+    <!-- <input type="text" name="name" value="">
+    <input type="text" name="name" value=""> -->
+    <!-- <input class="" type="button" name="name" value="">Sign up</input> -->
+    <hr>
+    <p class="meta">
+      <a href="http://www.tada.asia">© The Amazing Digital Asia.</a> You can also send your feedback to <u><a href="mailto:bibleableproject@gmail.com">bibleableproject@gmail.com</a></u>.
+    </p>
 
-                            <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
-                            <input v-model.number="opacity" type="range" min="1" max="100" value="90" class="slider" id="myRange">
-        
-                            <br>
-                            <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
-                            <input v-model.number="backgroundblur" type="range" min="0" max="100" value="50" class="slider" id="myRange"> <br>        
+  </div>
+</main><!-- /.site__content -->
 
-                            <hr>
-                            <span>Font family:</span>
-                            
-                            <div class="row">
-                              <div class="col">
-                                <br>
-                                <input v-model="fontfamily" value="margarine" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="margarine">Margarine</span>
-                                <br>
-                                <input v-model="fontfamily" value="roboto" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="roboto">Roboto</span>
-                                <br>
-                                <input v-model="fontfamily" value="baloo chettan" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="baloo">Baloo Chettan</span>
-                                <br>
+<script src="./appointment_files/jquery-1.10.2.min.js"></script>
+<script>
+  function testAnim(x) {
+    $('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(this).removeClass();
+    });
+  };
 
-                                <input v-model="fontfamily" value="inconsolata" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="inconsolata">Inconsolata</span>
-                                <br>
-                                <input v-model="fontfamily" value="lilita" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="lilita">Lilita</span>
-                                <br>
-                                <input v-model="fontfamily" value="indie flower" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="indie">Indie</span>
-                              </div>
+  $(document).ready(function(){
+    $('.js--triggerAnimation').click(function(e){
+      e.preventDefault();
+      var anim = $('.js--animations').val();
+      testAnim(anim);
+    });
 
-                              <div class="col">
-                                <!-- NEW FONT -->
-                                <br>
-                                <input v-model="fontfamily" value="Titillium Web" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="titillium">Titillium Web</span>
-    
-                                <br>
-                                <input v-model="fontfamily" value="Mukta" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="mukta">Mukta</span>
-    
-                                <br>
-                                <input v-model="fontfamily" value="Muli" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="muli">Muli</span>
-    
-                                <br>
-                                <input v-model="fontfamily" value="Anton" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="anton">Anton</span>
-    
-                                <br>
-                                <input v-model="fontfamily" value="Lobster" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="lobster">Lobster</span>
-    
-                                <br>
-                                <input v-model="fontfamily" value="Pacifico" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="pacifico">Pacifico</span>
-    
-                                <br>
-                                <input v-model="fontfamily" value="Noto Sans JP" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="noto">Noto Sans JP</span>
-                              </div>
-                            </div>
+    $('.js--animations').change(function(){
+      var anim = $(this).val();
+      testAnim(anim);
+    });
+  });
 
-                            <hr>
-
-                            <span>Center:</span>
-                            <button @click="centerText()" type="button" class="btn btn-outline-dark btn-sm">
-                              Center
-                            </button>
-
-                            <button @click="centerTextH()" type="button" class="btn btn-outline-dark btn-sm">
-                              Horizontally
-                            </button>
-
-                            <button @click="centerTextV()" type="button" class="btn btn-outline-dark btn-sm">
-                              Vertically
-                            </button>
-                            <hr>
-
-                            <span>Align:</span>
-                    
-                            <button type="button" class="btn btn-outline-dark btn-sm">
-                                <input v-model="textAlign" value="left" type="radio"  class="btn btn-outline-dark btn-sm">
-                                left <i class="fa fa-align-left"></i> 
-                              </button>
-                  
-                              <button type="button" class="btn btn-outline-dark btn-sm">
-                                  <input v-model="textAlign" value="center" type="radio"  class="btn btn-outline-dark btn-sm">
-
-                                center <i class="fa fa-align-center"></i> 
-                              </button>
-                  
-                              <button type="button" class="btn btn-outline-dark btn-sm">
-                                  <input v-model="textAlign" value="right" type="radio"  class="btn btn-outline-dark btn-sm">
-
-                                right <i class="fa fa-align-right"></i> 
-                              </button>
-                              
-                              <hr>
-                              <span>Colour:</span>
-                              <button type="button" class="btn btn-outline-dark btn-sm">
-                                <input v-model="textColor" value="white" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <i class="fa fa-check"></i>  
-                              </button>
-                  
-                              <button type="button" class="btn btn-dark btn-sm">
-                                  <input v-model="textColor" value="black" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <i class="fa fa-check"></i>  
-                              </button>
-                              
-                                                        
-                          </div>
-                        
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                            <span>Actions:</span>
-                            <button type="button" class="btn btn-outline-dark btn-sm">
-                              redo
-                              <i class="fa fa-repeat"></i> 
-                            </button>
-                
-                            <button type="button" class="btn btn-outline-dark btn-sm">
-                                <i class="fa fa-undo"></i> undo 
-                            </button>        
-                        </div>
-                        
-                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-
-                              <hr>
-                              <p>Background</p>
-                              <button>1</button>
-                              <button>2</button>
-                              <button>3</button>
-                              <button>4</button>
-                              <button>5</button>
-                        </div>
-        
-        
-                        <div class="tab-pane fade" id="pills-slider" role="tabpanel" aria-labelledby="pills-slider-tab">
-                          <p>Test</p>
-                        </div>
-
-                        <div class="tab-pane fade" id="pills-window" role="tabpanel" aria-labelledby="pills-window-tab">
-                          <p>Test</p>
-                        </div>
-                      </div>
-                    </div>
-
-                  <a href="about.html">About</a>
-              </div>
-            </div>
-        </div>
-
-        <div class="col-sm-1"></div>
-      </div>    
-    </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.7.0/fabric.min.js"></script>
-    <script>
-      var canvas = new fabric.Canvas('canvas');
-      document.getElementById("canvas").fabric = canvas;
-
-      var grid = 20;
-      var cWidth = canvas.getWidth();
-      var cHeight = canvas.getHeight();
-
-      canvas.on('mouse:down', function (e) {
-        console.log('mouse is down. You should show the lines')
-        for (var i = 0; i < (cWidth / grid); i++) {
-          // console.log("-----------")
-          // console.log(i)
-          // console.log(grid)
-          // console.log(cWidth)
-          // console.log(i * grid)
-
-          canvas.add(new fabric.Line([i * grid, 0, i * grid, cWidth], {
-              stroke: '#d1d1d1',
-              selectable: false
-          }));
-          canvas.add(new fabric.Line([0, i * grid, cWidth, i * grid], {
-              stroke: '#d1d1d1',
-              selectable: false
-          }));
-        }
-      
-        //CENTERING Y-axis
-        canvas.add(new fabric.Line([cHeight/2, 0, cHeight/2, cWidth], {
-              stroke: '#DE2E1F',
-              selectable: false,
-              strokeWidth: 2,
-          }));
-
-          //CENTERING X-axis
-          canvas.add(new fabric.Line([0, cWidth/2, cWidth, cWidth/2 ], {
-              stroke: '#DE2E1F',
-              selectable: false, 
-              strokeWidth: 2,
-          }));
-      });
-
-      canvas.on('mouse:up', function (e) {
-        console.log('mouse is up. You should hide the lines')
-        var objects = canvas.getObjects('line');
-        for (let i in objects) {
-            canvas.remove(objects[i]);
-        }
-      });
-
-      canvas.on('object:modified', function (e) {
-            // var obj = e.target;
-            // var rect = obj.getBoundingRect();
+</script>
 
 
 
-        // if (rect.left < 0
-        //   || rect.top < 0
-        //   || rect.left + rect.width > canvas.getWidth()
-        //   || rect.top + rect.height > canvas.getHeight()) {
-        //       if (obj.getAngle() != obj.originalState.angle) {
-        //           obj.setAngle(obj.originalState.angle);
-        //       }
-        //       else {
-        //           obj.setTop(obj.originalState.top);
-        //           obj.setLeft(obj.originalState.left);
-        //           obj.setScaleX(obj.originalState.scaleX);
-        //           obj.setScaleY(obj.originalState.scaleY);
-        //       }
-        //       obj.setCoords();
-        //   }
-      });
-
-      fabric.Object.prototype.set({  
-          borderColor: 'tranparent',  
-          cornerColor: 'tranparent',  
-          cornerSize: 0,
-          transparentCorners: true,
-          padding:5,
-          borderDashArray:[2,2]          
-      });
-
-      function setBackgroundProp(name, value) {
-        var canvas = document.getElementById("canvas").fabric;
-        var object = canvas.getObjects()
-        if (!object) return;
-        object[0].filters[0].blur = value
-        object[0].applyFilters()
-        canvas.renderAll();
-      }
-
-      function setActiveProp(name, value) {
-        var canvas = document.getElementById("canvas").fabric;
-        var object = canvas.getObjects()
-        if (!object) return;
-        object[1].set(name, value).setCoords();
-        canvas.renderAll();
-      }
-
-      function centerObject(axis){
-        var canvas = document.getElementById("canvas").fabric;
-        var object = canvas.getObjects()
-        if (!object) return;
-        if(axis == "H"){ // Center horizontally
-          object[1].centerH();
-        }
-        else if(axis == "V"){ //Center vertically 
-          object[1].centerV();
-        }
-        else { //Center horizontally and vertically
-          object[1].center();
-        }
-        canvas.renderAll();
-      }
-
-
-
-      // Add a save now button
-      //https://stackoverflow.com/questions/30629263/save-client-side-generated-image-on-button-click#30654232
-
-      // limit the size of the itext
-      // https://stackoverflow.com/questions/45406604/limit-text-input-on-itext-or-textbox#45506259
-
-      function addText(text) {
-        var text = new fabric.Textbox(text, {
-          lockScalingY: true,
-          lockScalingX: true,
-          height:200,
-          width: 500,
-          align: 'mid', //added
-          textAlign: 'center',
-          fontFamily: 'Margarine',
-          fill: '#333',
-          opacity: 0.9,
-          fontSize: 18,
-          centeredScaling: true,
-          lockScalingX: true,
-        });
-
-        canvas.add(text);
-        text.center();
-      }
-
-      // Fabric.js
-      canvas.selection = false;
-      var imgElement = document.getElementById('my-image');
-      var imgInstance = new fabric.Image(imgElement, {
-        evented: false,
-        opacity: 0.85
-      });
-
-      var filter = new fabric.Image.filters.Blur({
-        blur: 0.01
-      });
-
-      imgInstance.filters.push(filter);
-      imgInstance.applyFilters();
-      canvas.renderAll();
-      document.getElementById("canvas").blur = filter;
-
-      canvas.add(imgInstance);
-
-      addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
-
-      var madeby = new fabric.IText("Created with Bibleable.com", {
-        evented: false,
-        fontSize: 12,
-        textAlign: 'center',
-        backgroundColor: '#FFFFFF',
-        lockScalingX: true,
-        lockScalingY: true,
-        top: 430,
-        left: 290,
-        cornerSize: 20
-      });
-
-      canvas.add(madeby);
-
-      // Vue component
-      new Vue({
-        el: "#app", 
-        data: {
-          textAlign: "center",
-          datadata: "",
-          fontsize: 18,
-          opacity: 90,
-          fontfamily: "margarine", 
-          backgroundblur: 10,
-          textColor: "black"
-        },
-        watch: {
-          textColor: function(){
-            setActiveProp('fill', this.textColor)
-          },
-          textAlign: function(){
-            setActiveProp('textAlign', this.textAlign)
-          },
-          backgroundblur: function(){
-            setBackgroundProp('blur', this.backgroundblur/100)
-          },
-          fontfamily: function(){
-            console.log(this.fontfamily)
-            setActiveProp('fontFamily', this.fontfamily)
-          },
-          opacity: function(){
-            setActiveProp('opacity', this.opacity/100)
-          },
-          fontsize: function(){
-            setActiveProp('fontSize', this.fontsize)
-            this.centerText()
-          },
-          datadata: function(){
-            // var vm = this
-            // setTimeout(function(){
-            //     vm.datadata = vm.calculateQRCode()
-            //   }, 100);
-          },
-        },
-        methods: {
-          centerTextH: function(){
-            centerObject("H")
-          },
-          centerTextV: function(){
-            centerObject("V")
-          },
-          centerText: function(){
-            centerObject()
-          },
-          calculateQRCode: function(){
-            var canvasX = document.querySelector("canvas#canvas")
-            var img = canvasX.toDataURL("image/png");
-            this.datadata = img;
-            var vm = this
-            setTimeout(function(){
-                vm.datadata = img //vm.calculateQRCode()
-            }, 2000);
-          }
-        },
-        mounted: function(){
-          this.calculateQRCode()
-        }
-      });
-  </script>
-</body>
-</html>
+<script id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{(function() { for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i.toString(); } else { d.textContent=i.toString(); } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }})()}catch(e){}</script></body></html>
