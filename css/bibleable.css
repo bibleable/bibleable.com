@@ -1,0 +1,62 @@
+#my-image{
+  display:none;
+}
+canvas {
+  border: 1px solid black;
+}
+
+span#margarine {
+  font-family: 'margarine';
+}
+
+span#indie {
+  font-family: 'Indie Flower';
+}
+
+span#lilita {
+  font-family: 'Lilita One';
+}
+span#roboto {
+  font-family: 'roboto';
+}
+
+span#baloo {
+  font-family: 'baloo chettan';
+}
+
+span#germania {
+  font-family: 'Germania One';
+}
+
+span#inconsolata {
+  font-family: 'Inconsolata';
+}
+
+/* NEW FONT */
+span#titillium {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+span#mukta {
+  font-family: 'Mukta', sans-serif;
+}
+
+span#muli {
+  font-family: 'Muli', sans-serif;
+}
+
+span#anton {
+  font-family: 'Anton', sans-serif;
+}
+
+span#lobster {
+  font-family: 'Lobster', cursive;
+}
+
+span#pacifico {
+  font-family: 'Pacifico', cursive;
+}
+
+span#noto {
+  font-family: 'Noto Sans JP', sans-serif;
+}
