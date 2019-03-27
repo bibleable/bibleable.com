@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Margarine" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Baloo+Chettan|Germania+One|Inconsolata|Indie+Flower|Lilita+One" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Margarine|Roboto|Baloo+Chettan|Germania+One|Inconsolata|Indie+Flower|Lilita+One|Anton|Lobster|Mukta|Muli|Noto+Sans+JP|Pacifico|Titillium+Web" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Anton|Lobster|Mukta|Muli|Noto+Sans+JP|Pacifico|Titillium+Web" rel="stylesheet">
-
   <link rel="stylesheet" href="./css/bibleable.css" crossorigin="anonymous">
-
 </head>
 <body>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
@@ -26,7 +23,7 @@
           </form>
         </div>
       </nav>
-
+        
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-1"></div>
@@ -35,7 +32,7 @@
             <div class="row">
               <div class="col">
                   <canvas id="canvas" width="640" height="640"></canvas>
-                  <img id="my-image" src="images/IMG_1233.JPG" alt=""> 
+                  <img id="my-image" src="images/2.JPG" alt=""> 
                   <!-- <div id="app">
                       <img :src="datadata"></img>
                   </div> -->
@@ -76,22 +73,65 @@
                             <button class="btn btn-success btn-sm">Save</button>
                           </a>
                         </li>
-      
                     </ul>
 
                     <div id="app">
                       <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <hr>
-                            <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
-                            <input v-model.number="fontsize" type="range" min="18" max="43" value="18" class="slider" id="myRange"> <br>
+                            <div class="row">
+                              <div class="col">
+                                <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
+                                <input v-model.number="fontsize" type="range" min="18" max="43" value="18" class="slider" id="myRange"> <br>
+    
+                                <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
+                                <input v-model.number="opacity" type="range" min="1" max="100" value="90" class="slider" id="myRange">
+            
+                                <br>
+                                <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
+                                <input v-model.number="backgroundblur" type="range" min="0" max="100" value="50" class="slider" id="myRange"> <br>            
+                              </div>
 
-                            <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
-                            <input v-model.number="opacity" type="range" min="1" max="100" value="90" class="slider" id="myRange">
-        
-                            <br>
-                            <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
-                            <input v-model.number="backgroundblur" type="range" min="0" max="100" value="50" class="slider" id="myRange"> <br>        
+                              <div class="col">
+                                <div>
+                                  <span>Colour:</span>
+                                  <br>
+                                  <button type="button" class="btn btn-outline-dark btn-sm">
+                                    <input v-model="textColor" value="white" type="radio"  class="btn btn-outline-dark btn-sm">
+                                    <i class="fa fa-check"></i>  
+                                  </button>
+                      
+                                  <button type="button" class="btn btn-dark btn-sm">
+                                      <input v-model="textColor" value="black" type="radio"  class="btn btn-outline-dark btn-sm">
+                                    <i class="fa fa-check"></i>  
+                                  </button>     
+                                </div>
+                                <br>
+                                <div>
+                                  <span>Align:</span>
+
+                                  <br>
+                                  <button type="button" class="btn btn-outline-dark btn-sm">
+                                      <input v-model="textAlign" value="left" type="radio"  class="btn btn-outline-dark btn-sm">
+                                       <i class="fa fa-align-left"></i> 
+                                    </button>
+                        
+                                    <button type="button" class="btn btn-outline-dark btn-sm">
+                                        <input v-model="textAlign" value="center" type="radio"  class="btn btn-outline-dark btn-sm">
+      
+                                       <i class="fa fa-align-center"></i> 
+                                    </button>
+                        
+                                    <button type="button" class="btn btn-outline-dark btn-sm">
+                                        <input v-model="textAlign" value="right" type="radio"  class="btn btn-outline-dark btn-sm">
+      
+                                       <i class="fa fa-align-right"></i> 
+                                    </button>
+                                </div>
+    
+                                  
+                              </div>
+                            </div>
 
                             <hr>
                             <span>Font family:</span>
@@ -153,52 +193,43 @@
 
                             <hr>
 
-                            <span>Center:</span>
-                            <button @click="centerText()" type="button" class="btn btn-outline-dark btn-sm">
-                              Center
-                            </button>
-
-                            <button @click="centerTextH()" type="button" class="btn btn-outline-dark btn-sm">
-                              Horizontally
-                            </button>
-
-                            <button @click="centerTextV()" type="button" class="btn btn-outline-dark btn-sm">
-                              Vertically
-                            </button>
-                            <hr>
-
-                            <span>Align:</span>
-                    
-                            <button type="button" class="btn btn-outline-dark btn-sm">
-                                <input v-model="textAlign" value="left" type="radio"  class="btn btn-outline-dark btn-sm">
-                                left <i class="fa fa-align-left"></i> 
+                            <!-- <div>
+                              <span>Center:</span>
+                              <button @click="centerText()" type="button" class="btn btn-outline-dark btn-sm">
+                                Center
                               </button>
-                  
-                              <button type="button" class="btn btn-outline-dark btn-sm">
-                                  <input v-model="textAlign" value="center" type="radio"  class="btn btn-outline-dark btn-sm">
+  
+                              <button @click="centerTextH()" type="button" class="btn btn-outline-dark btn-sm">
+                                Horizontally
+                              </button>
+  
+                              <button @click="centerTextV()" type="button" class="btn btn-outline-dark btn-sm">
+                                Vertically
+                              </button>
+                            </div> -->
 
-                                center <i class="fa fa-align-center"></i> 
-                              </button>
-                  
-                              <button type="button" class="btn btn-outline-dark btn-sm">
-                                  <input v-model="textAlign" value="right" type="radio"  class="btn btn-outline-dark btn-sm">
+                            <div>
+                              <p>Background:</p>
 
-                                right <i class="fa fa-align-right"></i> 
-                              </button>
-                              
-                              <hr>
-                              <span>Colour:</span>
-                              <button type="button" class="btn btn-outline-dark btn-sm">
-                                <input v-model="textColor" value="white" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <i class="fa fa-check"></i>  
-                              </button>
-                  
-                              <button type="button" class="btn btn-dark btn-sm">
-                                  <input v-model="textColor" value="black" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <i class="fa fa-check"></i>  
-                              </button>
-                              
-                                                        
+                              <img @click="selectBackground(1)" src="images/thumbnails/1.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(2)" src="images/thumbnails/2.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(3)" src="images/thumbnails/3.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(4)" src="images/thumbnails/4.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(5)" src="images/thumbnails/5.JPG" width="40" height="40" alt="">
+
+                              <img @click="selectBackground(1)" src="images/thumbnails/1.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(2)" src="images/thumbnails/2.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(3)" src="images/thumbnails/3.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(4)" src="images/thumbnails/4.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(5)" src="images/thumbnails/5.JPG" width="40" height="40" alt="">
+
+                              <img @click="selectBackground(1)" src="images/thumbnails/1.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(2)" src="images/thumbnails/2.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(3)" src="images/thumbnails/3.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(4)" src="images/thumbnails/4.JPG" width="40" height="40" alt="">
+                              <img @click="selectBackground(5)" src="images/thumbnails/5.JPG" width="40" height="40" alt="">
+
+                            </div>
                           </div>
                         
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
@@ -214,16 +245,14 @@
                         </div>
                         
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-
-                              <hr>
-                              <p>Background</p>
-                              <button>1</button>
-                              <button>2</button>
-                              <button>3</button>
-                              <button>4</button>
-                              <button>5</button>
+                            <!-- <hr>
+                            <p>Background</p>
+                            <button>1</button>
+                            <button>2</button>
+                            <button>3</button>
+                            <button>4</button>
+                            <button>5</button> -->
                         </div>
-        
         
                         <div class="tab-pane fade" id="pills-slider" role="tabpanel" aria-labelledby="pills-slider-tab">
                           <p>Test</p>
@@ -276,17 +305,17 @@
       
         //CENTERING Y-axis
         canvas.add(new fabric.Line([cHeight/2, 0, cHeight/2, cWidth], {
-              stroke: '#DE2E1F',
-              selectable: false,
-              strokeWidth: 2,
-          }));
+            stroke: '#DE2E1F',
+            selectable: false,
+            strokeWidth: 2,
+        }));
 
-          //CENTERING X-axis
-          canvas.add(new fabric.Line([0, cWidth/2, cWidth, cWidth/2 ], {
-              stroke: '#DE2E1F',
-              selectable: false, 
-              strokeWidth: 2,
-          }));
+        //CENTERING X-axis
+        canvas.add(new fabric.Line([0, cWidth/2, cWidth, cWidth/2 ], {
+            stroke: '#DE2E1F',
+            selectable: false, 
+            strokeWidth: 2,
+        }));
       });
 
       canvas.on('mouse:up', function (e) {
@@ -297,11 +326,32 @@
         }
       });
 
-      canvas.on('object:modified', function (e) {
-            // var obj = e.target;
-            // var rect = obj.getBoundingRect();
+      canvas.on('object:moving', function (e) {
+        var cWidth = canvas.getWidth();
+        var obj = e.target;
+        var rect = obj.getBoundingRect();
+        //If the condition is met, within the range of 20 by 20
+        if(true == true){
+          canvas.add(new fabric.Line([cHeight/2, 0, cHeight/2, cWidth], {
+              stroke: 'green',
+              selectable: false,
+              strokeWidth: 10,
+          }));
+        }
+
+        console.log("--------------")
+        console.log("*center of canvas: " + (cWidth/2))
+        console.log("*center: " + rect.width/2)
+        console.log("left: " + rect.left)
+        console.log("right: " + (rect.left + rect.height))
+        console.log("top: " + rect.top)
+        console.log("bottom: " + (rect.top + rect.height))
+        console.log("width: " +rect.width)
+        console.log("height: " +rect.height)
 
 
+        // console.log(rect)
+        // console.log(obj)
 
         // if (rect.left < 0
         //   || rect.top < 0
@@ -350,19 +400,19 @@
         var canvas = document.getElementById("canvas").fabric;
         var object = canvas.getObjects()
         if (!object) return;
-        if(axis == "H"){ // Center horizontally
+        if(axis == "H"){ // Center Horizontally
           object[1].centerH();
         }
-        else if(axis == "V"){ //Center vertically 
+        else if(axis == "V"){ //Center Vertically 
           object[1].centerV();
         }
-        else { //Center horizontally and vertically
+        else { //Center Horizontally and Vertically
           object[1].center();
         }
         canvas.renderAll();
       }
 
-
+      // http://fabricjs.com/fabric-intro-part-2
 
       // Add a save now button
       //https://stackoverflow.com/questions/30629263/save-client-side-generated-image-on-button-click#30654232
@@ -406,22 +456,26 @@
       imgInstance.applyFilters();
       canvas.renderAll();
       document.getElementById("canvas").blur = filter;
-
       canvas.add(imgInstance);
+      console.log({imgInstance})
 
       addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
 
       var madeby = new fabric.IText("Created with Bibleable.com", {
         evented: false,
-        fontSize: 12,
+        fontSize: 22,
         textAlign: 'center',
+        // fill: 'red',
         backgroundColor: '#FFFFFF',
         lockScalingX: true,
         lockScalingY: true,
-        top: 430,
-        left: 290,
+        top: 600,
+        left: 320 - 120,
         cornerSize: 20
       });
+
+      // console.log(madeby.getBoundingRect().width)
+      // console.log(madeby.getBoundingRect().height)
 
       canvas.add(madeby);
 
@@ -466,6 +520,17 @@
           },
         },
         methods: {
+          selectBackground: function(value){
+            console.log(value)
+            var canvas = document.getElementById("canvas").fabric;
+            var object = canvas.getObjects()
+
+            var img = new Image()
+            img.src="images/1.JPG"
+            console.log(object[0])
+            object[0].setElement = img
+            canvas.renderAll()
+          },
           centerTextH: function(){
             centerObject("H")
           },
