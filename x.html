@@ -31,7 +31,7 @@
         <div class="col-sm-10">
             <div class="row">
               <div class="col">
-                  <canvas id="canvas" width="640" height="640"></canvas>
+                  <canvas id="canvas" width="550" height="550"></canvas>
                   <img id="my-image" src="images/2.JPG" alt=""> 
                   <!-- <div id="app">
                       <img :src="datadata"></img>
@@ -69,67 +69,30 @@
                       </li>
 
                       <li class="nav-item">
-                          <a class="nav-link" id="pills-window-tab" data-toggle="pill" href="#pills" role="tab" aria-controls="pills-window" aria-selected="false">
-                            <button class="btn btn-success btn-sm">Save</button>
-                          </a>
-                        </li>
+                          <div class="btn-group">
+                              <button type="button" class="btn btn-success">Save to computer</button>
+                              <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">save to computer</a>
+                                <a class="dropdown-item" href="#">share on facebook</a>
+                                <a class="dropdown-item" href="#">share on twitter</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">share on whatsapp</a>
+                                <a class="dropdown-item" href="#">share via email</a>
+                              </div>
+                            </div>
+                      </li>
                     </ul>
 
                     <div id="app">
                       <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            <hr>
                             <div class="row">
                               <div class="col">
-                                <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
-                                <input v-model.number="fontsize" type="range" min="18" max="43" value="18" class="slider" id="myRange"> <br>
-    
-                                <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
-                                <input v-model.number="opacity" type="range" min="1" max="100" value="90" class="slider" id="myRange">
-            
-                                <br>
-                                <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
-                                <input v-model.number="backgroundblur" type="range" min="0" max="100" value="50" class="slider" id="myRange"> <br>            
                               </div>
-
                               <div class="col">
-                                <div>
-                                  <span>Colour:</span>
-                                  <br>
-                                  <button type="button" class="btn btn-outline-dark btn-sm">
-                                    <input v-model="textColor" value="white" type="radio"  class="btn btn-outline-dark btn-sm">
-                                    <i class="fa fa-check"></i>  
-                                  </button>
-                      
-                                  <button type="button" class="btn btn-dark btn-sm">
-                                      <input v-model="textColor" value="black" type="radio"  class="btn btn-outline-dark btn-sm">
-                                    <i class="fa fa-check"></i>  
-                                  </button>     
-                                </div>
-                                <br>
-                                <div>
-                                  <span>Align:</span>
-
-                                  <br>
-                                  <button type="button" class="btn btn-outline-dark btn-sm">
-                                      <input v-model="textAlign" value="left" type="radio"  class="btn btn-outline-dark btn-sm">
-                                       <i class="fa fa-align-left"></i> 
-                                    </button>
-                        
-                                    <button type="button" class="btn btn-outline-dark btn-sm">
-                                        <input v-model="textAlign" value="center" type="radio"  class="btn btn-outline-dark btn-sm">
-      
-                                       <i class="fa fa-align-center"></i> 
-                                    </button>
-                        
-                                    <button type="button" class="btn btn-outline-dark btn-sm">
-                                        <input v-model="textAlign" value="right" type="radio"  class="btn btn-outline-dark btn-sm">
-      
-                                       <i class="fa fa-align-right"></i> 
-                                    </button>
-                                </div>
-    
-                                  
                               </div>
                             </div>
 
@@ -138,56 +101,83 @@
                             
                             <div class="row">
                               <div class="col">
-                                <br>
                                 <input v-model="fontfamily" value="margarine" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="margarine">Margarine</span>
+                                <button type="button" class="btn btn-outline-dark btn-sm">
+                                  <span id="margarine">Margarine</span>
+                                </button>
                                 <br>
                                 <input v-model="fontfamily" value="roboto" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="roboto">Roboto</span>
+                                <button type="button" class="btn btn-outline-dark btn-sm">
+                                  <span id="roboto">Roboto</span>
+                                </button>
                                 <br>
                                 <input v-model="fontfamily" value="baloo chettan" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                              
                                 <span id="baloo">Baloo Chettan</span>
+                                </button>
                                 <br>
 
                                 <input v-model="fontfamily" value="inconsolata" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                              
                                 <span id="inconsolata">Inconsolata</span>
-                                <br>
-                                <input v-model="fontfamily" value="lilita" type="radio"  class="btn btn-outline-dark btn-sm">
+                                </button>
+                                <!-- <br> -->
+                                <!-- <input v-model="fontfamily" value="lilita" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                              
                                 <span id="lilita">Lilita</span>
-                                <br>
-                                <input v-model="fontfamily" value="indie flower" type="radio"  class="btn btn-outline-dark btn-sm">
-                                <span id="indie">Indie</span>
+                                </button> -->
                               </div>
 
                               <div class="col">
                                 <!-- NEW FONT -->
-                                <br>
                                 <input v-model="fontfamily" value="Titillium Web" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                              
                                 <span id="titillium">Titillium Web</span>
+                                </button>
     
                                 <br>
                                 <input v-model="fontfamily" value="Mukta" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                              
                                 <span id="mukta">Mukta</span>
+                                </button>
     
                                 <br>
                                 <input v-model="fontfamily" value="Muli" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                                
                                 <span id="muli">Muli</span>
-    
+                                </button>
                                 <br>
+                                <input v-model="fontfamily" value="indie flower" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                              
+                                <span id="indie">Indie</span>
+                                </button>
+    
+                              </div>
+
+                              <div class="col">
                                 <input v-model="fontfamily" value="Anton" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                                
                                 <span id="anton">Anton</span>
+                                </button>
     
                                 <br>
                                 <input v-model="fontfamily" value="Lobster" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                                
                                 <span id="lobster">Lobster</span>
+                                </button>
     
                                 <br>
                                 <input v-model="fontfamily" value="Pacifico" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                                
                                 <span id="pacifico">Pacifico</span>
+                                </button>
     
                                 <br>
                                 <input v-model="fontfamily" value="Noto Sans JP" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                                
                                 <span id="noto">Noto Sans JP</span>
+                                </button>
+
                               </div>
                             </div>
 
@@ -211,28 +201,59 @@
                             <div>
                               <p>Background:</p>
 
-                              <img @click="selectBackground(1)" src="images/thumbnails/1.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(2)" src="images/thumbnails/2.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(3)" src="images/thumbnails/3.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(4)" src="images/thumbnails/4.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(5)" src="images/thumbnails/5.JPG" width="40" height="40" alt="">
+                              <div class="row">
+                                <div class="col">
+                                    <img @click="selectBackground(1)" src="images/thumbnails/1.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(2)" src="images/thumbnails/2.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(3)" src="images/thumbnails/3.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(4)" src="images/thumbnails/4.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(5)" src="images/thumbnails/5.JPG" width="40" height="40" alt="">
+                                 
+                                </div>
 
-                              <img @click="selectBackground(1)" src="images/thumbnails/1.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(2)" src="images/thumbnails/2.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(3)" src="images/thumbnails/3.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(4)" src="images/thumbnails/4.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(5)" src="images/thumbnails/5.JPG" width="40" height="40" alt="">
+                                <div class="col">
+                                    <img @click="selectBackground(1)" src="images/thumbnails/1.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(2)" src="images/thumbnails/2.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(3)" src="images/thumbnails/3.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(4)" src="images/thumbnails/4.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(5)" src="images/thumbnails/5.JPG" width="40" height="40" alt="">
+                                 
+                                </div>
 
-                              <img @click="selectBackground(1)" src="images/thumbnails/1.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(2)" src="images/thumbnails/2.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(3)" src="images/thumbnails/3.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(4)" src="images/thumbnails/4.JPG" width="40" height="40" alt="">
-                              <img @click="selectBackground(5)" src="images/thumbnails/5.JPG" width="40" height="40" alt="">
-
+                                <div class="col">
+                                    <img @click="selectBackground(1)" src="images/thumbnails/1.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(2)" src="images/thumbnails/2.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(3)" src="images/thumbnails/3.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(4)" src="images/thumbnails/4.JPG" width="40" height="40" alt="">
+                                    <img @click="selectBackground(5)" src="images/thumbnails/5.JPG" width="40" height="40" alt="">
+                                 
+                                </div>
+                              </div>
+                          
                             </div>
                           </div>
                         
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                          <div>
+                              <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
+                              <input v-model.number="fontsize" type="range" min="18" max="43" value="30" class="slider" id="myRange"> <br>
+                          </div>
+
+                          <div>
+                              <span>Colour:</span>
+                              <br>
+                              <button type="button" class="btn btn-outline-dark btn-sm">
+                                <input v-model="textColor" value="white" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <i class="fa fa-check"></i>  
+                              </button>
+                  
+                              <button type="button" class="btn btn-dark btn-sm">
+                                  <input v-model="textColor" value="black" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <i class="fa fa-check"></i>  
+                              </button>     
+                            </div>                                  
+
+                          <div>
                             <span>Actions:</span>
                             <button type="button" class="btn btn-outline-dark btn-sm">
                               redo
@@ -241,11 +262,43 @@
                 
                             <button type="button" class="btn btn-outline-dark btn-sm">
                                 <i class="fa fa-undo"></i> undo 
-                            </button>        
+                            </button>                                
+                          </div>
+
+                            <div>
+                                <span>Align:</span>
+
+                                <br>
+                                <button type="button" class="btn btn-outline-dark btn-sm">
+                                    <input v-model="textAlign" value="left" type="radio"  class="btn btn-outline-dark btn-sm">
+                                     <i class="fa fa-align-left"></i> 
+                                  </button>
+                      
+                                  <button type="button" class="btn btn-outline-dark btn-sm">
+                                      <input v-model="textAlign" value="center" type="radio"  class="btn btn-outline-dark btn-sm">
+    
+                                     <i class="fa fa-align-center"></i> 
+                                  </button>
+                      
+                                  <button type="button" class="btn btn-outline-dark btn-sm">
+                                      <input v-model="textAlign" value="right" type="radio"  class="btn btn-outline-dark btn-sm">
+    
+                                     <i class="fa fa-align-right"></i> 
+                                  </button>
+                              </div>
+  
+
                         </div>
                         
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                            <!-- <hr>
+                            <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
+                            <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
+        
+                            <br>
+                            <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
+                            <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange"> <br>            
+
+                          <!-- <hr>
                             <p>Background</p>
                             <button>1</button>
                             <button>2</button>
@@ -430,8 +483,8 @@
           textAlign: 'center',
           fontFamily: 'Margarine',
           fill: '#333',
-          opacity: 0.9,
-          fontSize: 18,
+          opacity: 1.0,
+          fontSize: 30,
           centeredScaling: true,
           lockScalingX: true,
         });
@@ -485,10 +538,10 @@
         data: {
           textAlign: "center",
           datadata: "",
-          fontsize: 18,
-          opacity: 90,
+          fontsize: 30,
+          opacity: 100,
           fontfamily: "margarine", 
-          backgroundblur: 10,
+          backgroundblur: 0,
           textColor: "black"
         },
         watch: {
