@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Margarine|Roboto|Baloo+Chettan|Germania+One|Inconsolata|Indie+Flower|Lilita+One|Anton|Lobster|Mukta|Muli|Noto+Sans+JP|Pacifico|Titillium+Web" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/bibleable.css" crossorigin="anonymous">
@@ -509,8 +509,8 @@
       imgInstance.applyFilters();
       canvas.renderAll();
       document.getElementById("canvas").blur = filter;
+
       canvas.add(imgInstance);
-      console.log({imgInstance})
 
       addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
 
@@ -518,7 +518,6 @@
         evented: false,
         fontSize: 22,
         textAlign: 'center',
-        // fill: 'red',
         backgroundColor: '#FFFFFF',
         lockScalingX: true,
         lockScalingY: true,
@@ -574,15 +573,12 @@
         },
         methods: {
           selectBackground: function(value){
-            console.log(value)
             var canvas = document.getElementById("canvas").fabric;
             var object = canvas.getObjects()
-
-            var img = new Image()
-            img.src="images/1.JPG"
-            console.log(object[0])
-            object[0].setElement = img
-            canvas.renderAll()
+            object[0].setSrc("images/" + value + ".JPG", function() {
+              canvas.renderAll();
+            });
+            canvas.renderAll();
           },
           centerTextH: function(){
             centerObject("H")
