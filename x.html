@@ -68,6 +68,9 @@
                         </a>
                       </li>
 
+                      <!-- <button @click="download()">download</button> -->
+                      <a href="#" id="downloader" @click="download()" download="image.png">Download!</a>
+
                       <li class="nav-item">
                           <div class="btn-group">
                               <button type="button" class="btn btn-success">Save to computer</button>
@@ -572,6 +575,19 @@
           },
         },
         methods: {
+          download: function(){
+            console.log("reach here")
+            // var canvas = document.getElementById("canvas");
+            // window.location = canvas.toDataURL("image/png");
+
+    //         var dt = canvas.toDataURL('image/png');
+    // this.href = dt.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+
+
+            document.getElementById("downloader").download = "image.png";
+            document.getElementById("downloader").href = document.getElementById("canvas").toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+
+          },
           selectBackground: function(value){
             var canvas = document.getElementById("canvas").fabric;
             var object = canvas.getObjects()
