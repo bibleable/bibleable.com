@@ -69,11 +69,11 @@
                       </li>
 
                       <!-- <button @click="download()">download</button> -->
-                      <a href="#" id="downloader" @click="download()" download="image.png">Download!</a>
+                      <!-- <a href="#"   download="image.png">Download!</a> -->
 
                       <li class="nav-item">
                           <div class="btn-group">
-                              <button type="button" class="btn btn-success">Save to computer</button>
+                              <button id="downloader" @click="download()" type="button" class="btn btn-success">Save to computer</button>
                               <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="sr-only">Toggle Dropdown</span>
                               </button>
@@ -330,8 +330,11 @@
     </div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.7.0/fabric.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script src="js/canvas-toBlob.js"></script>
+
     <script>
       var canvas = new fabric.Canvas('canvas');
       document.getElementById("canvas").fabric = canvas;
@@ -339,6 +342,12 @@
       var grid = 20;
       var cWidth = canvas.getWidth();
       var cHeight = canvas.getHeight();
+
+      $("#downloader").click(function(){
+        $("#canvas").get(0).toBlob(function(blob){
+          saveAs(blob, "myIMG.png");
+        });
+      });
 
       canvas.on('mouse:down', function (e) {
         console.log('mouse is down. You should show the lines')
@@ -575,14 +584,15 @@
           },
         },
         methods: {
+          // Read https://blog.taucharts.com/svg-to-png/
+          //http://jsfiddle.net/a9ude9p0/6/
+
           download: function(){
             console.log("reach here")
             // var canvas = document.getElementById("canvas");
             // window.location = canvas.toDataURL("image/png");
-
-    //         var dt = canvas.toDataURL('image/png');
-    // this.href = dt.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-
+            //         var dt = canvas.toDataURL('image/png');
+            // this.href = dt.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
 
             document.getElementById("downloader").download = "image.png";
             document.getElementById("downloader").href = document.getElementById("canvas").toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
