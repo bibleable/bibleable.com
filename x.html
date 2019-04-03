@@ -81,62 +81,62 @@
                             <div class="card-body">                          
                                 <div class="row">
                                   <div class="col">
-                                    <button @click="selectFont('margarine')" type="button" class="btn btn-outline-dark btn-sm">
+                                    <button @click="selectFont('margarine')" type="button" class="btn btn-outline-dark">
                                       <span id="margarine">Margarine</span>
                                     </button>
                                     <br>
-                                    <button @click="selectFont('roboto')" type="button" class="btn btn-outline-dark btn-sm">
+                                    <button @click="selectFont('roboto')" type="button" class="btn btn-outline-dark">
                                       <span id="roboto">Roboto</span>
                                     </button>
                                     <br>
-                                    <button @click="selectFont('baloo chettan')" type="button" class="btn btn-outline-dark btn-sm">                              
+                                    <button @click="selectFont('baloo chettan')" type="button" class="btn btn-outline-dark">                              
                                       <span id="baloo">Baloo Chettan</span>
                                     </button>
                                     <br>
     
-                                    <button @click="selectFont('inconsolata')" type="button" class="btn btn-outline-dark btn-sm">                              
+                                    <button @click="selectFont('inconsolata')" type="button" class="btn btn-outline-dark">                              
                                       <span id="inconsolata">Inconsolata</span>
                                     </button>
                                   </div>
     
                                   <div class="col">
-                                    <button id="titillium" @click="selectFont('Titillium Web')" type="button" class="btn btn-outline-dark btn-sm">                              
+                                    <button id="titillium" @click="selectFont('Titillium Web')" type="button" class="btn btn-outline-dark">                              
                                       <span id="titillium">Titillium Web</span>
                                     </button>
         
                                     <br>
-                                    <button @click="selectFont('Mukta')" type="button" class="btn btn-outline-dark btn-sm">                              
+                                    <button @click="selectFont('Mukta')" type="button" class="btn btn-outline-dark">                              
                                       <span id="mukta">Mukta</span>
                                     </button>
         
                                     <br>
-                                    <button @click="selectFont('Muli')" type="button" class="btn btn-outline-dark btn-sm">                                
+                                    <button @click="selectFont('Muli')" type="button" class="btn btn-outline-dark">                                
                                       <span id="muli">Muli</span>
                                     </button>
                                     <br>
-                                    <button @click="selectFont('indie flower')" type="button" class="btn btn-outline-dark btn-sm">                              
+                                    <button @click="selectFont('indie flower')" type="button" class="btn btn-outline-dark">                              
                                       <span id="indie">Indie</span>
                                     </button>
         
                                   </div>
     
                                   <div class="col">
-                                    <button id="anton" @click="selectFont('Anton')"  type="button" class="btn btn-outline-dark btn-sm">                                
+                                    <button id="anton" @click="selectFont('Anton')"  type="button" class="btn btn-outline-dark">                                
                                       <span id="anton">Anton</span>
                                     </button>
         
                                     <br>
-                                    <button @click="selectFont('Lobster')" type="button" class="btn btn-outline-dark btn-sm">                                
+                                    <button @click="selectFont('Lobster')" type="button" class="btn btn-outline-dark">                                
                                       <span id="lobster">Lobster</span>
                                     </button>
         
                                     <br>
-                                    <button @click="selectFont('Pacifico')" type="button" class="btn btn-outline-dark btn-sm">                                
+                                    <button @click="selectFont('Pacifico')" type="button" class="btn btn-outline-dark">                                
                                       <span id="pacifico">Pacifico</span>
                                     </button>
         
                                     <br>
-                                    <button @click="selectFont('Noto Sans JP')"  type="button" class="btn btn-outline-dark btn-sm">                                
+                                    <button @click="selectFont('Noto Sans JP')"  type="button" class="btn btn-outline-dark">                                
                                       <span id="noto">Noto Sans JP</span>
                                     </button>
     
@@ -160,7 +160,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                      <img v-for="image in thumbnails" @click="selectBackground(image.index)" :src="image.src" width="40" height="40" alt="">                                 
+                                      <img class="thumbnails" v-for="image in thumbnails" @click="selectBackground(image.index)" :src="image.src" width="40" height="40" alt="">                                 
                                     </div>
                                   </div>
                             </div>
