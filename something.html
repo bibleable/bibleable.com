@@ -1,0 +1,225 @@
+                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+                          <i class="fa fa-font"></i>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
+                          <i class="fa fa-tint"></i>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">
+                          <i class="fa fa-align-left"></i>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-slider-tab" data-toggle="pill" href="#pills-slider" role="tab" aria-controls="pills-slider" aria-selected="false">
+                          <i class="fa fa-sliders"></i>
+                        </a>
+                      </li>
+      
+                      <li class="nav-item">
+                        <a class="nav-link" id="pills-window-tab" data-toggle="pill" href="#pills-window" role="tab" aria-controls="pills-window" aria-selected="false">
+                          <i class="fa fa-window-restore"></i>
+                        </a>
+                      </li>
+
+                      <li class="nav-item">
+                          <div class="btn-group ">
+                              <button id="downloader" @click="download()" type="button" class="btn btn-success">Save to computer</button>
+                              <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="sr-only">Toggle Dropdown</span>
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Save to computer</a>
+                                <a class="dropdown-item" href="#">Share on facebook</a>
+                                <a class="dropdown-item" href="#">Share on twitter</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Share on whatsapp</a>
+                                <a class="dropdown-item" href="#">Share via email</a>
+                              </div>
+                            </div>
+                      </li>
+                  </ul>
+
+                    <div id="app">
+                      <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <div class="row">
+                              <div class="col">
+                              </div>
+                              <div class="col">
+                              </div>
+                            </div>
+
+                            <hr>
+                            <span>Font family:</span>
+                            
+                            <div class="row">
+                              <div class="col">
+                                <button @click="selectFont('margarine')" type="button" class="btn btn-outline-dark btn-sm">
+                                  <span id="margarine">Margarine</span>
+                                </button>
+                                <br>
+                                <button @click="selectFont('roboto')" type="button" class="btn btn-outline-dark btn-sm">
+                                  <span id="roboto">Roboto</span>
+                                </button>
+                                <br>
+                                <button @click="selectFont('baloo chettan')" type="button" class="btn btn-outline-dark btn-sm">                              
+                                  <span id="baloo">Baloo Chettan</span>
+                                </button>
+                                <br>
+
+                                <button @click="selectFont('inconsolata')" type="button" class="btn btn-outline-dark btn-sm">                              
+                                  <span id="inconsolata">Inconsolata</span>
+                                </button>
+                                <!-- <br> -->
+                                <!-- <input v-model="fontfamily" value="lilita" type="radio"  class="btn btn-outline-dark btn-sm">
+                                <button type="button" class="btn btn-outline-dark btn-sm">                              
+                                <span id="lilita">Lilita</span>
+                                </button> -->
+                              </div>
+
+                              <div class="col">
+                                <button id="titillium" @click="selectFont('Titillium Web')" type="button" class="btn btn-outline-dark btn-sm">                              
+                                  <span id="titillium">Titillium Web</span>
+                                </button>
+    
+                                <br>
+                                <button @click="selectFont('Mukta')" type="button" class="btn btn-outline-dark btn-sm">                              
+                                  <span id="mukta">Mukta</span>
+                                </button>
+    
+                                <br>
+                                <button @click="selectFont('Muli')" type="button" class="btn btn-outline-dark btn-sm">                                
+                                  <span id="muli">Muli</span>
+                                </button>
+                                <br>
+                                <button @click="selectFont('indie flower')" type="button" class="btn btn-outline-dark btn-sm">                              
+                                  <span id="indie">Indie</span>
+                                </button>
+    
+                              </div>
+
+                              <div class="col">
+                                <button id="anton" @click="selectFont('Anton')"  type="button" class="btn btn-outline-dark btn-sm">                                
+                                  <span id="anton">Anton</span>
+                                </button>
+    
+                                <br>
+                                <button @click="selectFont('Lobster')" type="button" class="btn btn-outline-dark btn-sm">                                
+                                  <span id="lobster">Lobster</span>
+                                </button>
+    
+                                <br>
+                                <button @click="selectFont('Pacifico')" type="button" class="btn btn-outline-dark btn-sm">                                
+                                  <span id="pacifico">Pacifico</span>
+                                </button>
+    
+                                <br>
+                                <button @click="selectFont('Noto Sans JP')"  type="button" class="btn btn-outline-dark btn-sm">                                
+                                  <span id="noto">Noto Sans JP</span>
+                                </button>
+
+                              </div>
+                            </div>
+
+                            <hr>
+
+                            <div>
+                              <span>Center:</span>
+                              <button @click="centerText()" type="button" class="btn btn-outline-dark btn-sm">
+                                Center
+                              </button>
+  
+                              <button @click="centerTextH()" type="button" class="btn btn-outline-dark btn-sm">
+                                Horizontally
+                              </button>
+  
+                              <button @click="centerTextV()" type="button" class="btn btn-outline-dark btn-sm">
+                                Vertically
+                              </button>
+                            </div>
+
+                            <div>
+                              <p>Background:</p>
+
+                              <!-- <div class="row">
+                                <div class="col">
+                                  <img v-for="image in thumbnails" @click="selectBackground(image.index)" :src="image.src" width="40" height="40" alt="">                                 
+                                </div>
+                              </div> -->
+                          
+                            </div>
+                          </div>
+                        
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                          <div>
+                              <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
+                              <input v-model.number="fontsize" type="range" min="18" max="43" value="30" class="slider" id="myRange"> <br>
+                          </div>
+
+                          <div>
+                              <span>Colour:</span>
+                              <br>
+                              <button @click="selectColor('white')" type="button" class="btn btn-outline-dark btn-sm">
+                                <i class="fa fa-check"></i>  
+                              </button>
+                  
+                              <button @click="selectColor('black')"  type="button" class="btn btn-dark btn-sm">
+                                <i class="fa fa-check"></i>  
+                              </button>     
+                            </div>                                  
+
+                          <div>
+                            <span>Actions:</span>
+                            <button type="button" class="btn btn-outline-dark btn-sm">
+                              redo
+                              <i class="fa fa-repeat"></i> 
+                            </button>
+                
+                            <button type="button" class="btn btn-outline-dark btn-sm">
+                                <i class="fa fa-undo"></i> undo 
+                            </button>                                
+                          </div>
+
+                          <div>
+                            <span>Align:</span>
+
+                            <br>
+                            <button @click="selectAlign('left')" type="button" class="btn btn-outline-dark btn-sm">
+                                  <i class="fa fa-align-left"></i> 
+                              </button>
+                  
+                              <button  @click="selectAlign('center')" type="button" class="btn btn-outline-dark btn-sm">    
+                                  <i class="fa fa-align-center"></i> 
+                              </button>
+                  
+                              <button @click="selectAlign('right')"  type="button" class="btn btn-outline-dark btn-sm">    
+                                  <i class="fa fa-align-right"></i> 
+                              </button>
+                          </div>
+  
+
+                        </div>
+                        
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                            <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
+                            <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
+        
+                            <br>
+                            <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
+                            <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">            
+                        </div>
+        
+                        <div class="tab-pane fade" id="pills-slider" role="tabpanel" aria-labelledby="pills-slider-tab">
+                          <p>Test</p>
+                        </div>
+
+                        <div class="tab-pane fade" id="pills-window" role="tabpanel" aria-labelledby="pills-window-tab">
+                          <p>Test</p>
+                        </div>
+                      </div>
+                    </div>
