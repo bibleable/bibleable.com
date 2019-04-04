@@ -19,22 +19,19 @@
     </button>
   </div>
   
-              
   <div class="container-fluid">
-    <br>
     <div class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
         <div class="row">
           <div class="col">
-              <canvas id="canvas" width="550" height="550"></canvas>
-              <img id="my-image" src="images/2.JPG" alt=""> 
+            <canvas id="canvas" width="550" height="550"></canvas>
+            <img id="my-image" src="images/2.JPG" alt=""> 
           </div>
 
           <div class="col border">
-
             <button title="magic edit" @click="" class="btn btn-outline-dark btn-sm"><i class="fa fa-magic"></i></button>
-
+            <button title="expand" @click="" class="btn btn-outline-dark btn-sm"><i class="fa fa-expand"></i></button>
             <input type="text" placeholder="Search any verses">
             <div class="btn-group">
               <button id="downloader" @click="download()" type="button" class="btn btn-success">Save to computer</button>
@@ -54,7 +51,7 @@
             <div id="app">
               <div id="accordion">
                 <div class="card">
-                  <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"       aria-controls="collapseOne">
                     <h5 class="mb-0">
                       <button class="btn btn-link">
                         <i class="fa fa-font"></i> Font Family
@@ -122,7 +119,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> <!--class="card"-->
 
                 <div class="card">
                   <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -141,99 +138,76 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> <!--class="card"-->
 
-                  <div class="card">
-                    <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      <h5 class="mb-0">
-                        <button class="btn btn-link collapsed">
-                          <i class="fa fa-search-plus"></i> Font Size
+                <div class="card">
+                  <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed">
+                        <i class="fa fa-search-plus"></i> Font Size
+                      </button>
+                    </h5>
+                  </div>
+
+                  <div id="collapseThree" class="collapse multi-collapse" aria-labelledby="headingThree">
+                    <div class="card-body">
+                      <div>
+                        <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
+                        <input v-model.number="fontsize" type="range" min="18" max="43" value="30" class="slider" id="myRange"> <br>
+                      </div>
+
+                      <div>
+                        <span>Colour:</span>
+                        <br>
+                        <button @click="selectColor('white')" type="button" class="btn btn-outline-dark btn-sm">
+                          <i class="fa fa-check"></i>  
                         </button>
-                      </h5>
-                    </div>
+            
+                        <button @click="selectColor('black')"  type="button" class="btn btn-dark btn-sm">
+                          <i class="fa fa-check"></i>  
+                        </button>     
+                      </div>                                  
 
-                    <div id="collapseThree" class="collapse multi-collapse" aria-labelledby="headingThree">
-                      <div class="card-body">
-                        <div>
-                          <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
-                          <input v-model.number="fontsize" type="range" min="18" max="43" value="30" class="slider" id="myRange"> <br>
-                        </div>
+                      <div>
+                        <span>Actions:</span>
+                        <button type="button" class="btn btn-outline-dark btn-sm">
+                          redo
+                          <i class="fa fa-repeat"></i> 
+                        </button>
+            
+                        <button type="button" class="btn btn-outline-dark btn-sm">
+                            <i class="fa fa-undo"></i> undo 
+                        </button>                                
+                      </div>
 
-                        <div>
-                          <span>Colour:</span>
-                          <br>
-                          <button @click="selectColor('white')" type="button" class="btn btn-outline-dark btn-sm">
-                            <i class="fa fa-check"></i>  
-                          </button>
-              
-                          <button @click="selectColor('black')"  type="button" class="btn btn-dark btn-sm">
-                            <i class="fa fa-check"></i>  
-                          </button>     
-                        </div>                                  
-
-                        <div>
-                          <span>Actions:</span>
-                          <button type="button" class="btn btn-outline-dark btn-sm">
-                            redo
-                            <i class="fa fa-repeat"></i> 
-                          </button>
-              
-                          <button type="button" class="btn btn-outline-dark btn-sm">
-                              <i class="fa fa-undo"></i> undo 
-                          </button>                                
-                        </div>
-
-                        <div>
-                          <span>Align:</span>
-                          <br>
-                          <button @click="selectAlign('left')" type="button" class="btn btn-outline-dark btn-sm">
-                            <i class="fa fa-align-left"></i> 
-                          </button>
-                          <button  @click="selectAlign('center')" type="button" class="btn btn-outline-dark btn-sm">    
-                              <i class="fa fa-align-center"></i> 
-                          </button>
-                          <button @click="selectAlign('right')"  type="button" class="btn btn-outline-dark btn-sm">    
-                              <i class="fa fa-align-right"></i> 
-                          </button>
-                        </div>
+                      <div>
+                        <span>Align:</span>
+                        <br>
+                        <button @click="selectAlign('left')" type="button" class="btn btn-outline-dark btn-sm">
+                          <i class="fa fa-align-left"></i> 
+                        </button>
+                        <button  @click="selectAlign('center')" type="button" class="btn btn-outline-dark btn-sm">    
+                            <i class="fa fa-align-center"></i> 
+                        </button>
+                        <button @click="selectAlign('right')"  type="button" class="btn btn-outline-dark btn-sm">    
+                            <i class="fa fa-align-right"></i> 
+                        </button>
                       </div>
                     </div>
                   </div>
+                </div> <!--class="card"-->
 
-                  <div class="card">
-                      <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        <h5 class="mb-0">
-                          <button class="btn btn-link collapsed">
-                            <i class="fa fa-sliders"></i> Something else
-                          </button>
-                        </h5>
-                      </div>
-
-                      <div id="collapseFour" class="collapse multi-collapse" aria-labelledby="headingFour">
-                          <div class="card-body">
-                              <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
-                              <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
-          
-                              <br>
-                              <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
-                              <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                  
-                              <br>
-                              <a href="about.html">About</a>
-                          </div>
-                      </div>  
+                <div class="card">
+                  <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed">
+                        <i class="fa fa-sliders"></i> Something else
+                      </button>
+                    </h5>
                   </div>
 
-                  <div class="card">
-                    <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                      <h5 class="mb-0">
-                        <button class="btn btn-link collapsed">
-                          <i class="fa fa-sliders"></i> Something else
-                        </button>
-                      </h5>
-                    </div>
-
-                    <div id="collapseFour" class="collapse multi-collapse" aria-labelledby="headingFour">
-                      <div class="card-body">
+                  <div id="collapseFour" class="collapse multi-collapse" aria-labelledby="headingFour">
+                    <div class="card-body">
                         <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
                         <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
     
@@ -242,17 +216,38 @@
                         <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                  
                         <br>
                         <a href="about.html">About</a>
-                      </div>
-                    </div>  
-                  </div>
-                  
-                </div>
-              </div>
-                
-          </div>
-        </div>
-      </div>
+                    </div>
+                  </div>  
+                </div> <!--class="card"-->
 
+                <div class="card">
+                  <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed">
+                        <i class="fa fa-sliders"></i> Something else
+                      </button>
+                    </h5>
+                  </div>
+
+                  <div id="collapseFour" class="collapse multi-collapse" aria-labelledby="headingFour">
+                    <div class="card-body">
+                      <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
+                      <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
+  
+                      <br>
+                      <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
+                      <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                  
+                      <br>
+                      <a href="about.html">About</a>
+                    </div>
+                  </div>  
+                </div> <!--class="card"-->
+                  
+              </div> <!--id="accordion"-->
+            </div> <!--id="app"-->
+          </div><!--class="col border"-->
+        </div><!--class="row"-->
+      </div><!--class="col-sm-10"-->
       <div class="col-sm-1"></div>
     </div>    
   </div>
@@ -280,12 +275,6 @@
     canvas.on('mouse:down', function (e) {
       console.log('mouse is down. You should show the lines')
       for (var i = 0; i < (cWidth / grid); i++) {
-        // console.log("-----------")
-        // console.log(i)
-        // console.log(grid)
-        // console.log(cWidth)
-        // console.log(i * grid)
-
         canvas.add(new fabric.Line([i * grid, 0, i * grid, cWidth], {
             stroke: '#d1d1d1',
             selectable: false
@@ -295,20 +284,6 @@
             selectable: false
         }));
       }
-    
-      // //CENTERING Y-axis
-      // canvas.add(new fabric.Line([cHeight/2, 0, cHeight/2, cWidth], {
-      //     stroke: '#DE2E1F',
-      //     selectable: false,
-      //     strokeWidth: 2,
-      // }));
-
-      // //CENTERING X-axis
-      // canvas.add(new fabric.Line([0, cWidth/2, cWidth, cWidth/2 ], {
-      //     stroke: '#DE2E1F',
-      //     selectable: false, 
-      //     strokeWidth: 2,
-      // }));
     });
 
     canvas.on('mouse:up', function (e) {
@@ -323,49 +298,25 @@
       var cWidth = canvas.getWidth();
       var obj = e.target;
       var rect = obj.getBoundingRect();
-      //If the condition is met, within the range of 20 by 20
-      // if(true == true){
-      //   canvas.add(new fabric.Line([cHeight/2, 0, cHeight/2, cWidth], {
-      //       stroke: 'green',
-      //       selectable: false,
-      //       strokeWidth: 10,
-      //   }));
-      // }
 
-      console.log("--------------")
-      console.log("*center of canvas: " + (cWidth/2))
-      console.log("*center: " + rect.width/2)
-      console.log("left: " + rect.left)
-      console.log("right: " + (rect.left + rect.height))
-      console.log("top: " + rect.top)
-      console.log("bottom: " + (rect.top + rect.height))
-      console.log("width: " +rect.width)
-      console.log("height: " +rect.height)
-
-      // if (rect.left < 0
-      //   || rect.top < 0
-      //   || rect.left + rect.width > canvas.getWidth()
-      //   || rect.top + rect.height > canvas.getHeight()) {
-      //       if (obj.getAngle() != obj.originalState.angle) {
-      //           obj.setAngle(obj.originalState.angle);
-      //       }
-      //       else {
-      //           obj.setTop(obj.originalState.top);
-      //           obj.setLeft(obj.originalState.left);
-      //           obj.setScaleX(obj.originalState.scaleX);
-      //           obj.setScaleY(obj.originalState.scaleY);
-      //       }
-      //       obj.setCoords();
-      //   }
+      // console.log("--------------")
+      // console.log("*center of canvas: " + (cWidth/2))
+      // console.log("*center: " + rect.width/2)
+      // console.log("left: " + rect.left)
+      // console.log("right: " + (rect.left + rect.height))
+      // console.log("top: " + rect.top)
+      // console.log("bottom: " + (rect.top + rect.height))
+      // console.log("width: " +rect.width)
+      // console.log("height: " +rect.height)
     });
 
     fabric.Object.prototype.set({  
-        borderColor: 'tranparent',  
-        cornerColor: 'tranparent',  
-        cornerSize: 0,
-        transparentCorners: true,
-        padding:5,
-        borderDashArray:[2,2]          
+      borderColor: 'tranparent',  
+      cornerColor: 'tranparent',  
+      cornerSize: 0,
+      transparentCorners: true,
+      padding:5,
+      borderDashArray:[2,2]          
     });
 
     function setBackgroundProp(name, value) {
@@ -468,12 +419,12 @@
       data: {
         thumbnails: [{index: 1, src: "images/thumbnails/1.JPG"},
                       {index: 2, src: "images/thumbnails/2.JPG"},
-                      {index: 3,src: "images/thumbnails/3.JPG"},
-                      {index:4,src: "images/thumbnails/4.JPG"},
-                      {index: 5,src: "images/thumbnails/5.JPG"},
-                      {index: 6,src: "images/thumbnails/6.JPG"},
-                      {index:7,src: "images/thumbnails/7.JPG"},
-                      {index: 8,src: "images/thumbnails/8.JPG"},
+                      {index: 3, src: "images/thumbnails/3.JPG"},
+                      {index: 4, src: "images/thumbnails/4.JPG"},
+                      {index: 5, src: "images/thumbnails/5.JPG"},
+                      {index: 6, src: "images/thumbnails/6.JPG"},
+                      {index: 7, src: "images/thumbnails/7.JPG"},
+                      {index: 8, src: "images/thumbnails/8.JPG"},
                       {index: 9, src: "images/thumbnails/9.JPG"},
                       {index: 10, src: "images/thumbnails/10.JPG"},
                       {index: 11, src: "images/thumbnails/11.JPG"},
