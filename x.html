@@ -9,569 +9,561 @@
   <link href="https://fonts.googleapis.com/css?family=Margarine|Roboto|Baloo+Chettan|Germania+One|Inconsolata|Indie+Flower|Lilita+One|Anton|Lobster|Mukta|Muli|Noto+Sans+JP|Pacifico|Titillium+Web" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/bibleable.css" crossorigin="anonymous">
+</head>
 
-</head
->
 <body>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>✝ Bibleable is an online bible verse generator!</strong> Try it and share it with your friends.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+              
+  <div class="container-fluid">
+    <br>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <div class="row">
+          <div class="col">
+              <canvas id="canvas" width="550" height="550"></canvas>
+              <img id="my-image" src="images/2.JPG" alt=""> 
+          </div>
 
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>✝ Bibleable is an online bible verse generator!</strong> Try it and share it with your friends.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      
+          <div class="col border">
 
-    <!-- <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Bibleable</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarsExample02">
-          <ul class="navbar-nav mr-auto">
-          </ul>
-          <form class="form-inline my-2 my-md-0">
-            <input class="form-control" type="text" placeholder="Search Bible Verse">
-          </form>
-        </div>
-      </nav> -->
-        
-    <div class="container-fluid">
-      <br>
-      <br>
-      <div class="row">
-        <div class="col-sm-1"></div>
+            <button title="magic edit" @click="" class="btn btn-outline-dark btn-sm"><i class="fa fa-magic"></i></button>
 
-        <div class="col-sm-10">
-            <div class="row">
-              <div class="col">
-                  <canvas id="canvas" width="550" height="550"></canvas>
-                  <img id="my-image" src="images/2.JPG" alt=""> 
-              </div>
-
-              <div class="col border">
-                  <div class="btn-group ">
-                    <button id="downloader" @click="download()" type="button" class="btn btn-success">Save to computer</button>
-                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Save to computer</a>
-                      <a class="dropdown-item" href="#">Share on facebook</a>
-                      <a class="dropdown-item" href="#">Share on twitter</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Share on whatsapp</a>
-                      <a class="dropdown-item" href="#">Share via email</a>
-                    </div>
-                  </div>
-
-                  <div id="app">
-                    <div id="accordion">
-                        <div class="card">
-                          <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <h5 class="mb-0">
-                              <button class="btn btn-link" >
-                                Font Family
-                              </button>
-                            </h5>
-                          </div>
-                      
-                          <div id="collapseOne" class="collapse show multi-collapse" aria-labelledby="headingOne">
-                            <div class="card-body">                          
-                                <div class="row">
-                                  <div class="col">
-                                    <button @click="selectFont('margarine')" type="button" class="btn btn-outline-dark">
-                                      <span id="margarine">Margarine</span>
-                                    </button>
-                                    <br>
-                                    <button @click="selectFont('roboto')" type="button" class="btn btn-outline-dark">
-                                      <span id="roboto">Roboto</span>
-                                    </button>
-                                    <br>
-                                    <button @click="selectFont('baloo chettan')" type="button" class="btn btn-outline-dark">                              
-                                      <span id="baloo">Baloo Chettan</span>
-                                    </button>
-                                    <br>
-    
-                                    <button @click="selectFont('inconsolata')" type="button" class="btn btn-outline-dark">                              
-                                      <span id="inconsolata">Inconsolata</span>
-                                    </button>
-                                  </div>
-    
-                                  <div class="col">
-                                    <button id="titillium" @click="selectFont('Titillium Web')" type="button" class="btn btn-outline-dark">                              
-                                      <span id="titillium">Titillium Web</span>
-                                    </button>
-        
-                                    <br>
-                                    <button @click="selectFont('Mukta')" type="button" class="btn btn-outline-dark">                              
-                                      <span id="mukta">Mukta</span>
-                                    </button>
-        
-                                    <br>
-                                    <button @click="selectFont('Muli')" type="button" class="btn btn-outline-dark">                                
-                                      <span id="muli">Muli</span>
-                                    </button>
-                                    <br>
-                                    <button @click="selectFont('indie flower')" type="button" class="btn btn-outline-dark">                              
-                                      <span id="indie">Indie</span>
-                                    </button>
-        
-                                  </div>
-    
-                                  <div class="col">
-                                    <button id="anton" @click="selectFont('Anton')"  type="button" class="btn btn-outline-dark">                                
-                                      <span id="anton">Anton</span>
-                                    </button>
-        
-                                    <br>
-                                    <button @click="selectFont('Lobster')" type="button" class="btn btn-outline-dark">                                
-                                      <span id="lobster">Lobster</span>
-                                    </button>
-        
-                                    <br>
-                                    <button @click="selectFont('Pacifico')" type="button" class="btn btn-outline-dark">                                
-                                      <span id="pacifico">Pacifico</span>
-                                    </button>
-        
-                                    <br>
-                                    <button @click="selectFont('Noto Sans JP')"  type="button" class="btn btn-outline-dark">                                
-                                      <span id="noto">Noto Sans JP</span>
-                                    </button>
-    
-                                  </div>
-                                </div>
-    
-
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="card">
-                          <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <h5 class="mb-0">
-                              <button class="btn btn-link collapsed">
-                                Background
-                              </button>
-                            </h5>
-                          </div>
-                          <div id="collapseTwo" class="collapse show multi-collapse" aria-labelledby="headingTwo">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                      <img class="thumbnails" v-for="image in thumbnails" @click="selectBackground(image.index)" :src="image.src" width="40" height="40" alt="">                                 
-                                    </div>
-                                  </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="card">
-                          <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <h5 class="mb-0">
-                              <button class="btn btn-link collapsed">
-                                Font Size
-                              </button>
-                            </h5>
-                          </div>
-
-                          <div id="collapseThree" class="collapse multi-collapse" aria-labelledby="headingThree">
-                            <div class="card-body">
-                                <div>
-                                    <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
-                                    <input v-model.number="fontsize" type="range" min="18" max="43" value="30" class="slider" id="myRange"> <br>
-                                </div>
-      
-                                <div>
-                                    <span>Colour:</span>
-                                    <br>
-                                    <button @click="selectColor('white')" type="button" class="btn btn-outline-dark btn-sm">
-                                      <i class="fa fa-check"></i>  
-                                    </button>
-                        
-                                    <button @click="selectColor('black')"  type="button" class="btn btn-dark btn-sm">
-                                      <i class="fa fa-check"></i>  
-                                    </button>     
-                                  </div>                                  
-      
-                                <div>
-                                  <span>Actions:</span>
-                                  <button type="button" class="btn btn-outline-dark btn-sm">
-                                    redo
-                                    <i class="fa fa-repeat"></i> 
-                                  </button>
-                      
-                                  <button type="button" class="btn btn-outline-dark btn-sm">
-                                      <i class="fa fa-undo"></i> undo 
-                                  </button>                                
-                                </div>
-      
-                                <div>
-                                  <span>Align:</span>
-      
-                                  <br>
-                                  <button @click="selectAlign('left')" type="button" class="btn btn-outline-dark btn-sm">
-                                        <i class="fa fa-align-left"></i> 
-                                    </button>
-                        
-                                    <button  @click="selectAlign('center')" type="button" class="btn btn-outline-dark btn-sm">    
-                                        <i class="fa fa-align-center"></i> 
-                                    </button>
-                        
-                                    <button @click="selectAlign('right')"  type="button" class="btn btn-outline-dark btn-sm">    
-                                        <i class="fa fa-align-right"></i> 
-                                    </button>
-                                </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="card">
-                            <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                              <h5 class="mb-0">
-                                <button class="btn btn-link collapsed">
-                                  Something else
-                                </button>
-                              </h5>
-                            </div>
-    
-                            <div id="collapseFour" class="collapse multi-collapse" aria-labelledby="headingFour">
-                                <div class="card-body">
-                                    <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
-                                    <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
-                
-                                    <br>
-                                    <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
-                                    <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                  
-                                    <br>
-                                    <a href="about.html">About</a>
-                                </div>
-                            </div>  
-                          </div>
-                    </div>
-                  </div>
-                    
+            <input type="text" placeholder="Search any verses">
+            <div class="btn-group">
+              <button id="downloader" @click="download()" type="button" class="btn btn-success">Save to computer</button>
+              <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Save to computer</a>
+                <a class="dropdown-item" href="#">Share on facebook</a>
+                <a class="dropdown-item" href="#">Share on twitter</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Share on whatsapp</a>
+                <a class="dropdown-item" href="#">Share via email</a>
               </div>
             </div>
-        </div>
 
-        <div class="col-sm-1"></div>
-      </div>    
-    </div>
+            <div id="app">
+              <div id="accordion">
+                <div class="card">
+                  <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link">
+                        <i class="fa fa-font"></i> Font Family
+                      </button>
+                    </h5>
+                  </div>
+              
+                  <div id="collapseOne" class="collapse show multi-collapse" aria-labelledby="headingOne">
+                    <div class="card-body">                          
+                      <div class="row">
+                        <div class="col">
+                          <button @click="selectFont('margarine')" type="button" class="btn btn-outline-dark">
+                            <span id="margarine">Margarine</span>
+                          </button>
+                          <br>
+                          <button @click="selectFont('roboto')" type="button" class="btn btn-outline-dark">
+                            <span id="roboto">Roboto</span>
+                          </button>
+                          <br>
+                          <button @click="selectFont('baloo chettan')" type="button" class="btn btn-outline-dark">                              
+                            <span id="baloo">Baloo Chettan</span>
+                          </button>
+                          <br>
+
+                          <button @click="selectFont('inconsolata')" type="button" class="btn btn-outline-dark">                              
+                            <span id="inconsolata">Inconsolata</span>
+                          </button>
+                        </div>
+
+                        <div class="col">
+                          <button id="titillium" @click="selectFont('Titillium Web')" type="button" class="btn btn-outline-dark">                              
+                            <span id="titillium">Titillium Web</span>
+                          </button>  
+                          <br>
+                          <button @click="selectFont('Mukta')" type="button" class="btn btn-outline-dark">                              
+                            <span id="mukta">Mukta</span>
+                          </button>
+                          <br>
+                          <button @click="selectFont('Muli')" type="button" class="btn btn-outline-dark">                                
+                            <span id="muli">Muli</span>
+                          </button>
+                          <br>
+                          <button @click="selectFont('indie flower')" type="button" class="btn btn-outline-dark">                              
+                            <span id="indie">Indie</span>
+                          </button>
+                        </div>
+
+                        <div class="col">
+                          <button id="anton" @click="selectFont('Anton')"  type="button" class="btn btn-outline-dark">                                
+                            <span id="anton">Anton</span>
+                          </button>
+                          <br>
+                          <button @click="selectFont('Lobster')" type="button" class="btn btn-outline-dark">                                
+                            <span id="lobster">Lobster</span>
+                          </button>
+                          <br>
+                          <button @click="selectFont('Pacifico')" type="button" class="btn btn-outline-dark">                                
+                            <span id="pacifico">Pacifico</span>
+                          </button>
+                          <br>
+                          <button @click="selectFont('Noto Sans JP')"  type="button" class="btn btn-outline-dark">                                
+                            <span id="noto">Noto Sans JP</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h5 class="mb-0">
+                      <button class="btn btn-link collapsed">
+                        <i class="fa fa-window-restore"></i> Background
+                      </button>
+                    </h5>
+                  </div>
+                  <div id="collapseTwo" class="collapse show multi-collapse" aria-labelledby="headingTwo">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <img class="thumbnails" v-for="image in thumbnails" @click="selectBackground(image.index)" :src="image.src" width="40" height="40" alt="">                                 
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                  <div class="card">
+                    <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed">
+                          <i class="fa fa-search-plus"></i> Font Size
+                        </button>
+                      </h5>
+                    </div>
+
+                    <div id="collapseThree" class="collapse multi-collapse" aria-labelledby="headingThree">
+                      <div class="card-body">
+                        <div>
+                          <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
+                          <input v-model.number="fontsize" type="range" min="18" max="43" value="30" class="slider" id="myRange"> <br>
+                        </div>
+
+                        <div>
+                          <span>Colour:</span>
+                          <br>
+                          <button @click="selectColor('white')" type="button" class="btn btn-outline-dark btn-sm">
+                            <i class="fa fa-check"></i>  
+                          </button>
+              
+                          <button @click="selectColor('black')"  type="button" class="btn btn-dark btn-sm">
+                            <i class="fa fa-check"></i>  
+                          </button>     
+                        </div>                                  
+
+                        <div>
+                          <span>Actions:</span>
+                          <button type="button" class="btn btn-outline-dark btn-sm">
+                            redo
+                            <i class="fa fa-repeat"></i> 
+                          </button>
+              
+                          <button type="button" class="btn btn-outline-dark btn-sm">
+                              <i class="fa fa-undo"></i> undo 
+                          </button>                                
+                        </div>
+
+                        <div>
+                          <span>Align:</span>
+                          <br>
+                          <button @click="selectAlign('left')" type="button" class="btn btn-outline-dark btn-sm">
+                            <i class="fa fa-align-left"></i> 
+                          </button>
+                          <button  @click="selectAlign('center')" type="button" class="btn btn-outline-dark btn-sm">    
+                              <i class="fa fa-align-center"></i> 
+                          </button>
+                          <button @click="selectAlign('right')"  type="button" class="btn btn-outline-dark btn-sm">    
+                              <i class="fa fa-align-right"></i> 
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="card">
+                      <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed">
+                            <i class="fa fa-sliders"></i> Something else
+                          </button>
+                        </h5>
+                      </div>
+
+                      <div id="collapseFour" class="collapse multi-collapse" aria-labelledby="headingFour">
+                          <div class="card-body">
+                              <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
+                              <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
+          
+                              <br>
+                              <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
+                              <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                  
+                              <br>
+                              <a href="about.html">About</a>
+                          </div>
+                      </div>  
+                  </div>
+
+                  <div class="card">
+                    <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed">
+                          <i class="fa fa-sliders"></i> Something else
+                        </button>
+                      </h5>
+                    </div>
+
+                    <div id="collapseFour" class="collapse multi-collapse" aria-labelledby="headingFour">
+                      <div class="card-body">
+                        <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
+                        <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.7.0/fabric.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
-    <script src="js/canvas-toBlob.js"></script>
+                        <br>
+                        <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
+                        <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                  
+                        <br>
+                        <a href="about.html">About</a>
+                      </div>
+                    </div>  
+                  </div>
+                  
+                </div>
+              </div>
+                
+          </div>
+        </div>
+      </div>
 
-    <script>
-      var canvas = new fabric.Canvas('canvas');
-      document.getElementById("canvas").fabric = canvas;
+      <div class="col-sm-1"></div>
+    </div>    
+  </div>
+    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.7.0/fabric.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+  <script src="js/canvas-toBlob.js"></script>
 
-      var grid = 20;
+  <script>
+    var canvas = new fabric.Canvas('canvas');
+    document.getElementById("canvas").fabric = canvas;
+
+    var grid = 20;
+    var cWidth = canvas.getWidth();
+    var cHeight = canvas.getHeight();
+
+    $("#downloader").click(function(){
+      $("#canvas").get(0).toBlob(function(blob){
+        saveAs(blob, "myIMG.png");
+      });
+    });
+
+    canvas.on('mouse:down', function (e) {
+      console.log('mouse is down. You should show the lines')
+      for (var i = 0; i < (cWidth / grid); i++) {
+        // console.log("-----------")
+        // console.log(i)
+        // console.log(grid)
+        // console.log(cWidth)
+        // console.log(i * grid)
+
+        canvas.add(new fabric.Line([i * grid, 0, i * grid, cWidth], {
+            stroke: '#d1d1d1',
+            selectable: false
+        }));
+        canvas.add(new fabric.Line([0, i * grid, cWidth, i * grid], {
+            stroke: '#d1d1d1',
+            selectable: false
+        }));
+      }
+    
+      // //CENTERING Y-axis
+      // canvas.add(new fabric.Line([cHeight/2, 0, cHeight/2, cWidth], {
+      //     stroke: '#DE2E1F',
+      //     selectable: false,
+      //     strokeWidth: 2,
+      // }));
+
+      // //CENTERING X-axis
+      // canvas.add(new fabric.Line([0, cWidth/2, cWidth, cWidth/2 ], {
+      //     stroke: '#DE2E1F',
+      //     selectable: false, 
+      //     strokeWidth: 2,
+      // }));
+    });
+
+    canvas.on('mouse:up', function (e) {
+      console.log('mouse is up. You should hide the lines')
+      var objects = canvas.getObjects('line');
+      for (let i in objects) {
+          canvas.remove(objects[i]);
+      }
+    });
+
+    canvas.on('object:moving', function (e) {
       var cWidth = canvas.getWidth();
-      var cHeight = canvas.getHeight();
+      var obj = e.target;
+      var rect = obj.getBoundingRect();
+      //If the condition is met, within the range of 20 by 20
+      // if(true == true){
+      //   canvas.add(new fabric.Line([cHeight/2, 0, cHeight/2, cWidth], {
+      //       stroke: 'green',
+      //       selectable: false,
+      //       strokeWidth: 10,
+      //   }));
+      // }
 
-      $("#downloader").click(function(){
-        $("#canvas").get(0).toBlob(function(blob){
-          saveAs(blob, "myIMG.png");
-        });
-      });
+      console.log("--------------")
+      console.log("*center of canvas: " + (cWidth/2))
+      console.log("*center: " + rect.width/2)
+      console.log("left: " + rect.left)
+      console.log("right: " + (rect.left + rect.height))
+      console.log("top: " + rect.top)
+      console.log("bottom: " + (rect.top + rect.height))
+      console.log("width: " +rect.width)
+      console.log("height: " +rect.height)
 
-      canvas.on('mouse:down', function (e) {
-        console.log('mouse is down. You should show the lines')
-        for (var i = 0; i < (cWidth / grid); i++) {
-          // console.log("-----------")
-          // console.log(i)
-          // console.log(grid)
-          // console.log(cWidth)
-          // console.log(i * grid)
+      // if (rect.left < 0
+      //   || rect.top < 0
+      //   || rect.left + rect.width > canvas.getWidth()
+      //   || rect.top + rect.height > canvas.getHeight()) {
+      //       if (obj.getAngle() != obj.originalState.angle) {
+      //           obj.setAngle(obj.originalState.angle);
+      //       }
+      //       else {
+      //           obj.setTop(obj.originalState.top);
+      //           obj.setLeft(obj.originalState.left);
+      //           obj.setScaleX(obj.originalState.scaleX);
+      //           obj.setScaleY(obj.originalState.scaleY);
+      //       }
+      //       obj.setCoords();
+      //   }
+    });
 
-          canvas.add(new fabric.Line([i * grid, 0, i * grid, cWidth], {
-              stroke: '#d1d1d1',
-              selectable: false
-          }));
-          canvas.add(new fabric.Line([0, i * grid, cWidth, i * grid], {
-              stroke: '#d1d1d1',
-              selectable: false
-          }));
-        }
-      
-        // //CENTERING Y-axis
-        // canvas.add(new fabric.Line([cHeight/2, 0, cHeight/2, cWidth], {
-        //     stroke: '#DE2E1F',
-        //     selectable: false,
-        //     strokeWidth: 2,
-        // }));
+    fabric.Object.prototype.set({  
+        borderColor: 'tranparent',  
+        cornerColor: 'tranparent',  
+        cornerSize: 0,
+        transparentCorners: true,
+        padding:5,
+        borderDashArray:[2,2]          
+    });
 
-        // //CENTERING X-axis
-        // canvas.add(new fabric.Line([0, cWidth/2, cWidth, cWidth/2 ], {
-        //     stroke: '#DE2E1F',
-        //     selectable: false, 
-        //     strokeWidth: 2,
-        // }));
-      });
+    function setBackgroundProp(name, value) {
+      var canvas = document.getElementById("canvas").fabric;
+      var object = canvas.getObjects()
+      if (!object) return;
+      object[0].filters[0].blur = value
+      object[0].applyFilters()
+      canvas.renderAll();
+    }
 
-      canvas.on('mouse:up', function (e) {
-        console.log('mouse is up. You should hide the lines')
-        var objects = canvas.getObjects('line');
-        for (let i in objects) {
-            canvas.remove(objects[i]);
-        }
-      });
+    function setActiveProp(name, value) {
+      var canvas = document.getElementById("canvas").fabric;
+      var object = canvas.getObjects()
+      if (!object) return;
+      object[1].set(name, value).setCoords();
+      canvas.renderAll();
+    }
 
-      canvas.on('object:moving', function (e) {
-        var cWidth = canvas.getWidth();
-        var obj = e.target;
-        var rect = obj.getBoundingRect();
-        //If the condition is met, within the range of 20 by 20
-        // if(true == true){
-        //   canvas.add(new fabric.Line([cHeight/2, 0, cHeight/2, cWidth], {
-        //       stroke: 'green',
-        //       selectable: false,
-        //       strokeWidth: 10,
-        //   }));
-        // }
-
-        console.log("--------------")
-        console.log("*center of canvas: " + (cWidth/2))
-        console.log("*center: " + rect.width/2)
-        console.log("left: " + rect.left)
-        console.log("right: " + (rect.left + rect.height))
-        console.log("top: " + rect.top)
-        console.log("bottom: " + (rect.top + rect.height))
-        console.log("width: " +rect.width)
-        console.log("height: " +rect.height)
-
-        // if (rect.left < 0
-        //   || rect.top < 0
-        //   || rect.left + rect.width > canvas.getWidth()
-        //   || rect.top + rect.height > canvas.getHeight()) {
-        //       if (obj.getAngle() != obj.originalState.angle) {
-        //           obj.setAngle(obj.originalState.angle);
-        //       }
-        //       else {
-        //           obj.setTop(obj.originalState.top);
-        //           obj.setLeft(obj.originalState.left);
-        //           obj.setScaleX(obj.originalState.scaleX);
-        //           obj.setScaleY(obj.originalState.scaleY);
-        //       }
-        //       obj.setCoords();
-        //   }
-      });
-
-      fabric.Object.prototype.set({  
-          borderColor: 'tranparent',  
-          cornerColor: 'tranparent',  
-          cornerSize: 0,
-          transparentCorners: true,
-          padding:5,
-          borderDashArray:[2,2]          
-      });
-
-      function setBackgroundProp(name, value) {
-        var canvas = document.getElementById("canvas").fabric;
-        var object = canvas.getObjects()
-        if (!object) return;
-        object[0].filters[0].blur = value
-        object[0].applyFilters()
-        canvas.renderAll();
+    function centerObject(axis){
+      var canvas = document.getElementById("canvas").fabric;
+      var object = canvas.getObjects()
+      if (!object) return;
+      if(axis == "H"){ // Center Horizontally
+        object[1].centerH();
       }
-
-      function setActiveProp(name, value) {
-        var canvas = document.getElementById("canvas").fabric;
-        var object = canvas.getObjects()
-        if (!object) return;
-        object[1].set(name, value).setCoords();
-        canvas.renderAll();
+      else if(axis == "V"){ //Center Vertically 
+        object[1].centerV();
       }
-
-      function centerObject(axis){
-        var canvas = document.getElementById("canvas").fabric;
-        var object = canvas.getObjects()
-        if (!object) return;
-        if(axis == "H"){ // Center Horizontally
-          object[1].centerH();
-        }
-        else if(axis == "V"){ //Center Vertically 
-          object[1].centerV();
-        }
-        else { //Center Horizontally and Vertically
-          object[1].center();
-        }
-        canvas.renderAll();
+      else { //Center Horizontally and Vertically
+        object[1].center();
       }
+      canvas.renderAll();
+    }
 
       // http://fabricjs.com/fabric-intro-part-2
-
       // Add a save now button
       //https://stackoverflow.com/questions/30629263/save-client-side-generated-image-on-button-click#30654232
-
       // limit the size of the itext
       // https://stackoverflow.com/questions/45406604/limit-text-input-on-itext-or-textbox#45506259
 
-      function addText(text) {
-        var text = new fabric.Textbox(text, {
-          lockScalingY: true,
-          lockScalingX: true,
-          height:200,
-          width: 500,
-          align: 'mid', //added
-          textAlign: 'center',
-          fontFamily: 'Margarine',
-          fill: '#333',
-          opacity: 1.0,
-          fontSize: 30,
-          centeredScaling: true,
-          lockScalingX: true,
-        });
-
-        canvas.add(text);
-        text.center();
-      }
-
-      // Fabric.js
-      canvas.selection = false;
-      var imgElement = document.getElementById('my-image');
-      var imgInstance = new fabric.Image(imgElement, {
-        evented: false,
-        opacity: 0.85
-      });
-
-      var filter = new fabric.Image.filters.Blur({
-        blur: 0.01
-      });
-
-      imgInstance.filters.push(filter);
-      imgInstance.applyFilters();
-      canvas.renderAll();
-      document.getElementById("canvas").blur = filter;
-
-      canvas.add(imgInstance);
-
-      addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
-
-      var madeby = new fabric.IText("Created with Bibleable.com", {
-        evented: false,
-        fontSize: 22,
-        textAlign: 'center',
-        backgroundColor: '#FFFFFF',
-        lockScalingX: true,
+    function addText(text) {
+      var text = new fabric.Textbox(text, {
         lockScalingY: true,
-        top: 600,
-        left: 320 - 120,
-        cornerSize: 20
+        lockScalingX: true,
+        height:200,
+        width: 500,
+        align: 'mid', //added
+        textAlign: 'center',
+        fontFamily: 'Margarine',
+        fill: '#333',
+        opacity: 1.0,
+        fontSize: 30,
+        centeredScaling: true,
+        lockScalingX: true,
       });
 
-      // console.log(madeby.getBoundingRect().width)
-      // console.log(madeby.getBoundingRect().height)
+      canvas.add(text);
+      text.center();
+    }
 
-      canvas.add(madeby);
+    // Fabric.js
+    canvas.selection = false;
+    var imgElement = document.getElementById('my-image');
+    var imgInstance = new fabric.Image(imgElement, {
+      evented: false,
+      opacity: 0.85
+    });
 
-      // Vue component
-      new Vue({
-        el: "#app", 
-        data: {
-          thumbnails: [{index: 1, src: "images/thumbnails/1.JPG"},
-                        {index: 2, src: "images/thumbnails/2.JPG"},
-                        {index: 3,src: "images/thumbnails/3.JPG"},
-                        {index:4,src: "images/thumbnails/4.JPG"},
-                        {index: 5,src: "images/thumbnails/5.JPG"},
-                        {index: 6,src: "images/thumbnails/6.JPG"},
-                        {index:7,src: "images/thumbnails/7.JPG"},
-                        {index: 8,src: "images/thumbnails/8.JPG"},
-                        {index: 9, src: "images/thumbnails/9.JPG"},
-                        {index: 10, src: "images/thumbnails/10.JPG"},
-                        {index: 11, src: "images/thumbnails/11.JPG"},
-                        {index: 12, src: "images/thumbnails/12.JPG"},
-                        {index: 13, src: "images/thumbnails/13.JPG"},
-                        {index: 14, src: "images/thumbnails/14.JPG"},
-                        {index: 15, src: "images/thumbnails/15.JPG"},
-                        {index: 16, src: "images/thumbnails/16.JPG"},
-                        {index: 17, src: "images/thumbnails/17.JPG"},
-                        {index: 18, src: "images/thumbnails/18.JPG"},
-                        {index: 19, src: "images/thumbnails/19.JPG"},
-                        {index: 20, src: "images/thumbnails/20.JPG"},
-                        {index: 21, src: "images/thumbnails/21.JPG"}],
-          textAlign: "center",
-          datadata: "",
-          fontsize: 30,
-          opacity: 100,
-          fontfamily: "margarine", 
-          backgroundblur: 0,
-          textColor: "black"
-        },
-        watch: {
-          textColor: function(){
-            setActiveProp('fill', this.textColor)
-          },
-          textAlign: function(){
-            setActiveProp('textAlign', this.textAlign)
-          },
-          backgroundblur: function(){
-            setBackgroundProp('blur', this.backgroundblur/100)
-          },
-          fontfamily: function(){
-            setActiveProp('fontFamily', this.fontfamily)
-          },
-          opacity: function(){
-            setActiveProp('opacity', this.opacity/100)
-          },
-          fontsize: function(){
-            setActiveProp('fontSize', this.fontsize)
-            this.centerText()
-          }
-        },
-        methods: {
-          selectAlign: function(value){
-            this.textAlign = value
-          },
-          selectColor: function(value){
-            this.textColor = value
-          },
-          selectFont: function(value){
-            this.fontfamily = value
-          },
-          // Read https://blog.taucharts.com/svg-to-png/
-          //http://jsfiddle.net/a9ude9p0/6/
+    var filter = new fabric.Image.filters.Blur({
+      blur: 0.01
+    });
 
-          download: function(){
-            document.getElementById("downloader").download = "image.png";
-            document.getElementById("downloader").href = document.getElementById("canvas").toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-          },
-          selectBackground: function(value){
-            var canvas = document.getElementById("canvas").fabric;
-            var object = canvas.getObjects()
-            object[0].setSrc("images/" + value + ".JPG", function() {
-              canvas.renderAll();
-            });
-            canvas.renderAll();
-          },
-          centerTextH: function(){
-            centerObject("H")
-          },
-          centerTextV: function(){
-            centerObject("V")
-          },
-          centerText: function(){
-            centerObject()
-          },
-          calculateQRCode: function(){
-            var canvasX = document.querySelector("canvas#canvas")
-            var img = canvasX.toDataURL("image/png");
-            this.datadata = img;
-            var vm = this
-            setTimeout(function(){
-                vm.datadata = img //vm.calculateQRCode()
-            }, 2000);
-          }
+    imgInstance.filters.push(filter);
+    imgInstance.applyFilters();
+    canvas.renderAll();
+    document.getElementById("canvas").blur = filter;
+
+    canvas.add(imgInstance);
+
+    addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
+
+    var madeby = new fabric.IText("Created with Bibleable.com", {
+      evented: false,
+      fontSize: 22,
+      textAlign: 'center',
+      backgroundColor: '#FFFFFF',
+      lockScalingX: true,
+      lockScalingY: true,
+      top: 600,
+      left: 320 - 120,
+      cornerSize: 20
+    });
+
+    canvas.add(madeby);
+
+    // Vue component
+    new Vue({
+      el: "#app", 
+      data: {
+        thumbnails: [{index: 1, src: "images/thumbnails/1.JPG"},
+                      {index: 2, src: "images/thumbnails/2.JPG"},
+                      {index: 3,src: "images/thumbnails/3.JPG"},
+                      {index:4,src: "images/thumbnails/4.JPG"},
+                      {index: 5,src: "images/thumbnails/5.JPG"},
+                      {index: 6,src: "images/thumbnails/6.JPG"},
+                      {index:7,src: "images/thumbnails/7.JPG"},
+                      {index: 8,src: "images/thumbnails/8.JPG"},
+                      {index: 9, src: "images/thumbnails/9.JPG"},
+                      {index: 10, src: "images/thumbnails/10.JPG"},
+                      {index: 11, src: "images/thumbnails/11.JPG"},
+                      {index: 12, src: "images/thumbnails/12.JPG"},
+                      {index: 13, src: "images/thumbnails/13.JPG"},
+                      {index: 14, src: "images/thumbnails/14.JPG"},
+                      {index: 15, src: "images/thumbnails/15.JPG"},
+                      {index: 16, src: "images/thumbnails/16.JPG"},
+                      {index: 17, src: "images/thumbnails/17.JPG"},
+                      {index: 18, src: "images/thumbnails/18.JPG"},
+                      {index: 19, src: "images/thumbnails/19.JPG"},
+                      {index: 20, src: "images/thumbnails/20.JPG"},
+                      {index: 21, src: "images/thumbnails/21.JPG"}],
+        textAlign: "center",
+        datadata: "",
+        fontsize: 30,
+        opacity: 100,
+        fontfamily: "margarine", 
+        backgroundblur: 0,
+        textColor: "black"
+      },
+      watch: {
+        textColor: function(){
+          setActiveProp('fill', this.textColor)
         },
-        mounted: function(){
-          this.calculateQRCode()
+        textAlign: function(){
+          setActiveProp('textAlign', this.textAlign)
+        },
+        backgroundblur: function(){
+          setBackgroundProp('blur', this.backgroundblur/100)
+        },
+        fontfamily: function(){
+          setActiveProp('fontFamily', this.fontfamily)
+        },
+        opacity: function(){
+          setActiveProp('opacity', this.opacity/100)
+        },
+        fontsize: function(){
+          setActiveProp('fontSize', this.fontsize)
+          this.centerText()
         }
-      });
+      },
+      methods: {
+        selectAlign: function(value){
+          this.textAlign = value
+        },
+        selectColor: function(value){
+          this.textColor = value
+        },
+        selectFont: function(value){
+          this.fontfamily = value
+        },
+        // Read https://blog.taucharts.com/svg-to-png/
+        //http://jsfiddle.net/a9ude9p0/6/
+
+        download: function(){
+          document.getElementById("downloader").download = "image.png";
+          document.getElementById("downloader").href = document.getElementById("canvas").toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+        },
+        selectBackground: function(value){
+          var canvas = document.getElementById("canvas").fabric;
+          var object = canvas.getObjects()
+          object[0].setSrc("images/" + value + ".JPG", function() {
+            canvas.renderAll();
+          });
+          canvas.renderAll();
+        },
+        centerTextH: function(){
+          centerObject("H")
+        },
+        centerTextV: function(){
+          centerObject("V")
+        },
+        centerText: function(){
+          centerObject()
+        },
+        calculateQRCode: function(){
+          var canvasX = document.querySelector("canvas#canvas")
+          var img = canvasX.toDataURL("image/png");
+          this.datadata = img;
+          var vm = this
+          setTimeout(function(){
+              vm.datadata = img //vm.calculateQRCode()
+          }, 2000);
+        }
+      },
+      mounted: function(){
+        this.calculateQRCode()
+      }
+    });
   </script>
 </body>
 </html>
