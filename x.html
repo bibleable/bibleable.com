@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Margarine|Roboto|Baloo+Chettan|Germania+One|Inconsolata|Indie+Flower|Lilita+One|Anton|Lobster|Mukta|Muli|Noto+Sans+JP|Pacifico|Titillium+Web" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
   <link rel="stylesheet" href="./css/bibleable.css" crossorigin="anonymous">
 </head>
 
@@ -29,26 +31,27 @@
             <img id="my-image" src="images/2.JPG" alt=""> 
           </div>
 
-          <div class="col border">
-            <div id="app">
-            <button title="magic edit" @click="" class="btn btn-outline-dark btn-sm"><i class="fa fa-magic"></i></button>
-            <button title="expand" @click="toggleAccordion()" class="btn btn-outline-dark btn-sm"><i class="fa fa-expand"></i></button>
-            <input type="text" placeholder="Search any verses">
-            <div class="btn-group">
-              <button id="downloader" @click="download()" type="button" class="btn btn-success">Save to computer</button>
-              <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Save to computer</a>
-                <a class="dropdown-item" href="#">Share on facebook</a>
-                <a class="dropdown-item" href="#">Share on twitter</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Share on whatsapp</a>
-                <a class="dropdown-item" href="#">Share via email</a>
+            <div class="col border">
+              <div id="app">
+              <div class="btn-group">
+                <button id="downloader" @click="download()" type="button" class="btn btn-success">Save to computer</button>
+                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Save to computer</a>
+                  <a class="dropdown-item" href="#">Share on facebook</a>
+                  <a class="dropdown-item" href="#">Share on twitter</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Share on whatsapp</a>
+                  <a class="dropdown-item" href="#">Share via email</a>
+                </div>
               </div>
-            </div>
-
+        
+              <button title="magic edit" @click="magic_edit()" class="btn btn-outline-dark btn-sm"><i class="fa fa-magic"></i></button>
+              <button title="expand" @click="toggleAccordion()" class="btn btn-outline-dark btn-sm"><i class="fa fa-expand"></i></button>
+              <input v-model="question" type="text" placeholder="Search any verses">
+              <p>{{answer}}</p>
               <div id="accordion">
                 <div class="card">
                   <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"       aria-controls="collapseOne">
@@ -169,18 +172,6 @@
                       </div>                                  
 
                       <div>
-                        <span>Actions:</span>
-                        <button type="button" class="btn btn-outline-dark btn-sm">
-                          redo
-                          <i class="fa fa-repeat"></i> 
-                        </button>
-            
-                        <button type="button" class="btn btn-outline-dark btn-sm">
-                            <i class="fa fa-undo"></i> undo 
-                        </button>                                
-                      </div>
-
-                      <div>
                         <span>Align:</span>
                         <br>
                         <button @click="selectAlign('left')" type="button" class="btn btn-outline-dark btn-sm">
@@ -193,6 +184,18 @@
                             <i class="fa fa-align-right"></i> 
                         </button>
                       </div>
+
+                      <div>
+                        <span>Actions:</span>
+                        <button type="button" class="btn btn-outline-dark btn-sm">
+                          redo
+                          <i class="fa fa-repeat"></i> 
+                        </button>
+            
+                        <button type="button" class="btn btn-outline-dark btn-sm">
+                            <i class="fa fa-undo"></i> undo 
+                        </button>                                
+                      </div>
                     </div>
                   </div>
                 </div> <!--class="card"-->
@@ -201,7 +204,7 @@
                   <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed">
-                        <i class="fa fa-sliders"></i> Something else
+                        <i class="fa fa-sliders"></i> More
                       </button>
                     </h5>
                   </div>
@@ -224,7 +227,7 @@
                   <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                     <h5 class="mb-0">
                       <button class="btn btn-link collapsed">
-                        <i class="fa fa-sliders"></i> Something else
+                        <i class="fa fa-history"></i> History
                       </button>
                     </h5>
                   </div>
@@ -244,11 +247,13 @@
                 </div> <!--class="card"-->
                   
               </div> <!--id="accordion"-->
-            </div> <!--id="app"-->
-          </div><!--class="col border"-->
+              
+              </div> <!--id="app"-->
+            </div><!--class="col border"-->
+
+          </div><!--class="row"-->
+        </div><!--class="col-sm-10"-->
         
-        </div><!--class="row"-->
-      </div><!--class="col-sm-10"-->
       <div class="col-sm-1"></div>
     </div>    
   </div>
@@ -267,12 +272,6 @@
     var grid = 20;
     var cWidth = canvas.getWidth();
     var cHeight = canvas.getHeight();
-
-    $("#downloader").click(function(){
-      $("#canvas").get(0).toBlob(function(blob){
-        saveAs(blob, "myIMG.png");
-      });
-    });
 
     canvas.on('mouse:down', function (e) {
       console.log('mouse is down. You should show the lines')
@@ -320,6 +319,14 @@
       padding:5,
       borderDashArray:[2,2]          
     });
+
+    function setText(value){
+      var canvas = document.getElementById("canvas").fabric;
+      var object = canvas.getObjects()
+      if (!object) return;
+      object[1].text = value
+      canvas.renderAll();
+    }
 
     function setBackgroundProp(name, value) {
       var canvas = document.getElementById("canvas").fabric;
@@ -419,6 +426,8 @@
     new Vue({
       el: "#app", 
       data: {
+        question: "", 
+        answer: "",
         thumbnails: [{index: 1, src: "images/thumbnails/1.JPG"},
                       {index: 2, src: "images/thumbnails/2.JPG"},
                       {index: 3, src: "images/thumbnails/3.JPG"},
@@ -449,6 +458,11 @@
         textColor: "black"
       },
       watch: {
+        question: function () {
+          this.answer = 'Waiting for you to stop typing...'
+          this.getAnswer()
+          console.log("well")
+        },
         textColor: function(){
           setActiveProp('fill', this.textColor)
         },
@@ -470,6 +484,31 @@
         }
       },
       methods: {
+          getAnswer: _.debounce(function () {
+              var vm = this
+              axios.get('http://bible-api.com/psalm%2023:1')
+                .then(function (response) {
+                  setText(response.data.text + " - " + response.data.reference)
+                  vm.answer = response.data.text + " - " + response.data.reference
+                })
+                .catch(function (error) {
+                  vm.answer = 'Error! Could not reach the API. ' + error
+                })
+            },
+            500
+          ),
+        magic_edit: function(){
+          console.log("pick the best font")
+          this.selectFont('Titillium Web')
+          console.log("centering")
+          centerObject()
+          console.log("white or black")
+          setActiveProp('fill', 'white')
+          console.log("select a background")
+          this.selectBackground(7)
+          console.log("blurry background")
+          setBackgroundProp('blur', 7/100)
+        },
         toggleAccordion: function(){
           $('.multi-collapse').collapse('toggle');
         },
@@ -484,10 +523,10 @@
         },
         // Read https://blog.taucharts.com/svg-to-png/
         //http://jsfiddle.net/a9ude9p0/6/
-
         download: function(){
-          document.getElementById("downloader").download = "image.png";
-          document.getElementById("downloader").href = document.getElementById("canvas").toDataURL("image/png").replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+          $("#canvas").get(0).toBlob(function(blob){
+            saveAs(blob, "myIMG.png");
+          });
         },
         selectBackground: function(value){
           var canvas = document.getElementById("canvas").fabric;
