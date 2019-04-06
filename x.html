@@ -486,7 +486,7 @@
       methods: {
           getAnswer: _.debounce(function () {
               var vm = this
-              axios.get('http://bible-api.com/psalm%2023:1')
+              axios.get('//bible-api.com/psalm%2023:1')
                 .then(function (response) {
                   setText(response.data.text + " - " + response.data.reference)
                   vm.answer = response.data.text + " - " + response.data.reference
