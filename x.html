@@ -21,7 +21,7 @@
     </button>
   </div>
 
-  <div class="container-fluid">
+  <div id="container" class="container-fluid">
     <div class="row">
       <div class="col-sm-1"></div>
       <div class="col-sm-10">
@@ -50,13 +50,19 @@
         
               <button title="magic edit" @click="magic_edit()" class="btn btn-outline-dark btn-sm"><i class="fa fa-magic"></i></button>
               <button title="expand" @click="toggleAccordion()" class="btn btn-outline-dark btn-sm"><i class="fa fa-expand"></i></button>
-              <input v-model="question" type="text" placeholder="Search any verses">
+              <button type="button" class="btn btn-outline-dark btn-sm">
+                  <i class="fa fa-undo"></i> undo 
+              </button>                            
+              <hr>
               <p>{{answer}}</p>
+
+              <input v-model="question" type="text" placeholder="Search any verses"><button class="btn btn-outline-dark btn-sm" @click="getVerse()"><i class="fa fa-search"></i></button><button class="btn btn-outline-dark btn-sm" @click="clear()">clear</button>
+              <br><br>
               <div id="accordion">
                 <div class="card">
                   <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"       aria-controls="collapseOne">
                     <h5 class="mb-0">
-                      <button class="btn btn-link">
+                      <button class="btn">
                         <i class="fa fa-font"></i> Font Family
                       </button>
                     </h5>
@@ -127,7 +133,7 @@
                 <div class="card">
                   <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                     <h5 class="mb-0">
-                      <button class="btn btn-link collapsed">
+                      <button class="btn collapsed">
                         <i class="fa fa-window-restore"></i> Background
                       </button>
                     </h5>
@@ -146,7 +152,7 @@
                 <div class="card">
                   <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     <h5 class="mb-0">
-                      <button class="btn btn-link collapsed">
+                      <button class="btn collapsed">
                         <i class="fa fa-search-plus"></i> Font Size
                       </button>
                     </h5>
@@ -185,7 +191,7 @@
                         </button>
                       </div>
 
-                      <div>
+                      <!-- <div>
                         <span>Actions:</span>
                         <button type="button" class="btn btn-outline-dark btn-sm">
                           redo
@@ -195,7 +201,7 @@
                         <button type="button" class="btn btn-outline-dark btn-sm">
                             <i class="fa fa-undo"></i> undo 
                         </button>                                
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div> <!--class="card"-->
@@ -203,8 +209,8 @@
                 <div class="card">
                   <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                     <h5 class="mb-0">
-                      <button class="btn btn-link collapsed">
-                        <i class="fa fa-sliders"></i> More
+                      <button class="btn collapsed">
+                        <i class="fa fa-sliders"></i> More Settings
                       </button>
                     </h5>
                   </div>
@@ -216,49 +222,56 @@
     
                         <br>
                         <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
-                        <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                  
-                        <br>
-                        <a href="about.html">About</a>
+                        <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                      
                     </div>
                   </div>  
                 </div> <!--class="card"-->
 
                 <div class="card">
-                  <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="false" aria-controls="collapseHistory">
                     <h5 class="mb-0">
-                      <button class="btn btn-link collapsed">
-                        <i class="fa fa-history"></i> History
+                      <button class="btn collapsed">
+                        <i class="fa fa-history"></i> Verse History
                       </button>
                     </h5>
                   </div>
 
-                  <div id="collapseFour" class="collapse multi-collapse" aria-labelledby="headingFour">
+                  <div id="collapseHistory" class="collapse multi-collapse" aria-labelledby="headingFour">
                     <div class="card-body">
-                      <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
-                      <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
-  
-                      <br>
-                      <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
-                      <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                  
-                      <br>
-                      <a href="about.html">About</a>
+                      <ul>
+                        <p v-if="verseHistory.length==0">There is nothing in your verse history.</p>
+
+                        <li v-for="verse in verseHistory">
+                          {{verse}}
+                          <button class="btn btn-outline-dark btn-sm" @click="enterVerse(verse)">enter</button>
+                        </li>
+                      </ul>
                     </div>
                   </div>  
-                </div> <!--class="card"-->
-                  
+                </div> <!--class="card"-->      
               </div> <!--id="accordion"-->
               
               </div> <!--id="app"-->
             </div><!--class="col border"-->
 
           </div><!--class="row"-->
-        </div><!--class="col-sm-10"-->
-        
+        </div><!--class="col-sm-10"-->        
       <div class="col-sm-1"></div>
     </div>    
-  </div>
 
-    
+    <footer class="footer">
+      <div class="container-fluid">
+        <span class="text-muted">
+          <a href="./about.html">About</a>
+          <a href="">Donate</a>
+          <a href="">Share</a>
+          <a href="">FAQ</a>
+        </span>
+      </div>
+    </footer>
+  </div>
+</body>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.7.0/fabric.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -273,6 +286,9 @@
     var cWidth = canvas.getWidth();
     var cHeight = canvas.getHeight();
 
+    //
+    // CANVAS EVENTS
+    //
     canvas.on('mouse:down', function (e) {
       console.log('mouse is down. You should show the lines')
       for (var i = 0; i < (cWidth / grid); i++) {
@@ -311,6 +327,7 @@
       // console.log("height: " +rect.height)
     });
 
+    // CUSTOM OBJECT 
     fabric.Object.prototype.set({  
       borderColor: 'tranparent',  
       cornerColor: 'tranparent',  
@@ -320,11 +337,13 @@
       borderDashArray:[2,2]          
     });
 
+    // CANVAS FUNCTIONS 
     function setText(value){
       var canvas = document.getElementById("canvas").fabric;
       var object = canvas.getObjects()
       if (!object) return;
       object[1].text = value
+      centerObject()
       canvas.renderAll();
     }
 
@@ -361,12 +380,6 @@
       canvas.renderAll();
     }
 
-      // http://fabricjs.com/fabric-intro-part-2
-      // Add a save now button
-      //https://stackoverflow.com/questions/30629263/save-client-side-generated-image-on-button-click#30654232
-      // limit the size of the itext
-      // https://stackoverflow.com/questions/45406604/limit-text-input-on-itext-or-textbox#45506259
-
     function addText(text) {
       var text = new fabric.Textbox(text, {
         lockScalingY: true,
@@ -386,6 +399,11 @@
       canvas.add(text);
       text.center();
     }
+      // http://fabricjs.com/fabric-intro-part-2
+      // Add a save now button
+      //https://stackoverflow.com/questions/30629263/save-client-side-generated-image-on-button-click#30654232
+      // limit the size of the itext
+      // https://stackoverflow.com/questions/45406604/limit-text-input-on-itext-or-textbox#45506259
 
     // Fabric.js
     canvas.selection = false;
@@ -426,6 +444,7 @@
     new Vue({
       el: "#app", 
       data: {
+        verseHistory: [],
         question: "", 
         answer: "",
         thumbnails: [{index: 1, src: "images/thumbnails/1.JPG"},
@@ -459,9 +478,12 @@
       },
       watch: {
         question: function () {
-          this.answer = 'Waiting for you to stop typing...'
-          this.getAnswer()
-          console.log("well")
+          if(this.question.length != 0){
+            this.answer = 'Searching the bible...'
+            this.getAnswer()
+          } else {
+            this.answer = ''
+          }
         },
         textColor: function(){
           setActiveProp('fill', this.textColor)
@@ -484,18 +506,40 @@
         }
       },
       methods: {
+        clear: function(){
+          this.question = ''
+          this.answer = ''
+        },
+        enterVerse: function(value){
+          setText(value)
+        },
+          getVerse: function(){
+            var search = escape(this.question.trim())
+            var vm = this
+            axios.get('https://bible-api.com/' + search)
+              .then(function (response) {
+                setText(response.data.text + " - " + response.data.reference)
+                vm.verseHistory.push(response.data.text + " - " + response.data.reference)
+                vm.answer = ""
+              })
+              .catch(function (error) {
+                vm.answer = 'Cannot find the verse. Did you type correctly?' //+ error
+              })
+          },
           getAnswer: _.debounce(function () {
-              var vm = this
-              axios.get('//bible-api.com/psalm%2023:1')
-                .then(function (response) {
-                  setText(response.data.text + " - " + response.data.reference)
-                  vm.answer = response.data.text + " - " + response.data.reference
-                })
-                .catch(function (error) {
-                  vm.answer = 'Error! Could not reach the API. ' + error
-                })
+              // console.log(this.question)
+              // var search = escape("psalm 23:1")
+              // var vm = this
+              // axios.get('https://bible-api.com/' + search)
+              //   .then(function (response) {
+              //     setText(response.data.text + " - " + response.data.reference)
+              //     vm.answer = response.data.text + " - " + response.data.reference
+              //   })
+              //   .catch(function (error) {
+              //     vm.answer = 'Error! Could not reach the API. ' + error
+              //   })
             },
-            500
+            1000
           ),
         magic_edit: function(){
           console.log("pick the best font")
@@ -525,7 +569,7 @@
         //http://jsfiddle.net/a9ude9p0/6/
         download: function(){
           $("#canvas").get(0).toBlob(function(blob){
-            saveAs(blob, "myIMG.png");
+            saveAs(blob, "bibleable.png");
           });
         },
         selectBackground: function(value){
@@ -560,5 +604,4 @@
       }
     });
   </script>
-</body>
 </html>

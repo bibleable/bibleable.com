@@ -7,6 +7,10 @@ img.thumbnails:hover {
   border: 2px solid white;
 }
 
+#container{
+  padding: 20px;
+}
+
 .close {
   float: right;
   font-size: 2.4rem;
