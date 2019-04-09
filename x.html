@@ -628,10 +628,11 @@
     // Fabric.js
     canvas.selection = false;
     var img = new Image()
-    img.crossOrigin = 'anonymous';
+    img.crossOrigin = "anonymous";
     img.src = "https://i.postimg.cc/XNFmH43D/2.jpg"
     img.onload = function() {
         var imgInstance = new fabric.Image.fromURL(img.src, function(imgObject){
+        imgObject.crossOrigin = "anonymous"
         var filter = new fabric.Image.filters.Blur({
           blur: 0.01
         });
