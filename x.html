@@ -627,38 +627,40 @@
 
     // Fabric.js
     canvas.selection = false;
-    var imgInstance = new fabric.Image.fromURL("https://i.postimg.cc/XNFmH43D/2.jpg", function(imgObject){
-      var filter = new fabric.Image.filters.Blur({
-        blur: 0.01
-      });
-      imgObject.filters.push(filter)
-      imgObject.applyFilters()
-      canvas.renderAll();
-      document.getElementById("canvas").blur = filter;
-      imgObject.evented = false;
-      // canvas.add(imgObject)
-      canvas.setBackgroundImage(imgObject, canvas.renderAll.bind(canvas), {
-        scaleX: canvas.width / imgObject.width,
-        scaleY: canvas.height / imgObject.height
-      });
+    var img = new Image()
+    img.src = "https://i.postimg.cc/XNFmH43D/2.jpg"
+    img.onload = function() {
+        var imgInstance = new fabric.Image.fromURL(img.src, function(imgObject){
+        var filter = new fabric.Image.filters.Blur({
+          blur: 0.01
+        });
+        imgObject.filters.push(filter)
+        imgObject.applyFilters()
+        canvas.renderAll();
+        document.getElementById("canvas").blur = filter;
+        imgObject.evented = false;
 
+        canvas.setBackgroundImage(imgObject, canvas.renderAll.bind(canvas), {
+          scaleX: canvas.width / imgObject.width,
+          scaleY: canvas.height / imgObject.height
+        });
 
-      addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
+        addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
 
-      var madeByBibleable = new fabric.IText("Created with Bibleable.com", {
-        evented: false,
-        fontSize: 22,
-        textAlign: 'center',
-        backgroundColor: '#FFFFFF',
-        lockScalingX: true,
-        lockScalingY: true,
-        top: 600,
-        left: 320 - 120,
-        cornerSize: 20
-      });
+        var madeByBibleable = new fabric.IText("Created with Bibleable.com", {
+          evented: false,
+          fontSize: 22,
+          textAlign: 'center',
+          backgroundColor: '#FFFFFF',
+          lockScalingX: true,
+          lockScalingY: true,
+          top: 600,
+          left: 320 - 120,
+          cornerSize: 20
+        });
 
-      canvas.add(madeByBibleable);
-    })
-
+        canvas.add(madeByBibleable);
+      })
+    }
   </script>
 </html>
