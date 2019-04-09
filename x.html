@@ -628,6 +628,7 @@
     // Fabric.js
     canvas.selection = false;
     var img = new Image()
+    img.crossOrigin = 'anonymous';
     img.src = "https://i.postimg.cc/XNFmH43D/2.jpg"
     img.onload = function() {
         var imgInstance = new fabric.Image.fromURL(img.src, function(imgObject){
