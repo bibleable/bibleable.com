@@ -414,7 +414,8 @@
           console.log("white or black")
           setActiveProp('fill', 'white')
           console.log("select a background")
-          this.selectBackground(this.thumbnails[7].src)
+          var randomThumb = Math.floor((Math.random() * 21) + 1);
+          this.selectBackground(this.thumbnails[randomThumb].src)
           console.log("blurry background")
           setBackgroundProp('blur', 7/100)
         },
