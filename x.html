@@ -305,9 +305,8 @@
   <script src="js/canvas-toBlob.js"></script>
 
   <script>
-
-        // Vue component
-        new Vue({
+    // Vue component
+    new Vue({
       el: "#app", 
       data: {
         verseHistory: [],
@@ -461,12 +460,20 @@
           });
         },
         selectBackground: function(value){
-          var canvas = document.getElementById("canvas").fabric;
-          var object = canvas.getObjects()
-          object[0].setSrc(value, function() {
-            canvas.renderAll();
+
+          var imgInstance = new fabric.Image.fromURL(value, function(imgObject){
+            canvas.setBackgroundImage(imgObject, canvas.renderAll.bind(canvas), {
+              scaleX: canvas.width / imgObject.width,
+              scaleY: canvas.height / imgObject.height
+            });
           });
-          canvas.renderAll();
+
+          // var canvas = document.getElementById("canvas").fabric;
+          // var object = canvas.getObjects()
+          // object[0].setSrc(value, function() {
+          //   canvas.renderAll();
+          // });
+          // canvas.renderAll();
         },
         centerTextH: function(){
           centerObject("H")
@@ -555,25 +562,25 @@
       var canvas = document.getElementById("canvas").fabric;
       var object = canvas.getObjects()
       if (!object) return;
-      object[1].text = value
+      object[0].text = value
       centerObject()
       canvas.renderAll();
     }
 
     function setBackgroundProp(name, value) {
-      var canvas = document.getElementById("canvas").fabric;
-      var object = canvas.getObjects()
-      if (!object) return;
-      object[0].filters[0].blur = value
-      object[0].applyFilters()
-      canvas.renderAll();
+      // var canvas = document.getElementById("canvas").fabric;
+      // var object = canvas.getObjects()
+      // if (!object) return;
+      // object[0].filters[0].blur = value
+      // object[0].applyFilters()
+      // canvas.renderAll();
     }
 
     function setActiveProp(name, value) {
       var canvas = document.getElementById("canvas").fabric;
       var object = canvas.getObjects()
       if (!object) return;
-      object[1].set(name, value).setCoords();
+      object[0].set(name, value).setCoords();
       canvas.renderAll();
     }
 
@@ -582,13 +589,13 @@
       var object = canvas.getObjects()
       if (!object) return;
       if(axis == "H"){ // Center Horizontally
-        object[1].centerH();
+        object[0].centerH();
       }
       else if(axis == "V"){ //Center Vertically 
-        object[1].centerV();
+        object[0].centerV();
       }
       else { //Center Horizontally and Vertically
-        object[1].center();
+        object[0].center();
       }
       canvas.renderAll();
     }
@@ -620,7 +627,6 @@
 
     // Fabric.js
     canvas.selection = false;
-    // var imgElement = document.getElementById('my-image');
     var imgInstance = new fabric.Image.fromURL("https://i.postimg.cc/XNFmH43D/2.jpg", function(imgObject){
       var filter = new fabric.Image.filters.Blur({
         blur: 0.01
@@ -630,7 +636,12 @@
       canvas.renderAll();
       document.getElementById("canvas").blur = filter;
       imgObject.evented = false;
-      canvas.add(imgObject)
+      // canvas.add(imgObject)
+      canvas.setBackgroundImage(imgObject, canvas.renderAll.bind(canvas), {
+        scaleX: canvas.width / imgObject.width,
+        scaleY: canvas.height / imgObject.height
+      });
+
 
       addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
 
