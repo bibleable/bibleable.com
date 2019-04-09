@@ -414,7 +414,7 @@
           console.log("white or black")
           setActiveProp('fill', 'white')
           console.log("select a background")
-          this.selectBackground(thumbnails[7].src)
+          this.selectBackground(this.thumbnails[7].src)
           console.log("blurry background")
           setBackgroundProp('blur', 7/100)
         },
@@ -441,7 +441,6 @@
           });
         },
         selectBackground: function(value){
-
           var imgInstance = new fabric.Image.fromURL(value, function(imgObject){
             canvas.setBackgroundImage(imgObject, canvas.renderAll.bind(canvas), {
               scaleX: canvas.width / imgObject.width,
