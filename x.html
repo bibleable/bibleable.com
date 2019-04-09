@@ -307,169 +307,9 @@
   <script src="js/canvas-toBlob.js"></script>
 
   <script>
-    var canvas = new fabric.Canvas('canvas');
-    document.getElementById("canvas").fabric = canvas;
 
-    var grid = 20;
-    var cWidth = canvas.getWidth();
-    var cHeight = canvas.getHeight();
-
-    //
-    // CANVAS EVENTS
-    //
-    canvas.on('mouse:down', function (e) {
-      console.log('mouse is down. You should show the lines')
-      for (var i = 0; i < (cWidth / grid); i++) {
-        canvas.add(new fabric.Line([i * grid, 0, i * grid, cWidth], {
-            stroke: '#d1d1d1',
-            selectable: false
-        }));
-        canvas.add(new fabric.Line([0, i * grid, cWidth, i * grid], {
-            stroke: '#d1d1d1',
-            selectable: false
-        }));
-      }
-    });
-
-    canvas.on('mouse:up', function (e) {
-      console.log('mouse is up. You should hide the lines')
-      var objects = canvas.getObjects('line');
-      for (let i in objects) {
-          canvas.remove(objects[i]);
-      }
-    });
-
-    canvas.on('object:moving', function (e) {
-      var cWidth = canvas.getWidth();
-      var obj = e.target;
-      var rect = obj.getBoundingRect();
-
-      // console.log("--------------")
-      // console.log("*center of canvas: " + (cWidth/2))
-      // console.log("*center: " + rect.width/2)
-      // console.log("left: " + rect.left)
-      // console.log("right: " + (rect.left + rect.height))
-      // console.log("top: " + rect.top)
-      // console.log("bottom: " + (rect.top + rect.height))
-      // console.log("width: " +rect.width)
-      // console.log("height: " +rect.height)
-    });
-
-    // CUSTOM OBJECT 
-    fabric.Object.prototype.set({  
-      borderColor: 'tranparent',  
-      cornerColor: 'tranparent',  
-      cornerSize: 0,
-      transparentCorners: true,
-      padding:5,
-      borderDashArray:[2,2]          
-    });
-
-    // CANVAS FUNCTIONS 
-    function setText(value){
-      var canvas = document.getElementById("canvas").fabric;
-      var object = canvas.getObjects()
-      if (!object) return;
-      object[1].text = value
-      centerObject()
-      canvas.renderAll();
-    }
-
-    function setBackgroundProp(name, value) {
-      var canvas = document.getElementById("canvas").fabric;
-      var object = canvas.getObjects()
-      if (!object) return;
-      object[0].filters[0].blur = value
-      object[0].applyFilters()
-      canvas.renderAll();
-    }
-
-    function setActiveProp(name, value) {
-      var canvas = document.getElementById("canvas").fabric;
-      var object = canvas.getObjects()
-      if (!object) return;
-      object[1].set(name, value).setCoords();
-      canvas.renderAll();
-    }
-
-    function centerObject(axis){
-      var canvas = document.getElementById("canvas").fabric;
-      var object = canvas.getObjects()
-      if (!object) return;
-      if(axis == "H"){ // Center Horizontally
-        object[1].centerH();
-      }
-      else if(axis == "V"){ //Center Vertically 
-        object[1].centerV();
-      }
-      else { //Center Horizontally and Vertically
-        object[1].center();
-      }
-      canvas.renderAll();
-    }
-
-    function addText(text) {
-      var text = new fabric.Textbox(text, {
-        lockScalingY: true,
-        lockScalingX: true,
-        height:200,
-        width: 500,
-        align: 'mid', //added
-        textAlign: 'center',
-        fontFamily: 'Margarine',
-        fill: '#333',
-        opacity: 1.0,
-        fontSize: 30,
-        centeredScaling: true,
-        lockScalingX: true,
-      });
-
-      canvas.add(text);
-      text.center();
-    }
-      // http://fabricjs.com/fabric-intro-part-2
-      // Add a save now button
-      //https://stackoverflow.com/questions/30629263/save-client-side-generated-image-on-button-click#30654232
-      // limit the size of the itext
-      // https://stackoverflow.com/questions/45406604/limit-text-input-on-itext-or-textbox#45506259
-
-    // Fabric.js
-    canvas.selection = false;
-    var imgElement = document.getElementById('my-image');
-    var imgInstance = new fabric.Image(imgElement, {
-      evented: false,
-      opacity: 0.85
-    });
-
-    var filter = new fabric.Image.filters.Blur({
-      blur: 0.01
-    });
-
-    imgInstance.filters.push(filter);
-    imgInstance.applyFilters();
-    canvas.renderAll();
-    document.getElementById("canvas").blur = filter;
-
-    canvas.add(imgInstance);
-
-    addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
-
-    var madeby = new fabric.IText("Created with Bibleable.com", {
-      evented: false,
-      fontSize: 22,
-      textAlign: 'center',
-      backgroundColor: '#FFFFFF',
-      lockScalingX: true,
-      lockScalingY: true,
-      top: 600,
-      left: 320 - 120,
-      cornerSize: 20
-    });
-
-    canvas.add(madeby);
-
-    // Vue component
-    new Vue({
+        // Vue component
+        new Vue({
       el: "#app", 
       data: {
         verseHistory: [],
@@ -653,5 +493,181 @@
         this.calculateQRCode()
       }
     });
+
+    var canvas = new fabric.Canvas('canvas');
+    document.getElementById("canvas").fabric = canvas;
+
+    var grid = 20;
+    var cWidth = canvas.getWidth();
+    var cHeight = canvas.getHeight();
+
+    //
+    // CANVAS EVENTS
+    //
+    canvas.on('mouse:down', function (e) {
+      console.log('mouse is down. You should show the lines')
+      for (var i = 0; i < (cWidth / grid); i++) {
+        canvas.add(new fabric.Line([i * grid, 0, i * grid, cWidth], {
+            stroke: '#d1d1d1',
+            selectable: false
+        }));
+        canvas.add(new fabric.Line([0, i * grid, cWidth, i * grid], {
+            stroke: '#d1d1d1',
+            selectable: false
+        }));
+      }
+    });
+
+    canvas.on('mouse:up', function (e) {
+      console.log('mouse is up. You should hide the lines')
+      var objects = canvas.getObjects('line');
+      for (let i in objects) {
+          canvas.remove(objects[i]);
+      }
+    });
+
+    canvas.on('object:moving', function (e) {
+      var cWidth = canvas.getWidth();
+      var obj = e.target;
+      var rect = obj.getBoundingRect();
+
+      // console.log("--------------")
+      // console.log("*center of canvas: " + (cWidth/2))
+      // console.log("*center: " + rect.width/2)
+      // console.log("left: " + rect.left)
+      // console.log("right: " + (rect.left + rect.height))
+      // console.log("top: " + rect.top)
+      // console.log("bottom: " + (rect.top + rect.height))
+      // console.log("width: " +rect.width)
+      // console.log("height: " +rect.height)
+    });
+
+    // CUSTOM OBJECT 
+    fabric.Object.prototype.set({  
+      borderColor: 'tranparent',  
+      cornerColor: 'tranparent',  
+      cornerSize: 0,
+      transparentCorners: true,
+      padding:5,
+      borderDashArray:[2,2]          
+    });
+
+    // CANVAS FUNCTIONS 
+    function setText(value){
+      var canvas = document.getElementById("canvas").fabric;
+      var object = canvas.getObjects()
+      if (!object) return;
+      object[1].text = value
+      centerObject()
+      canvas.renderAll();
+    }
+
+    function setBackgroundProp(name, value) {
+      var canvas = document.getElementById("canvas").fabric;
+      var object = canvas.getObjects()
+      if (!object) return;
+      object[0].filters[0].blur = value
+      object[0].applyFilters()
+      canvas.renderAll();
+    }
+
+    function setActiveProp(name, value) {
+      var canvas = document.getElementById("canvas").fabric;
+      var object = canvas.getObjects()
+      if (!object) return;
+      object[1].set(name, value).setCoords();
+      canvas.renderAll();
+    }
+
+    function centerObject(axis){
+      var canvas = document.getElementById("canvas").fabric;
+      var object = canvas.getObjects()
+      if (!object) return;
+      if(axis == "H"){ // Center Horizontally
+        object[1].centerH();
+      }
+      else if(axis == "V"){ //Center Vertically 
+        object[1].centerV();
+      }
+      else { //Center Horizontally and Vertically
+        object[1].center();
+      }
+      canvas.renderAll();
+    }
+
+    function addText(text) {
+      var text = new fabric.Textbox(text, {
+        lockScalingY: true,
+        lockScalingX: true,
+        height:200,
+        width: 500,
+        align: 'mid', //added
+        textAlign: 'center',
+        fontFamily: 'Margarine',
+        fill: '#333',
+        opacity: 1.0,
+        fontSize: 30,
+        centeredScaling: true,
+        lockScalingX: true,
+      });
+
+      canvas.add(text);
+      text.center();
+    }
+      // http://fabricjs.com/fabric-intro-part-2
+      // Add a save now button
+      //https://stackoverflow.com/questions/30629263/save-client-side-generated-image-on-button-click#30654232
+      // limit the size of the itext
+      // https://stackoverflow.com/questions/45406604/limit-text-input-on-itext-or-textbox#45506259
+
+    // Fabric.js
+    canvas.selection = false;
+    var imgElement = document.getElementById('my-image');
+    // var imgInstance = new fabric.Image(imgElement, {
+    //   evented: false,
+    //   opacity: 0.85
+    // });
+
+    var imgInstance = new fabric.Image.fromURL(imgElement.src, function(imgObject){
+      // var filter = new fabric.Image.filters.Blur({
+      //   blur: 0.01
+      // });
+
+      // this.filters.push(filter);
+      // this.applyFilters();
+      canvas.renderAll();
+      document.getElementById("canvas").blur = filter;
+      imgObject.evented = false;
+      canvas.add(imgObject)
+
+      addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
+
+      var madeby = new fabric.IText("Created with Bibleable.com", {
+        evented: false,
+        fontSize: 22,
+        textAlign: 'center',
+        backgroundColor: '#FFFFFF',
+        lockScalingX: true,
+        lockScalingY: true,
+        top: 600,
+        left: 320 - 120,
+        cornerSize: 20
+      });
+
+      canvas.add(madeby);
+    })
+
+    var filter = new fabric.Image.filters.Blur({
+      blur: 0.01
+    });
+
+    // imgInstance.filters.push(filter);
+    // imgInstance.applyFilters();
+    // canvas.renderAll();
+    // document.getElementById("canvas").blur = filter;
+
+    // canvas.add(imgInstance);
+
+
   </script>
 </html>
