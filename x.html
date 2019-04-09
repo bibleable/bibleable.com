@@ -163,43 +163,57 @@
                   <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     <h5 class="mb-0">
                       <button class="btn collapsed">
-                        <i class="fa fa-search-plus"></i> Font Size
+                        <i class="fa fa-search-plus"></i> Font Settings
                       </button>
                     </h5>
                   </div>
 
                   <div id="collapseThree" class="collapse multi-collapse" aria-labelledby="headingThree">
                     <div class="card-body">
-                      <div>
-                        <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
-                        <input v-model.number="fontsize" type="range" min="18" max="43" value="30" class="slider" id="myRange"> <br>
-                      </div>
+                      <div class="row">
 
-                      <div>
-                        <span>Colour:</span>
-                        <br>
-                        <button @click="selectColor('white')" type="button" class="btn btn-outline-dark btn-sm">
-                          <i class="fa fa-check"></i>  
-                        </button>
-            
-                        <button @click="selectColor('black')"  type="button" class="btn btn-dark btn-sm">
-                          <i class="fa fa-check"></i>  
-                        </button>     
-                      </div>                                  
+                        <div class="col">
+                          <div>
+                            <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
+                            <input v-model.number="fontsize" type="range" min="18" max="43" value="30" class="slider" id="myRange"> <br>
+                          </div>
 
-                      <div>
-                        <span>Align:</span>
-                        <br>
-                        <button @click="selectAlign('left')" type="button" class="btn btn-outline-dark btn-sm">
-                          <i class="fa fa-align-left"></i> 
-                        </button>
-                        <button  @click="selectAlign('center')" type="button" class="btn btn-outline-dark btn-sm">    
-                            <i class="fa fa-align-center"></i> 
-                        </button>
-                        <button @click="selectAlign('right')"  type="button" class="btn btn-outline-dark btn-sm">    
-                            <i class="fa fa-align-right"></i> 
-                        </button>
-                      </div>
+                          <div>
+                            <span>Colour:</span>
+                            <br>
+                            <button @click="selectColor('white')" type="button" class="btn btn-outline-dark btn-sm">
+                              <i class="fa fa-check"></i>  
+                            </button>
+                
+                            <button @click="selectColor('black')"  type="button" class="btn btn-dark btn-sm">
+                              <i class="fa fa-check"></i>  
+                            </button>     
+                          </div>                                  
+
+                          <div>
+                            <span>Align:</span>
+                            <br>
+                            <button @click="selectAlign('left')" type="button" class="btn btn-outline-dark btn-sm">
+                              <i class="fa fa-align-left"></i> 
+                            </button>
+                            <button  @click="selectAlign('center')" type="button" class="btn btn-outline-dark btn-sm">    
+                                <i class="fa fa-align-center"></i> 
+                            </button>
+                            <button @click="selectAlign('right')"  type="button" class="btn btn-outline-dark btn-sm">    
+                                <i class="fa fa-align-right"></i> 
+                            </button>
+                          </div>
+                        </div>  <!-- col-->
+
+                        <div class="col">
+                          <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
+                          <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
+      
+                          <br>
+                          <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
+                          <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                      
+                        </div> <!-- col-->
+                      </div> <!-- row -->
 
                       <!-- <div>
                         <span>Actions:</span>
@@ -212,11 +226,12 @@
                             <i class="fa fa-undo"></i> undo 
                         </button>                                
                       </div> -->
+
                     </div>
                   </div>
                 </div> <!--class="card"-->
 
-                <div class="card">
+                <!-- <div class="card">
                   <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                     <h5 class="mb-0">
                       <button class="btn collapsed">
@@ -235,7 +250,9 @@
                         <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                      
                     </div>
                   </div>  
-                </div> <!--class="card"-->
+                </div> 
+                 -->
+                <!--class="card"-->
 
                 <div class="card">
                   <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="false" aria-controls="collapseHistory">
