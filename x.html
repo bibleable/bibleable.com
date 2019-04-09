@@ -36,7 +36,7 @@
         <div class="row">
           <div class="col">
             <canvas id="canvas" width="550" height="550"></canvas>
-            <img id="my-image" src="https://i.postimg.cc/XNFmH43D/2.jpg" alt=""> 
+            <!-- <img id="my-image" src="" alt="">  -->
           </div>
 
             <div class="col border">
@@ -620,8 +620,8 @@
 
     // Fabric.js
     canvas.selection = false;
-    var imgElement = document.getElementById('my-image');
-    var imgInstance = new fabric.Image.fromURL(imgElement.src, function(imgObject){
+    // var imgElement = document.getElementById('my-image');
+    var imgInstance = new fabric.Image.fromURL("https://i.postimg.cc/XNFmH43D/2.jpg", function(imgObject){
       var filter = new fabric.Image.filters.Blur({
         blur: 0.01
       });
