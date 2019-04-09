@@ -3,6 +3,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <title>Bibleable - Bible Verse For Everyone</title>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -11,16 +12,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
   <link rel="stylesheet" href="./css/bibleable.css" crossorigin="anonymous">
-  <title>Bibleable - Bible Verse For Everyone</title>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137813950-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-  
-      gtag('config', 'UA-137813950-1');
-    </script>  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137813950-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-137813950-1');
+  </script>  
 </head>
 
 <body>
@@ -403,18 +401,18 @@
         enterVerse: function(value){
           setText(value)
         },
-          getVerse: function(){
-            var search = escape(this.question.trim())
-            var vm = this
-            axios.get('https://bible-api.com/' + search)
-              .then(function (response) {
-                setText(response.data.text + " - " + response.data.reference)
-                vm.verseHistory.push(response.data.text + " - " + response.data.reference)
-                vm.answer = ""
-              })
-              .catch(function (error) {
-                vm.answer = 'Cannot find the verse. Did you type correctly?' //+ error
-              })
+        getVerse: function(){
+          var search = escape(this.question.trim())
+          var vm = this
+          axios.get('https://bible-api.com/' + search)
+            .then(function (response) {
+              setText(response.data.text + " - " + response.data.reference)
+              vm.verseHistory.push(response.data.text + " - " + response.data.reference)
+              vm.answer = ""
+            })
+            .catch(function (error) {
+              vm.answer = 'Cannot find the verse. Did you type correctly?' //+ error
+            })
           },
           getAnswer: _.debounce(function () {
               // console.log(this.question)
@@ -623,18 +621,12 @@
     // Fabric.js
     canvas.selection = false;
     var imgElement = document.getElementById('my-image');
-    // var imgInstance = new fabric.Image(imgElement, {
-    //   evented: false,
-    //   opacity: 0.85
-    // });
-
     var imgInstance = new fabric.Image.fromURL(imgElement.src, function(imgObject){
-      // var filter = new fabric.Image.filters.Blur({
-      //   blur: 0.01
-      // });
-
-      // this.filters.push(filter);
-      // this.applyFilters();
+      var filter = new fabric.Image.filters.Blur({
+        blur: 0.01
+      });
+      imgObject.filters.push(filter)
+      imgObject.applyFilters()
       canvas.renderAll();
       document.getElementById("canvas").blur = filter;
       imgObject.evented = false;
@@ -642,7 +634,7 @@
 
       addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
 
-      var madeby = new fabric.IText("Created with Bibleable.com", {
+      var madeByBibleable = new fabric.IText("Created with Bibleable.com", {
         evented: false,
         fontSize: 22,
         textAlign: 'center',
@@ -654,20 +646,8 @@
         cornerSize: 20
       });
 
-      canvas.add(madeby);
+      canvas.add(madeByBibleable);
     })
-
-    var filter = new fabric.Image.filters.Blur({
-      blur: 0.01
-    });
-
-    // imgInstance.filters.push(filter);
-    // imgInstance.applyFilters();
-    // canvas.renderAll();
-    // document.getElementById("canvas").blur = filter;
-
-    // canvas.add(imgInstance);
-
 
   </script>
 </html>
