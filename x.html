@@ -36,7 +36,6 @@
         <div class="row">
           <div class="col">
             <canvas id="canvas" width="550" height="550"></canvas>
-            <!-- <img id="my-image" src="" alt="">  -->
           </div>
 
             <div class="col border">
@@ -47,12 +46,12 @@
                   <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">Save to computer</a>
-                  <a class="dropdown-item" href="#">Share on facebook</a>
-                  <a class="dropdown-item" href="#">Share on twitter</a>
+                  <a class="dropdown-item" href="#">Save to Computer</a>
+                  <a class="dropdown-item" href="#">Share on Facebook</a>
+                  <a class="dropdown-item" href="#">Share on Twitter</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Share on whatsapp</a>
-                  <a class="dropdown-item" href="#">Share via email</a>
+                  <a class="dropdown-item" href="#">Share on Whatsapp</a>
+                  <a class="dropdown-item" href="#">Share via Email</a>
                 </div>
               </div>
         
@@ -213,44 +212,9 @@
                         </div> <!-- col-->
                       </div> <!-- row -->
 
-                      <!-- <div>
-                        <span>Actions:</span>
-                        <button type="button" class="btn btn-outline-dark btn-sm">
-                          redo
-                          <i class="fa fa-repeat"></i> 
-                        </button>
-            
-                        <button type="button" class="btn btn-outline-dark btn-sm">
-                            <i class="fa fa-undo"></i> undo 
-                        </button>                                
-                      </div> -->
-
                     </div>
                   </div>
                 </div> <!--class="card"-->
-
-                <!-- <div class="card">
-                  <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    <h5 class="mb-0">
-                      <button class="btn collapsed">
-                        <i class="fa fa-sliders"></i> More Settings
-                      </button>
-                    </h5>
-                  </div>
-
-                  <div id="collapseFour" class="collapse multi-collapse" aria-labelledby="headingFour">
-                    <div class="card-body">
-                        <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
-                        <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
-    
-                        <br>
-                        <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
-                        <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                      
-                    </div>
-                  </div>  
-                </div> 
-                 -->
-                <!--class="card"-->
 
                 <div class="card">
                   <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="false" aria-controls="collapseHistory">
@@ -312,6 +276,10 @@
         verseHistory: [],
         question: "", 
         answer: "",
+        fontFamilies: ["margarine","roboto", "baloo chettan", 
+                        "inconsolata", "Titillium Web", "Mukta",
+                        "Muli", "indie flower", "Anton", "Lobster",
+                        "Pacifico", "Noto Sans JP"],
         thumbnails: [{index: 1, fontColor: "white", src: "https://i.postimg.cc/tgKDWn1R/1.jpg", thumb: "images/thumbnails/1.JPG"},
           {index: 2, fontColor: "black", src: "https://i.postimg.cc/XNFmH43D/2.jpg", thumb: "images/thumbnails/2.JPG"},
           {index: 3, fontColor: "white", src: "https://i.postimg.cc/pdp1DtqC/3.jpg", thumb: "images/thumbnails/3.JPG"},
@@ -407,16 +375,12 @@
             1000
           ),
         magic_edit: function(){
-
-          this.selectFont('Titillium Web')
-
+          var randomFont = Math.floor((Math.random() * 12) + 1);
+          this.selectFont(this.fontFamilies[randomFont])
           centerObject("C")
-
           var randomThumb = Math.floor((Math.random() * 21) + 1);
           setActiveProp('fill', this.thumbnails[randomThumb].fontColor)
-
           this.selectBackground(this.thumbnails[randomThumb].src)
-
           setBackgroundProp('blur', 7/100)
         },
         toggleAccordion: function(){
@@ -464,7 +428,7 @@
           this.datadata = img;
           var vm = this
           setTimeout(function(){
-              vm.datadata = img //vm.calculateQRCode()
+            vm.datadata = img //vm.calculateQRCode()
           }, 2000);
         }
       },
@@ -578,7 +542,7 @@
       canvas.renderAll();
     }
 
-    function addText(text, textColor) {
+    function addText(text, textColor, textFontFamily) {
       var text = new fabric.Textbox(text, {
         lockScalingY: true,
         lockScalingX: true,
@@ -586,7 +550,7 @@
         width: 500,
         align: 'mid', //added
         textAlign: 'center',
-        fontFamily: 'Margarine',
+        fontFamily: textFontFamily,
         fill: textColor,
         opacity: 1.0,
         fontSize: 30,
@@ -597,49 +561,57 @@
       canvas.add(text);
       text.center();
     }
-      // http://fabricjs.com/fabric-intro-part-2
-      // Add a save now button
-      //https://stackoverflow.com/questions/30629263/save-client-side-generated-image-on-button-click#30654232
-      // limit the size of the itext
-      // https://stackoverflow.com/questions/45406604/limit-text-input-on-itext-or-textbox#45506259
+    // http://fabricjs.com/fabric-intro-part-2
+    // Add a save now button
+    //https://stackoverflow.com/questions/30629263/save-client-side-generated-image-on-button-click#30654232
+    // limit the size of the itext
+    // https://stackoverflow.com/questions/45406604/limit-text-input-on-itext-or-textbox#45506259
 
     // Fabric.js
     canvas.selection = false;
     var img = new Image()
-    var randomThumb = Math.floor((Math.random() * 21) + 1);
+    var randomThumb = Math.floor((Math.random() * 20) + 1);
+    var randomFont= Math.floor((Math.random() * 11) + 1);
+    console.log(randomThumb)
+    console.log(randomFont)
+
     var thumbImages = vvv.thumbnails
+    var fontFamilies = vvv.fontFamilies
+
     img.src = thumbImages[randomThumb].src
     img.onload = function() {
-        var imgInstance = new fabric.Image.fromURL(img.src, function(imgObject){
-        var filter = new fabric.Image.filters.Blur({
-          blur: 0.01
-        });
-        imgObject.filters.push(filter)
-        imgObject.applyFilters()
-        canvas.renderAll();
-        document.getElementById("canvas").blur = filter;
-        imgObject.evented = false;
+      var imgInstance = new fabric.Image.fromURL(img.src, function(imgObject){
+      var filter = new fabric.Image.filters.Blur({
+        blur: 0.01
+      });
+      imgObject.filters.push(filter)
+      imgObject.applyFilters()
+      canvas.renderAll();
+      document.getElementById("canvas").blur = filter;
+      imgObject.evented = false;
 
-        canvas.setBackgroundImage(imgObject, canvas.renderAll.bind(canvas), {
-          scaleX: canvas.width / imgObject.width,
-          scaleY: canvas.height / imgObject.height
-        });
+      canvas.setBackgroundImage(imgObject, canvas.renderAll.bind(canvas), {
+        scaleX: canvas.width / imgObject.width,
+        scaleY: canvas.height / imgObject.height
+      });
 
-        addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16", thumbImages[randomThumb].fontColor)
+      addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16", 
+              thumbImages[randomThumb].fontColor,
+              fontFamilies[randomFont])
 
-        var madeByBibleable = new fabric.IText("Created with Bibleable.com", {
-          evented: false,
-          fontSize: 22,
-          textAlign: 'center',
-          backgroundColor: '#FFFFFF',
-          lockScalingX: true,
-          lockScalingY: true,
-          top: 600,
-          left: 320 - 120,
-          cornerSize: 20
-        });
+      var madeByBibleable = new fabric.IText("Created with Bibleable.com", {
+        evented: false,
+        fontSize: 22,
+        textAlign: 'center',
+        backgroundColor: '#FFFFFF',
+        lockScalingX: true,
+        lockScalingY: true,
+        top: 600,
+        left: 320 - 120,
+        cornerSize: 20
+      });
 
-        canvas.add(madeByBibleable);
+      canvas.add(madeByBibleable);
       },{ crossOrigin: 'Anonymous' })
     }
   </script>
