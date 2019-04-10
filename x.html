@@ -306,7 +306,7 @@
 
   <script>
     // Vue component
-    new Vue({
+    var vvv = new Vue({
       el: "#app", 
       data: {
         verseHistory: [],
@@ -407,17 +407,16 @@
             1000
           ),
         magic_edit: function(){
-          console.log("pick the best font")
-          this.selectFont('Titillium Web')
-          console.log("centering")
-          centerObject("C")
-          console.log("white or black")
-          var randomThumb = Math.floor((Math.random() * 21) + 1);
 
+          this.selectFont('Titillium Web')
+
+          centerObject("C")
+
+          var randomThumb = Math.floor((Math.random() * 21) + 1);
           setActiveProp('fill', this.thumbnails[randomThumb].fontColor)
-          console.log("select a background")
+
           this.selectBackground(this.thumbnails[randomThumb].src)
-          console.log("blurry background")
+
           setBackgroundProp('blur', 7/100)
         },
         toggleAccordion: function(){
@@ -449,13 +448,6 @@
               scaleY: canvas.height / imgObject.height
             });
           }, { crossOrigin: 'Anonymous' });
-
-          // var canvas = document.getElementById("canvas").fabric;
-          // var object = canvas.getObjects()
-          // object[0].setSrc(value, function() {
-          //   canvas.renderAll();
-          // });
-          // canvas.renderAll();
         },
         centerTextH: function(){
           centerObject("H")
@@ -570,7 +562,8 @@
       var canvas = document.getElementById("canvas").fabric;
       var object = canvas.getObjects()
       if (!object) return;
-      if(axis == "C"){
+
+      if(axis == "C"){ // Center it centrally
         object[0].center();
       }
 
@@ -582,11 +575,10 @@
         object[0].centerV();
       }
       
-    
       canvas.renderAll();
     }
 
-    function addText(text) {
+    function addText(text, textColor) {
       var text = new fabric.Textbox(text, {
         lockScalingY: true,
         lockScalingX: true,
@@ -595,7 +587,7 @@
         align: 'mid', //added
         textAlign: 'center',
         fontFamily: 'Margarine',
-        fill: '#333',
+        fill: textColor,
         opacity: 1.0,
         fontSize: 30,
         centeredScaling: true,
@@ -614,11 +606,11 @@
     // Fabric.js
     canvas.selection = false;
     var img = new Image()
-    // img.crossOrigin = "anonymous";
-    img.src = "https://i.postimg.cc/XNFmH43D/2.jpg"
+    var randomThumb = Math.floor((Math.random() * 21) + 1);
+    var thumbImages = vvv.thumbnails
+    img.src = thumbImages[randomThumb].src
     img.onload = function() {
         var imgInstance = new fabric.Image.fromURL(img.src, function(imgObject){
-        // imgObject.crossOrigin = "anonymous"
         var filter = new fabric.Image.filters.Blur({
           blur: 0.01
         });
@@ -633,7 +625,7 @@
           scaleY: canvas.height / imgObject.height
         });
 
-        addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16")
+        addText("For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life. - John 3:16", thumbImages[randomThumb].fontColor)
 
         var madeByBibleable = new fabric.IText("Created with Bibleable.com", {
           evented: false,
