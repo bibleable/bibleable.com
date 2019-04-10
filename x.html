@@ -375,10 +375,10 @@
             1000
           ),
         magic_edit: function(){
-          var randomFont = Math.floor((Math.random() * 12) + 1);
+          var randomFont = Math.floor((Math.random() * 11) + 1);
           this.selectFont(this.fontFamilies[randomFont])
           centerObject("C")
-          var randomThumb = Math.floor((Math.random() * 21) + 1);
+          var randomThumb = Math.floor((Math.random() * 20) + 1);
           setActiveProp('fill', this.thumbnails[randomThumb].fontColor)
           this.selectBackground(this.thumbnails[randomThumb].src)
           setBackgroundProp('blur', 7/100)
