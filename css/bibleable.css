@@ -1,3 +1,11 @@
+#grey {
+  color: #777;
+}
+
+.visible-text {
+  font-size: 20px;
+}
+
 #searchbar {
   font-size: 28px;
   font-weight: 800;
