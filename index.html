@@ -3,9 +3,11 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
     <title>Bibleable - Bible Verse For Everyone</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/bibleable.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/fonts.css" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Margarine|Roboto|Baloo+Chettan|Germania+One|Inconsolata|Indie+Flower|Lilita+One|Anton|Lobster|Mukta|Muli|Noto+Sans+JP|Pacifico|Titillium+Web" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     
@@ -25,8 +27,11 @@
   </head>
 
   <body>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <strong>✝ Bibleable is a FREE bible verse editor!</strong> Try and share it with your friends.
+    <div class="alert fix-alert bg-blue-darker text-white alert-dismissible fade show" role="alert">
+      <strong>✝ Bibleable is a FREE bible verse maker!</strong> Try and share it with your friends.
+      <button class="bg-blue hover:bg-blue-dark text-white font-bold py-1 px-3 rounded-full">
+        Share
+      </button>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -42,28 +47,45 @@
           </v-select> -->
           <div class="col-sm-1"></div>
           <div id="searchbar-div" class="col-sm-10">    
-            <p>{{answer}}</p>    
-            <input id="searchbar" v-model="question" type="text" placeholder=" Search Any Bible Verse">
-            <div id="searchbar-action">
-              <button class="btn btn-outline-dark btn-lg" @click="getVerse()"><i class="fa fa-search"></i></button>
-              <button class="btn btn-outline-dark btn-lg" @click="clear()">clear</button>        
+              <p>{{answer}}</p>    
+
+            <div class="row">
+              <div class="col-sm-10">
+                <input id="searchbar" v-model="question" type="text" placeholder="Which bible verse is on your mind now?"> <br>
+
+                Popular verses: 
+                <button @click="enterSearchVerse('Roman 5:1')" class="bg-transparent hover:bg-blue text-blue-dark hover:text-white py-1 px-1 border border-blue hover:border-transparent rounded-full text-xs">
+                  Roman 5:1</button>
+                <button @click="enterSearchVerse('Psalm 136:1')" class="bg-transparent hover:bg-blue text-blue-dark hover:text-white py-1 px-1 border border-blue hover:border-transparent rounded-full text-xs">
+                  Psalm 136:1</button>
+                <button @click="enterSearchVerse('John 3:16')" class="bg-transparent hover:bg-blue text-blue-dark hover:text-white py-1 px-1 border border-blue hover:border-transparent rounded-full text-xs">
+                  John 3:16</button>
+                <button @click="enterSearchVerse('Matthew 6:33')" class="bg-transparent hover:bg-blue text-blue-dark hover:text-white py-1 px-1 border border-blue hover:border-transparent rounded-full text-xs">
+                  Matthew 6:33</button>
+              </div>
+              
+              <div class="col-sm-2" id="searchbar-action">
+                <button class="text-2xl bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" @click="getVerse()"><i class="fa fa-search"></i></button>
+                <button class="text-2xl bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" @click="clear()">clear</button>        
+              </div>
             </div>
-            <div class="col-sm-1"></div>
           </div>
+          <div class="col-sm-1"></div>
         </div>
 
         <div class="row">
           <div class="col-sm-1"></div>
-
           <div class="col-sm-10">
             <div class="row">
               <div class="col">
-                <canvas id="canvas" width="550" height="550"></canvas>
+                <canvas id="canvas" width="550" height="550">
+                </canvas>
               </div>
 
               <div class="col border">                    
                 <div class="btn-group">
-                  <button id="downloader" @click="download()" type="button" class="btn btn-success">Save Image to Desktop</button>
+                  <button id="downloader" @click="download()" class="bg-green hover:bg-blue-dark text-white font-bold py-2 px-4"
+                      type="button">Save Image to Desktop</button>
                   <button type="button" class="btn btn-lg btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
@@ -77,11 +99,9 @@
                   </div>
                 </div>
           
-                <button title="magic edit" @click="magic_edit()" class="btn btn-outline-dark btn-lg"><i class="fa fa-magic"></i></button>
-                <!-- <button title="expand" @click="toggleAccordion()" class="btn btn-outline-dark btn-sm"><i class="fa fa-expand"></i></button>
-                <button type="button" class="btn btn-outline-dark btn-sm">
-                  <i class="fa fa-undo"></i> undo 
-                </button>                             -->
+                <button title="magic edit" @click="magic_edit()" 
+                        class="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-lg"><i class="fa fa-magic"></i></button>
+
                 <hr>
                 <div id="accordion">
                   <div class="card">
@@ -97,56 +117,56 @@
                       <div class="card-body">                          
                         <div class="row">
                           <div class="col">
-                            <button @click="selectFont('margarine')" type="button" class="btn btn-outline-dark">
+                            <button @click="selectFont('margarine')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">
                               <span id="margarine">Margarine</span>
                             </button>
                             <br>
-                            <button @click="selectFont('roboto')" type="button" class="btn btn-outline-dark">
+                            <button @click="selectFont('roboto')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">
                               <span id="roboto">Roboto</span>
                             </button>
                             <br>
-                            <button @click="selectFont('baloo chettan')" type="button" class="btn btn-outline-dark">                              
+                            <button @click="selectFont('baloo chettan')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                              
                               <span id="baloo">Baloo Chettan</span>
                             </button>
                             <br>
 
-                            <button @click="selectFont('inconsolata')" type="button" class="btn btn-outline-dark">                              
+                            <button @click="selectFont('inconsolata')" type="button"  class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                              
                               <span id="inconsolata">Inconsolata</span>
                             </button>
                           </div>
 
                           <div class="col">
-                            <button id="titillium" @click="selectFont('Titillium Web')" type="button" class="btn btn-outline-dark">                              
+                            <button id="titillium" @click="selectFont('Titillium Web')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                              
                               <span id="titillium">Titillium Web</span>
                             </button>  
                             <br>
-                            <button @click="selectFont('Mukta')" type="button" class="btn btn-outline-dark">                              
+                            <button @click="selectFont('Mukta')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                              
                               <span id="mukta">Mukta</span>
                             </button>
                             <br>
-                            <button @click="selectFont('Muli')" type="button" class="btn btn-outline-dark">                                
+                            <button @click="selectFont('Muli')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                                
                               <span id="muli">Muli</span>
                             </button>
                             <br>
-                            <button @click="selectFont('indie flower')" type="button" class="btn btn-outline-dark">                              
+                            <button @click="selectFont('indie flower')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                              
                               <span id="indie">Indie</span>
                             </button>
                           </div>
 
                           <div class="col">
-                            <button id="anton" @click="selectFont('Anton')"  type="button" class="btn btn-outline-dark">                                
+                            <button id="anton" @click="selectFont('Anton')"  type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                                
                               <span id="anton">Anton</span>
                             </button>
                             <br>
-                            <button @click="selectFont('Lobster')" type="button" class="btn btn-outline-dark">                                
+                            <button @click="selectFont('Lobster')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                                
                               <span id="lobster">Lobster</span>
                             </button>
                             <br>
-                            <button @click="selectFont('Pacifico')" type="button" class="btn btn-outline-dark">                                
+                            <button @click="selectFont('Pacifico')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                                
                               <span id="pacifico">Pacifico</span>
                             </button>
                             <br>
-                            <button @click="selectFont('Noto Sans JP')"  type="button" class="btn btn-outline-dark">                                
+                            <button @click="selectFont('Noto Sans JP')"  type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                                
                               <span id="noto">Noto Sans JP</span>
                             </button>
                           </div>
@@ -168,7 +188,7 @@
                       <div class="card-body">
                         <div class="row">
                           <div class="col">
-                            <img class="thumbnails" v-for="image in thumbnails" @click="selectBackground(image.src)" :src="image.thumb" width="40" height="40" alt="">                                 
+                            <img class="thumbnails" v-for="image in thumbnails" @click="selectBackground(image.src)" :src="image.thumb" width="50" height="50" alt="">                                 
                           </div>
                         </div>
                       </div> <!--class="card-body"-->
@@ -196,11 +216,11 @@
                             <div>
                               <span>Colour:</span>
                               <br>
-                              <button @click="selectColor('white')" type="button" class="btn btn-outline-dark btn-sm">
+                              <button @click="selectColor('white')" type="button" class="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-sm">
                                 <i class="fa fa-check"></i>  
                               </button>
                   
-                              <button @click="selectColor('black')"  type="button" class="btn btn-dark btn-sm">
+                              <button @click="selectColor('black')"  type="button" class="bg-black text-white font-semibold hover:text-red py-2 px-4 border border-black hover:border-white rounded" classX="btn btn-dark btn-sm">
                                 <i class="fa fa-check"></i>  
                               </button>     
                             </div>                                  
@@ -208,13 +228,13 @@
                             <div>
                               <span>Align:</span>
                               <br>
-                              <button @click="selectAlign('left')" type="button" class="btn btn-outline-dark btn-sm">
+                              <button @click="selectAlign('left')" type="button" class="bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-sm">
                                 <i class="fa fa-align-left"></i> 
                               </button>
-                              <button  @click="selectAlign('center')" type="button" class="btn btn-outline-dark btn-sm">    
+                              <button  @click="selectAlign('center')" type="button" class="bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-sm">    
                                   <i class="fa fa-align-center"></i> 
                               </button>
-                              <button @click="selectAlign('right')"  type="button" class="btn btn-outline-dark btn-sm">    
+                              <button @click="selectAlign('right')"  type="button" class="bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-sm">    
                                   <i class="fa fa-align-right"></i> 
                               </button>
                             </div>
@@ -273,9 +293,6 @@
                   <a href="./index.html">Editor</a> |
                   <a href="./about.html">About</a> |
                   <a href="./day-verse.html">Day Verse</a>
-                  <!-- <a href="./about.html">Donate</a>
-                  <a href="./about.html">Share</a>
-                  <a href="./about.html">FAQ</a> -->
                 </span>
               </div>
             </footer>

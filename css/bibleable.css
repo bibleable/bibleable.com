@@ -1,3 +1,14 @@
+input:focus {
+  outline: none;
+}
+
+input#searchbar {
+  border-bottom: 1px solid #555;
+}
+.fix-alert {
+  border-radius: 0px;
+}
+
 #grey {
   color: #777;
 }
@@ -9,8 +20,9 @@
 #searchbar {
   font-size: 28px;
   font-weight: 800;
-  width: 80%;
+  width: 100%;
   height: 50px;
+  /* border: 1px solid black; */
 }
 
 #searchbar-div {
@@ -19,7 +31,7 @@
 
 div#searchbar-action {
   display: inline-block;
-  width: 15%;
+  width: 100%;
   padding-bottom: 14px;
   margin-top: 10px;
   /* border: 1px solid black; */
@@ -59,65 +71,6 @@ img.thumbnails:hover {
   border-radius: 7px;
 }
 
-#my-image{
-  display:none;
-}
 canvas {
   border: 1px solid black;
-}
-
-span#margarine {
-  font-family: 'margarine';
-}
-
-span#indie {
-  font-family: 'Indie Flower';
-}
-
-span#lilita {
-  font-family: 'Lilita One';
-}
-span#roboto {
-  font-family: 'roboto';
-}
-
-span#baloo {
-  font-family: 'baloo chettan';
-}
-
-span#germania {
-  font-family: 'Germania One';
-}
-
-span#inconsolata {
-  font-family: 'Inconsolata';
-}
-
-/* NEW FONT */
-span#titillium {
-  font-family: 'Titillium Web', sans-serif;
-}
-
-span#mukta {
-  font-family: 'Mukta', sans-serif;
-}
-
-span#muli {
-  font-family: 'Muli', sans-serif;
-}
-
-span#anton {
-  font-family: 'Anton', sans-serif;
-}
-
-span#lobster {
-  font-family: 'Lobster', cursive;
-}
-
-span#pacifico {
-  font-family: 'Pacifico', cursive;
-}
-
-span#noto {
-  font-family: 'Noto Sans JP', sans-serif;
 }

@@ -83,6 +83,10 @@
         }
       },
       methods: {
+        enterSearchVerse: function(value){   
+          this.question = value    
+          this.answer = ''   
+        },
         something: function(search, loading){
           console.log(search)
         },
