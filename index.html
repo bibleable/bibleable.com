@@ -62,11 +62,13 @@
                   John 3:16</button>
                 <button @click="enterSearchVerse('Matthew 6:33')" class="bg-transparent hover:bg-blue text-blue-dark hover:text-white py-1 px-1 border border-blue hover:border-transparent rounded-full text-xs">
                   Matthew 6:33</button>
+                <button @click="enterSearchVerse('Exodus 20:3')" class="bg-transparent hover:bg-blue text-blue-dark hover:text-white py-1 px-1 border border-blue hover:border-transparent rounded-full text-xs">
+                  Exodus 20:3</button>
               </div>
               
               <div class="col-sm-2" id="searchbar-action">
-                <button class="text-2xl bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" @click="getVerse()"><i class="fa fa-search"></i></button>
-                <button class="text-2xl bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" @click="clear()">clear</button>        
+                <button class="text-3xl bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" @click="getVerse()"><i class="fa fa-search"></i></button>
+                <button class="text-3xl bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" @click="clear()">clear</button>        
               </div>
             </div>
           </div>
@@ -100,7 +102,7 @@
                 </div>
           
                 <button title="magic edit" @click="magic_edit()" 
-                        class="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-lg"><i class="fa fa-magic"></i></button>
+                        class="text-xl bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-lg"><i class="fa fa-magic"></i></button>
 
                 <hr>
                 <div id="accordion">
@@ -282,7 +284,7 @@
 
           <div class="col-sm-1"></div>
         </div>    
-
+        <hr>
         <div class="row">
           <div class="col-1"></div>
           <div class="col-10">

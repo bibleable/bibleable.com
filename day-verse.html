@@ -17,7 +17,7 @@
     </script>
     <style>
       #mannaverse {
-        font-size: 50px;
+        font-size: 33px;
         font-weight: bold;
         margin-bottom: 10px;
       }
@@ -42,26 +42,56 @@
     </div>
         
     <div class="container-fluid">
-      <div class="border">
+
+        <div class="max-w-sm rounded overflow-hidden shadow-lg">
+          <img class="w-full" src="https://tailwindcss.com/img/card-top.jpg" alt="Sunset in the mountains">
+          <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">Verse of the day</div>
+            <p class="text-grey-darker text-base">
+                <div id="ourmanna-verse">Loading...</div>
+                <span id="grey">powered by ourmanna.com</span>
+                <script src="https://www.ourmanna.com/verses/api/js/" type="text/javascript"></script>
+            </p>
+          </div>
+          <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">Please help us to spread the word:
+              <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Share a bible verse today using bibleable" data-url="http://bibleable.com" data-related="bibleable" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <br>
+              <div class="fb-share-button" data-href="https://bibleable.com" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbibleable.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+            </div>
+  
+            <!-- <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#photography</span>
+            <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#travel</span>
+            <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">#winter</span> -->
+          </div>
+        </div>
+
+      <!-- <div class="border">
         <h1><u>Verse of the day</u></h1>
         <div id="ourmanna-verse">Loading...</div>
         <span id="grey">powered by ourmanna.com</span>
         <script src="https://www.ourmanna.com/verses/api/js/" type="text/javascript"></script>
-      </div>
+      </div> -->
     </div> <!-- container-fluid -->
   
-      <footer class="footer">
-        <div class="container-fluid">
-          <span class="text-muted">
-            © Bibleable Project
-            <a href="./index.html">Editor</a> |
-            <a href="./about.html">About</a> |
-            <a href="./day-verse.html">Day Verse</a>
-            <!-- <<a href="./about.html">Share</a>
-            <a href="./about.html">FAQ</a> -->
-          </span>
-        </div>
-      </footer>
+    <hr>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-10">
+        <footer class="footer">
+          <div class="container-fluid">
+            <span class="text-muted">
+              © Bibleable Project
+              <a href="./index.html">Editor</a> |
+              <a href="./about.html">About</a> |
+              <a href="./day-verse.html">Day Verse</a>
+            </span>
+          </div>
+        </footer>
+      </div>
+      <div class="col-1"></div>
+    </div>
+    
     </body>
   
   </html>

@@ -3,6 +3,7 @@ input:focus {
 }
 
 input#searchbar {
+
   border-bottom: 1px solid #555;
 }
 .fix-alert {
