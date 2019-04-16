@@ -50,6 +50,12 @@ img.thumbnails:hover {
   padding: 20px;
 }
 
+.fb-share-button a {
+  background-color: #365899;
+  color: white;
+  padding: 15px;
+}
+
 .close {
   float: right;
   font-size: 2.4rem;
