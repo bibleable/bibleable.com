@@ -54,7 +54,7 @@ img.thumbnails:hover {
   background-color: #365899;
   color: white;
   font-size: 16px;
-  padding: 10px 10px 5px 5px;
+  padding: 5px 10px 5px 10px ;
 } 
 .close {
   float: right;
