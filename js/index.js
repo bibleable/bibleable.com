@@ -271,6 +271,33 @@
       // canvas.renderAll();
     }
 
+    //use https://foliotek.github.io/Croppie/ to generate a cropped background
+    function previewFile(){
+      var preview = document.querySelector('img'); //selects the query named img
+      var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+      var reader  = new FileReader();
+
+      reader.onloadend = function () {
+        // console.log(reader.result)
+        var imgInstance = new fabric.Image.fromURL(reader.result, function(imgObject){
+          canvas.setBackgroundImage(imgObject, canvas.renderAll.bind(canvas), {
+            scaleX: canvas.width / imgObject.width,
+            scaleY: canvas.height / imgObject.height
+          });
+        }, { crossOrigin: 'Anonymous' });
+
+          preview.src = reader.result;
+      }
+
+      if (file) {
+        // console.log(file)
+
+          reader.readAsDataURL(file); //reads the data as a URL
+      } else {
+          preview.src = "";
+      }
+    }
+
     function setActiveProp(name, value) {
       var canvas = document.getElementById("canvas").fabric;
       var object = canvas.getObjects()
