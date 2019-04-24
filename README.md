@@ -1,14 +1,13 @@
 # bibleable.com
-bibleable.com 
 
-An open-source bible verse photo editor. 
+An open-source bible verse maker. 
 
 Share the word of God, one verse at a time. 
 
 ## Built with: 
-Vue.js 
-bible-api.com 
-Fabrics.js
+- Vue.js 
+- bible-api.com 
+- Fabrics.js
 
 ### TODO 
 
