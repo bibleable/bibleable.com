@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="js/detectmobilebrowser.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="canonical" href="http://bibleable.com" />
+    <link rel="canonical" href="http://www.bibleable.com" />
+    <link rel="canonical" href="https://bibleable.com" />
+    <link rel="canonical" href="https://www.bibleable.com" />
+
+    <title>Bibleable - Bible Verse For Everyone</title>
+    <meta name="description" content="Bibleable project is an online project to create bible verse images for free. All images can be shared on social media, websites, messages, slides or even notes. The mission of this project is to share the word of God, one verse at a time.">
+    <meta name="keywords" CONTENT="bibleable, bible able, bible verse for everyone">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Twitter -->
+    <meta name="twitter:card" content="Bibleable project is an online project to create bible verse images for free." />
+    <meta name="twitter:site" content="@bibleable" />
+    <!-- Open Graph -->
+    <meta property="og:url" content="http://bibleable.com/" />
+    <meta property="og:title" content="Bible Verse for Everyone" />
+    <meta property="og:description" content="Bibleable project is an online project to create bible verse images for free. All images can be shared on social media, websites, messages, slides or even notes. The mission of this project is to share the word of God, one verse at a time." />
+    <meta property="og:image" content="./images/background.png" />
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/bibleable.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/fonts.css" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Margarine|Roboto|Baloo+Chettan|Germania+One|Inconsolata|Indie+Flower|Lilita+One|Anton|Lobster|Mukta|Muli|Noto+Sans+JP|Pacifico|Titillium+Web" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/css/swiper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.7/js/swiper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-awesome-swiper@3.1.2/dist/vue-awesome-swiper.js"></script>
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js" crossorigin="anonymous"></script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137813950-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-137813950-1');
+    </script>  
+  </head>
+
+  <body>
+    <div class="alert fix-alert bg-blue-darker text-white alert-dismissible fade show" role="alert">
+      <strong>✝ Bibleable is a FREE bible verse maker!</strong> Try and share it with your friends.
+      <button data-toggle="modal" data-target=".bd-example-modal-sm" class="bg-blue hover:bg-blue-dark text-white font-bold py-1 px-3 rounded-full">
+        Share
+      </button>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content text-black">
+            <div class="px-6 py-4">
+              <div class="font-bold text-xl mb-2">Please help to spread the word: <br>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Share a bible verse today using bibleable" data-url="http://bibleable.com" data-related="bibleable" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <br>
+                <div class="fb-share-button" data-href="https://bibleable.com" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbibleable.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                  <i class="fa fa-facebook"></i> Share</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- class="modal"-->
+    </div>
+
+    <div id="container" class="container-fluid">
+      <div id="app">
+
+          <swiper class="swiper-swiping" ref="awesomeSwiperA" :options="swiperOptionA" 
+          @set-translate="onSetTranslate">    
+            <swiper-slide>
+              <h1 class="biggesttt-font text-center">
+                Score Better in Math & Science!
+              </h1>
+            </swiper-slide>
+            <swiper-slide>
+              <h1 class="biggesttt-font text-center">
+              <h2 class="text-center color-dark-black regular-font">
+                Every child can achieve & prosper.</h2>
+              </h1>
+            </swiper-slide>
+          
+            <swiper-slide>Math & Science are easy.</swiper-slide>
+          
+            <swiper-slide>Homework help is always nearby</swiper-slide>
+    
+            <!-- Optional controls -->
+            <div class="swiper-pagination"  slot="pagination"></div>
+          </swiper>   
+
+        <div class="row">
+          <!-- <input type="file" onchange="previewFile()"> -->
+            
+          <!-- <v-select v-model="selected" 
+          @search="something"
+          :options="selectData" 
+          placeholder="Search any verse">
+          </v-select> -->
+
+          <div class="col-sm-1"></div>
+          <div id="searchbar-div" class="col-sm-10">    
+              <p>{{answer}}</p>    
+
+            <div class="row">
+              <div class="col-sm-10">
+                <input id="searchbar" v-model="question" type="text" placeholder="Which bible verse is on your mind now?"> <br>
+
+                Popular verses: 
+                <button @click="enterSearchVerse('Roman 5:1')" class="bg-transparent hover:bg-blue text-blue-dark hover:text-white py-1 px-1 border border-blue hover:border-transparent rounded-full text-xs">
+                  Roman 5:1</button>
+                <button @click="enterSearchVerse('Psalm 136:1')" class="bg-transparent hover:bg-blue text-blue-dark hover:text-white py-1 px-1 border border-blue hover:border-transparent rounded-full text-xs">
+                  Psalm 136:1</button>
+                <button @click="enterSearchVerse('John 3:16')" class="bg-transparent hover:bg-blue text-blue-dark hover:text-white py-1 px-1 border border-blue hover:border-transparent rounded-full text-xs">
+                  John 3:16</button>
+                <button @click="enterSearchVerse('Matthew 6:33')" class="bg-transparent hover:bg-blue text-blue-dark hover:text-white py-1 px-1 border border-blue hover:border-transparent rounded-full text-xs">
+                  Matthew 6:33</button>
+                <button @click="enterSearchVerse('Exodus 20:3')" class="bg-transparent hover:bg-blue text-blue-dark hover:text-white py-1 px-1 border border-blue hover:border-transparent rounded-full text-xs">
+                  Exodus 20:3</button>
+              </div>
+              
+              <div class="col-sm-2" id="searchbar-action">
+                <button class="text-3xl bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" @click="getVerse()"><i class="fa fa-search"></i></button>
+                <button class="text-3xl bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" @click="clear()">clear</button>        
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-1"></div>
+        </div>
+
+        <br>
+
+        <div class="row">
+          <div class="col-sm-1"></div>
+          <div class="col-sm-10">
+            <div class="row">
+              <div class="col">
+                <canvas id="canvas" width="550" height="550">
+                </canvas>
+              </div>
+
+              <div class="col border">                    
+                <div class="btn-group">
+                  <button id="downloader" @click="download()" class="bg-green hover:bg-blue-dark text-white font-bold py-2 px-4"
+                      type="button">Save Image to Desktop</button>
+                  <button type="button" class="btn btn-lg btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Save to Computer</a>
+                    <a class="dropdown-item" href="#">Share on Facebook</a>
+                    <a class="dropdown-item" href="#">Share on Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Share on Whatsapp</a>
+                    <a class="dropdown-item" href="#">Share via Email</a>
+                  </div>
+                </div>
+          
+                <button title="magic edit" @click="magic_edit()" 
+                        class="text-xl bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-lg"><i class="fa fa-magic"></i></button>
+
+                <hr>
+                <div id="accordion">
+                  <div class="card">
+                    <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"       aria-controls="collapseOne">
+                      <h5 class="mb-0">
+                        <button class="btn">
+                          <i class="fa fa-font"></i> Font Family
+                        </button>
+                      </h5>
+                    </div><!--class="card-header"-->
+                
+                    <div id="collapseOne" class="collapse show multi-collapse" aria-labelledby="headingOne">
+                      <div class="card-body">                          
+                        <div class="row">
+                          <div class="col">
+                            <button @click="selectFont('margarine')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">
+                              <span id="margarine">Margarine</span>
+                            </button>
+                            <br>
+                            <button @click="selectFont('roboto')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">
+                              <span id="roboto">Roboto</span>
+                            </button>
+                            <br>
+                            <button @click="selectFont('baloo chettan')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                              
+                              <span id="baloo">Baloo Chettan</span>
+                            </button>
+                            <br>
+
+                            <button @click="selectFont('inconsolata')" type="button"  class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                              
+                              <span id="inconsolata">Inconsolata</span>
+                            </button>
+                          </div>
+
+                          <div class="col">
+                            <button id="titillium" @click="selectFont('Titillium Web')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                              
+                              <span id="titillium">Titillium Web</span>
+                            </button>  
+                            <br>
+                            <button @click="selectFont('Mukta')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                              
+                              <span id="mukta">Mukta</span>
+                            </button>
+                            <br>
+                            <button @click="selectFont('Muli')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                                
+                              <span id="muli">Muli</span>
+                            </button>
+                            <br>
+                            <button @click="selectFont('indie flower')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                              
+                              <span id="indie">Indie</span>
+                            </button>
+                          </div>
+
+                          <div class="col">
+                            <button id="anton" @click="selectFont('Anton')"  type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                                
+                              <span id="anton">Anton</span>
+                            </button>
+                            <br>
+                            <button @click="selectFont('Lobster')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                                
+                              <span id="lobster">Lobster</span>
+                            </button>
+                            <br>
+                            <button @click="selectFont('Pacifico')" type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                                
+                              <span id="pacifico">Pacifico</span>
+                            </button>
+                            <br>
+                            <button @click="selectFont('Noto Sans JP')"  type="button" class="bg-transparent hover:bg-blue text-black-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark">                                
+                              <span id="noto">Noto Sans JP</span>
+                            </button>
+                          </div>
+                        </div> <!--class="row"-->
+                      </div><!--class="card-body"-->
+                    </div><!--id="collapseOne"-->
+                  </div> <!--class="card"-->
+
+                  <div class="card">
+                    <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <h5 class="mb-0">
+                        <button class="btn collapsed">
+                          <i class="fa fa-window-restore"></i> Background
+                        </button>
+                      </h5>
+                    </div><!--class="card-header"-->
+
+                    <div id="collapseTwo" class="collapse show multi-collapse" aria-labelledby="headingTwo">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                            <img class="thumbnails" v-for="image in thumbnails" @click="selectBackground(image.src)" :src="image.thumb" width="50" height="50" alt="">                                 
+                          </div>
+                        </div>
+                      </div> <!--class="card-body"-->
+                    </div> <!--id="collapseTwo"-->
+                  </div> <!--class="card"-->
+
+                  <div class="card">
+                    <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      <h5 class="mb-0">
+                        <button class="btn collapsed">
+                          <i class="fa fa-search-plus"></i> Font Settings
+                        </button>
+                      </h5>
+                    </div> <!--class="card-header"-->
+
+                    <div id="collapseThree" class="collapse multi-collapse" aria-labelledby="headingThree">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col">
+                            <div>
+                              <span>Font size:</span>  <b><span>{{fontsize}}</span></b><br>
+                              <input v-model.number="fontsize" type="range" min="18" max="43" value="30" class="slider" id="myRange"> <br>
+                            </div>
+
+                            <div>
+                              <span>Colour:</span>
+                              <br>
+                              <button @click="selectColor('white')" type="button" class="bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-sm">
+                                <i class="fa fa-check"></i>  
+                              </button>
+                  
+                              <button @click="selectColor('black')"  type="button" class="bg-black text-white font-semibold hover:text-red py-2 px-4 border border-black hover:border-white rounded" classX="btn btn-dark btn-sm">
+                                <i class="fa fa-check"></i>  
+                              </button>     
+                            </div>                                  
+
+                            <div>
+                              <span>Align:</span>
+                              <br>
+                              <button @click="selectAlign('left')" type="button" class="bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-sm">
+                                <i class="fa fa-align-left"></i> 
+                              </button>
+                              <button  @click="selectAlign('center')" type="button" class="bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-sm">    
+                                  <i class="fa fa-align-center"></i> 
+                              </button>
+                              <button @click="selectAlign('right')"  type="button" class="bg-transparent hover:bg-blue text-blue-dark font-bold hover:text-white py-2 px-3 border border-blue hover:border-transparent rounded" classX="btn btn-outline-dark btn-sm">    
+                                  <i class="fa fa-align-right"></i> 
+                              </button>
+                            </div>
+                          </div>  <!-- col-->
+
+                          <div class="col">
+                            <span>Text opacity:</span> <b><span>{{opacity}}%</span></b><br>
+                            <input v-model.number="opacity" type="range" min="0" max="100" value="100" class="slider" id="myRange">
+                            <br>
+                            <span>Background Blur:</span> <b><span>{{backgroundblur}}%</span></b><br>
+                            <input v-model.number="backgroundblur" type="range" min="0" max="100" value="0" class="slider" id="myRange">                      
+                          </div> <!-- col-->
+                        </div> <!-- row -->
+
+                      </div> <!--class="card-body"-->
+                    </div> <!--id="collapseThree"-->
+                  </div> <!--class="card"-->
+
+                  <div class="card">
+                    <div class="card-header" id="headingFour" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="false" aria-controls="collapseHistory">
+                      <h5 class="mb-0">
+                        <button class="btn collapsed">
+                          <i class="fa fa-history"></i> Verse History
+                        </button>
+                      </h5>
+                    </div> <!--class="card-header"-->
+
+                    <div id="collapseHistory" class="collapse multi-collapse" aria-labelledby="headingFour">
+                      <div class="card-body">
+                        <ul>
+                          <p v-if="verseHistory.length==0">There is nothing in your verse history.</p>
+
+                          <li v-for="verse in verseHistory">
+                            {{verse}}
+                            <button class="btn btn-outline-dark btn-sm" @click="enterVerse(verse)">enter</button>
+                          </li>
+                        </ul>
+                      </div> <!--class="card-body"-->
+                    </div>  <!--id="collapseHistory"-->
+                  </div> <!--class="card"-->      
+                </div> <!--id="accordion"-->                
+              </div><!--class="col border"-->
+              </div><!--class="row"-->
+          </div><!--class="col-sm-10"-->     
+
+          <div class="col-sm-1"></div>
+        </div>    
+        <hr>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-10">
+            <footer class="footer">
+              <div class="container-fluid">
+                <span class="text-muted">
+                  © Bibleable Project -
+                  <a href="./">Editor</a> |
+                  <a href="./about">About</a> |
+                  <a href="./day-verse">Day Verse</a> |
+                  <a href="mailto:bibleableproject@gmail.com">Contact</a>
+                </span>
+              </div>
+            </footer>
+          </div>
+          <div class="col-1"></div>
+        </div>
+      </div> <!--id="app"-->
+    </div> <!-- id="container" -->
+  </body>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.7.0/fabric.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js" crossorigin="anonymous"></script>
+  <script src="js/canvas-toBlob.js" crossorigin="anonymous"></script>
+  <script src="js/v-autocomplete.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/vue-select@latest" crossorigin="anonymous"></script>
+  <script src="js/index.js" crossorigin="anonymous"></script>
+</html>
