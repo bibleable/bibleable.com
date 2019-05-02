@@ -10,15 +10,10 @@
       },
       data: {
         swiperOptionA: {
-          // loop: true,
           allowSwipeToNext: true, 
           allowSwipeToPrev: true,
-          // autoplay: true,
           slidesPerView: 1,
           spaceBetween: 40,
-          // autoplay: {
-          //   delay: 2500,
-          // },
           pagination: {
             el: '.swiper-pagination',
             clickable: false
