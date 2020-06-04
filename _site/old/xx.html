@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Bibleable - Bible Verse For Everyone</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, minimal-ui">
+
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+  <link rel="dns-prefetch" href="https://code.jquery.com/">
+
+  <link href="./assets/css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" href="./assets/animate.min.css">
+  <link rel="stylesheet" href="./assets/style.css">
+  <link rel="stylesheet" href="./assets/flat-ui.css">
+  <link rel="stylesheet" href="./assets/basic.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137813950-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-137813950-1');
+  </script>
+
+
+  <style media="screen">
+      #mannaverse {
+          font-size: 10px;
+          font-weight: bold;
+          margin-bottom: 10px;
+      }
+
+  </style>
+</head>
+<body>
+
+<div class="">
+  <!-- <a class="link first_gap" href="pricing.html">Pricing</a>
+  <a class="link gap" href="demo.html">Request Demo</a>
+  <a class="link gap" href="features.html">Features</a>
+  <a class="link gap" href="freetrial.html">Free Trial</a> -->
+  <!-- <a class="last_gap btn btn-block btn-lg btn-primary" href="/users/sign_in">Sign in</a> -->
+</div>
+
+<header class="site__header island">
+  <div id="ourmanna-verse">Loading...</div>
+  <script src="https://www.ourmanna.com/verses/api/js/" type="text/javascript"></script>
+
+  <div class="wrap">
+   <span id="animationSandbox" style="display: block;"><h1 class="site__title mega">Bibleable</h1></span>
+    <span class="beta subhead">Coming soon.</span>
+    <span class="beta subhead">Bibleable is a project to generate beautiful and shareable bible verse images.</span>
+
+  </div>
+</header><!-- /.site__header -->
+
+<main class="site__content island" role="content">
+  <div class="wrap">
+    <!-- <input type="text" name="name" value="">
+    <input type="text" name="name" value=""> -->
+    <!-- <input class="" type="button" name="name" value="">Sign up</input> -->
+    <hr>
+    <p class="meta">
+      <a href="http://www.tada.asia">© TADA.</a> You can also send your feedback to <u><a href="mailto:bibleableproject@gmail.com">bibleableproject@gmail.com</a></u>.
+    </p>
+
+  </div>
+</main><!-- /.site__content -->
+
+<script src="./assets/jquery-1.10.2.min.js"></script>
+<script>
+  function testAnim(x) {
+    $('#animationSandbox').removeClass().addClass(x + ' animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(this).removeClass();
+    });
+  };
+
+  $(document).ready(function(){
+    $('.js--triggerAnimation').click(function(e){
+      e.preventDefault();
+      var anim = $('.js--animations').val();
+      testAnim(anim);
+    });
+
+    $('.js--animations').change(function(){
+      var anim = $(this).val();
+      testAnim(anim);
+    });
+  });
+
+</script>
+
+<script id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{(function() { for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i.toString(); } else { d.textContent=i.toString(); } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }})()}catch(e){}</script></body></html>
+
