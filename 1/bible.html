@@ -218,9 +218,9 @@
       el: '#app',
       data: {
         ascending: true,
-        sortBy: 'alphabetically',
+        // sortBy: 'alphabetically',
         searchValue: '',
-        maxCookingTime: null,
+        // maxCookingTime: null,
         result: "",
         recipes: [
             {title: 'genesis', count: 50, type:"ot", description: 'Yummy pizza for those lazy days', ingredients: ['Dough', 'Tomato Paste', 'Cheese', 'Bell Pepper', 'Onion'], cookingTime: 60, img: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'},
@@ -296,166 +296,144 @@
             {title: 'revelation',  count: 22, type:"nt",description: 'Just because... Ice Cream', ingredients: ['Whole milk', 'Cream', 'Eggs', 'Sugar'], cookingTime: 120, img: 'https://images.unsplash.com/photo-1515037028865-0a2a82603f7c?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1321&q=80'},
           ],
           lastNonZeroResult:[],
-        }, 
-        computed: {
+      }, 
+      computed: {
         filteredVerses() {
           let tempRecipes = this.recipes
 
           // Process search input
           if (this.searchValue != '' && this.searchValue) {
-              tempRecipes = tempRecipes.filter((item) => {
-                answer =  item.title
-                  .toUpperCase()
-                  .includes(this.searchValue.toUpperCase())
+            tempRecipes = tempRecipes.filter((item) => {
+              answer =  item.title
+                .toUpperCase()
+                .includes(this.searchValue.toUpperCase())
+                return answer
+            })
+          }
 
-                  return answer
-              })
+          //sort based on similarity first
+          tempRecipes = tempRecipes.sort((a,b) => {
+            //use LevenshteinDistance algorithmn to sort according 
+            // to similarity see levenshtein.js
+            answer = LevenshteinDistance(a.title, this.searchValue)
+            // console.log(a.title + (answer-1000))
+            return answer-1000
+          })
+
+          // feel that we should not use regular expression to solve this problem
+          // We need to use a method to recognise other languages
+          let chapter2chapter = /([Aa-zZ]+)\s*([0-9]*)[-]*([0-9]+)/g;
+          let verse2verse = /([Aa-zZ]+)\s*([0-9]*)[:]+([0-9]+)*[-]*([0-9]+)*/g;
+
+          // account for different chapter & different verses
+          // let verse2verse = /([Aa-zZ]+)\s*([0-9]*)[:]+([0-9]+)*[-]*([0-9]+)*/g;
+
+          if(this.searchValue.match(verse2verse)) {
+            tokens = verse2verse.exec(this.searchValue)
+            if(tokens[4] == undefined){
+              if(tokens[1] != undefined && tokens[2] != undefined && tokens[3]!= undefined){
+                this.result = "<h2> "+tokens[1] + " " + tokens[2] + ":" + tokens[3] + "</h2>"
+                this.fetchVerse({q: this.searchValue})
+              }else {
+                // incomplete search term like "john3:"
+                this.result = "unfinished <h2> "+tokens[1] + " " + tokens[2] + ":" + tokens[3] + "</h2>"
+              }
+            } else {
+              //this means full john3:16-18
+              this.result = "<h2>"+tokens[1] + " " + tokens[2] + " " + tokens[3] + "->" + tokens[1] + " "+ tokens[2] + " "+  tokens[4] + "</h2>"
+              this.result += "<br>" + ("first token: " + tokens[0])
+              this.result += "<br>" + ("second token: " + tokens[1])
+              this.result += "<br>" + ("third token: " + tokens[2])
+              this.result += "<br>" + ("fourth token: " + tokens[1] + " " + tokens[2] + " " + tokens[3])
+              this.result += "<br>" + ("everything in between")
+              this.result += "<br>" + ("fifth token: " + tokens[1] + " " + tokens[2] + " " + tokens[4])
+              this.result += "<br>" + ("searchValue token: " + this.searchValue)
+              // this.fetchVerse({q: this.searchValue})
+            }
+          } 
+          else if(this.searchValue.match(chapter2chapter)) {
+            tokens = chapter2chapter.exec(this.searchValue)
+            
+            if(tokens[2] == ""){ // Just a single chapter
+              // this.fetchVerse()
+              this.result = "<h1>i'm just going to show " + tokens[1] + tokens[3] + "</h1>"
+              this.fetchVerse({q: this.searchValue})
+            }
+            else { // a few chapters
+              // THis covers scenario when it is from cahpter to chapter ie john3-5
+              this.result = "<h2>it matches chapter 2 chapter</h2>"
+              this.result += "<br>" + ("first token: " + tokens[0])
+              this.result += "<br>" + ("second token: " + tokens[1])
+              this.result += "<br>" + ("third token: " + tokens[1] + " " + tokens[2])
+              this.result += "<br>" + ("everything in between")
+              this.result += "<br>" + ("fourth token: " + tokens[1] + " " + tokens[3])
+              this.result += "<br>" + ("searchValue token: " + this.searchValue)
+
+              // this.fetchVerse({q: this.searchValue})
+
+            }
+          } 
+          else {
+            console.log("Nothing matches ❌")
+          }
+          
+          if(tempRecipes.length == 0){
+            answer = this.searchValue.split(" ")
+            if(answer.length == 2){
+              further = answer[1].split(":")
+              value = parseInt(answer[1])
+              if(value != undefined && isNaN(value) == false){
+                console.log("detected the space")
+                console.log("value is " + value)
+              }
+            } else if(answer.length == 1){
+
+              console.log(this.searchValue[this.searchValue.length-1])
             }
 
-            console.log(tempRecipes)
-            
-            // Filter out by cooking time
-            if (this.maxCookingTime)
-            tempRecipes = tempRecipes.filter((item) => {
-              return (item.cookingTime <= this.maxCookingTime)
+            // if the last character is space
+            // i check if there is a result from the result
+            tempRecipes = this.lastNonZeroResult.filter((item) => {
+              if(item.title == this.searchValue.trim()){
+                return item
+              }
             })
-                
-          // Sort by alphabetical order
-              tempRecipes = tempRecipes.sort((a, b) => {
-                  if (this.sortBy == 'alphabetically') {
-                      let fa = a.title.toLowerCase(), fb = b.title.toLowerCase()
-                
-                    if (fa < fb) {
-                      return -1
-                    }
-                    if (fa > fb) {
-                      return 1 
-                    }
-                    return 0
-                    
-                    // Sort by cooking time
-                  } else if (this.sortBy == 'cookingTime') {
-                    return a.cookingTime - b.cookingTime
-                  } 
-              })
-              
-              // Show sorted array in descending or ascending order
-              if (!this.ascending) {
-                  tempRecipes.reverse()
-              }
 
-              //sort based on similarity first
-              tempRecipes = tempRecipes.sort((a,b) => {
-                //use LevenshteinDistance algorithmn to sort according 
-                // to similarity see levenshtein.js
-                answer = LevenshteinDistance(a.title, this.searchValue)
-                console.log(a.title + (answer-1000))
-                return answer-1000
-              })
-
-              let chapter2chapter = /([Aa-zZ]+)\s*([0-9]*)[-]*([0-9]+)/g;
-              let verse2verse = /([Aa-zZ]+)\s*([0-9]*)[:]+([0-9]+)*[-]*([0-9]+)*/g;
-
-              // account for different chapter & different verses
-              // let verse2verse = /([Aa-zZ]+)\s*([0-9]*)[:]+([0-9]+)*[-]*([0-9]+)*/g;
-             
-              if(this.searchValue.match(verse2verse)) {
-                console.log("1. it matches🤗 verse2verse")
-                console.log("This should call rtwbible.com/searches/g?q=john3:16")
-    
-                tokens = verse2verse.exec(this.searchValue)
-                console.log(tokens)
-                console.log("first token: " + tokens[0])
-                console.log("second token: " + tokens[1])
-                console.log("third token: " + tokens[2])
-                console.log("fourth token: " + tokens[1] + " " + tokens[2] + " " + tokens[3])
-                console.log("everything in between")
-                console.log("fifth token: " + tokens[1] + " " + tokens[2] + " " + tokens[4])
-
-                if(tokens[4] == undefined){
-                  console.log("2.")
-                  console.log("I am not going to call anything.")
-                  this.result = "<h2>"+tokens[1] + " " + tokens[2] + ":" + tokens[3] + "</h2>"
-                } else {
-                  console.log("3. is this ever called?")
-                  this.result = "<h2>"+tokens[1] + " " + tokens[2] + " " + tokens[3] + "->" + tokens[1] + " "+ tokens[2] + " "+  tokens[4] + "</h2>"
-                  this.result += "<br>" + ("first token: " + tokens[0])
-                  this.result += "<br>" + ("second token: " + tokens[1])
-                  this.result += "<br>" + ("third token: " + tokens[2])
-                  this.result += "<br>" + ("fourth token: " + tokens[1] + " " + tokens[2] + " " + tokens[3])
-                  this.result += "<br>" + ("everything in between")
-                  this.result += "<br>" + ("fifth token: " + tokens[1] + " " + tokens[2] + " " + tokens[4])
-                }
-              } 
-              else if(this.searchValue.match(chapter2chapter)) {
-                console.log("4.")
-                console.log("I'm just going to call the rtwbible.com/searches/g?q=john3. Probbably not calling it here")
-                //this involves just chapters to chapters
-                console.log("it matches🤗 chapter2chapter")
-                tokens = chapter2chapter.exec(this.searchValue)
-                console.log(tokens)
-                if(tokens[2] == ""){ // Just a single chapter
-                  console.log("5.")
-                  console.log("I'm just going to call the rtwbible.com/searches/g?q=john3.")
-                  this.result = "<h1>i'm just going to show " + tokens[1] + tokens[3] + "</h1>"
-                }
-                else { // a few chapters
-                  console.log("6.")
-                  console.log("I'm just going to call the rtwbible.com/searches/g?q=john3-6")
-                  console.log("first token: " + tokens[0])
-                  console.log("second token: " + tokens[1])
-                  console.log("third token: " + tokens[1] + " " + tokens[2])
-                  console.log("everything in between")
-                  console.log("fourth token: " + tokens[1] + " " + tokens[3])
-                  this.result = "<h2>it matches chapter 2 chapter</h2>"
-                  this.result += "<br>" + ("first token: " + tokens[0])
-                  this.result += "<br>" + ("second token: " + tokens[1])
-                  this.result += "<br>" + ("third token: " + tokens[1] + " " + tokens[2])
-                  this.result += "<br>" + ("everything in between")
-                  this.result += "<br>" + ("fourth token: " + tokens[1] + " " + tokens[3])
-                }
-              } 
-              else {
-                console.log("7.")
-                console.log("I am NOT calling anything.")
-                console.log("it DOES NOT matches❌")
-              }
-              
-              if(tempRecipes.length == 0){
-                answer = this.searchValue.split(" ")
-                if(answer.length == 2){
-                  further = answer[1].split(":")
-                  value = parseInt(answer[1])
-                  if(value != undefined && isNaN(value) == false){
-                    console.log("detected the space")
-                    console.log("value is " + value)
-                  }
-                } else if(answer.length == 1){
-                  console.log(this.searchValue[this.searchValue.length-1])
-                }
-
-                // if the last character is space
-                // i check if there is a result from the result
-                tempRecipes = this.lastNonZeroResult.filter((item) => {
-                  if(item.title == this.searchValue.trim()){
-                    return item
-                  }
-                })
-
-                if(tempRecipes.length != 0){
-                  return tempRecipes
-                }
-
-                return this.lastNonZeroResult
-              }
-
-              //search within the last few results
-              this.lastNonZeroResult = tempRecipes
-              this.result = ""
-              //record the result to a value
+            if(tempRecipes.length != 0){
               return tempRecipes
+            }
+
+            return this.lastNonZeroResult
+          }
+
+          //search within the last few results
+          this.lastNonZeroResult = tempRecipes
+          this.result = ""
+          //record the result to a value
+          return tempRecipes
         }
+    }, 
+    methods: {
+      fetchVerse: function(data){
+        fetch('http://localhost:3000/searches/verse', {
+                method: 'POST', // or 'PUT'
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+              })
+              .then(response => response.json())
+              .then(data => {
+                // console.log('Success:', data);
+                // alert(data["scripture"]["text"])
+                this.result = data["scripture"]["content"]
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
       }
+    }
+
     })
   </script>
 

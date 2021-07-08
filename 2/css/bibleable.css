@@ -1,0 +1,115 @@
+
+.no-display {
+  display:none;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 700;
+  background-color: #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  background-position: center; 
+  background-size: cover;
+}
+
+input:focus {
+  outline: none;
+}
+
+input#searchbar {
+  border-bottom: 1px solid #555;
+}
+
+.fix-alert {
+  border-radius: 0px;
+}
+
+#grey {
+  color: #777;
+}
+
+.visible-text {
+  font-size: 20px;
+}
+
+#searchbar {
+  font-size: 28px;
+  font-weight: 800;
+  width: 100%;
+  height: 50px;
+  /* border: 1px solid black; */
+}
+
+#searchbar-div {
+  padding-bottom: 10px;
+}
+
+div#searchbar-action {
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 14px;
+  margin-top: 10px;
+  /* border: 1px solid black; */
+}
+/* DISABLE BOOTSTRAP */
+.card-header {
+  padding: 0;
+}
+
+img.thumbnails:hover {
+  border: 2px solid white;
+}
+
+#container{
+  padding: 20px;
+}
+
+.fb-share-button a {
+  background-color: #365899;
+  color: white;
+  font-size: 16px;
+  padding: 5px 10px 5px 10px ;
+} 
+.close {
+  float: right;
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 0.6;
+  color: #fff;
+  text-shadow: 0 1px 0 #fff;
+  opacity: .5
+}
+
+.close:hover {
+color: #fff;
+}
+.selected {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
+}
+
+.border {
+  padding: 25px;
+  border: 1px solid #d1d1d1;
+  border-radius: 7px;
+}
+
+canvas {
+  border: 1px solid black;
+}
+
+button#downloader{
+  border: 1px solid #d1d1d1;
+  border-radius: 5px 5px;
+}
