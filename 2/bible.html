@@ -346,7 +346,7 @@
               this.result += "<br>" + ("everything in between")
               this.result += "<br>" + ("fifth token: " + tokens[1] + " " + tokens[2] + " " + tokens[4])
               this.result += "<br>" + ("searchValue token: " + this.searchValue)
-              // this.fetchVerse({q: this.searchValue})
+              this.fetchVerse({q: this.searchValue, test: "1234567890!"})
             }
           } 
           else if(this.searchValue.match(chapter2chapter)) {
@@ -356,19 +356,19 @@
               // this.fetchVerse()
               this.result = "<h1>i'm just going to show " + tokens[1] + tokens[3] + "</h1>"
               this.fetchVerse({q: this.searchValue, test: "1234567890!"})
-            }
-            else { // a few chapters
+            } else { // a few chapters
+              console.log("test")
+              this.fetchVerse({q: this.searchValue, test: "1234567890!"})
+
               // THis covers scenario when it is from cahpter to chapter ie john3-5
               this.result = "<h2>it matches chapter 2 chapter</h2>"
-              this.result += "<br>" + ("first token: " + tokens[0])
-              this.result += "<br>" + ("second token: " + tokens[1])
-              this.result += "<br>" + ("third token: " + tokens[1] + " " + tokens[2])
-              this.result += "<br>" + ("everything in between")
-              this.result += "<br>" + ("fourth token: " + tokens[1] + " " + tokens[3])
-              this.result += "<br>" + ("searchValue token: " + this.searchValue)
-
-              // this.fetchVerse({q: this.searchValue})
-
+              // this.result += "<br>" + ("first token: " + tokens[0])
+              // this.result += "<br>" + ("second token: " + tokens[1])
+              // this.result += "<br>" + ("third token: " + tokens[1] + " " + tokens[2])
+              // this.result += "<br>" + ("everything in between")
+              // this.result += "<br>" + ("fourth token: " + tokens[1] + " " + tokens[3])
+              // this.result += "<br>" + ("searchValue token: " + this.searchValue + "|")
+              // this.fetchVerse({q: this.searchValue, test: "1234567890!"})
             }
           } 
           else {
@@ -423,7 +423,7 @@
               })
               .then(response => response.json())
               .then(data => {
-                // console.log('Success:', data);
+                console.log('Success:', data);
                 // alert(data["scripture"]["text"])
                 this.result = data["scripture"]["content"]
               })
